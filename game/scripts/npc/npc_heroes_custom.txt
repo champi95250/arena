@@ -1,0 +1,212 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Tracer
+	//=================================================================================================================
+	"npc_dota_hero_tracer"
+	{
+		// Hero
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"				"npc_dota_hero_templar_assassin"			// Hero to override
+
+		"DisableWearables" "1"
+		
+		"Role" "Carry,Escape,Initiator,Nuker,Pusher,Support,Durable,Disabler,Jungler"
+		"Rolelevels" "2,2,1,1,1,0,0,0,0"
+		"Complexity" "2"
+
+		// Model
+		//-------------------------------------------------------------------------------------------------------------
+		"Model"						"models/heroes/tracer/tracer_model.vmdl"
+		"ModelScale" 				"1.00"
+
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		// Talent
+		"Ability10"					"special_bonus_magic_resistance_5"
+		"Ability11"					"special_bonus_armor_4"
+		"Ability12"					"special_bonus_spell_amplify_5"
+		"Ability13"					"special_bonus_agility_8"
+		"Ability14"					"special_bonus_hp_175"
+		"Ability15"					"special_bonus_mp_150"
+		"Ability16"					"special_bonus_movement_speed_30"
+		"Ability17"					"special_bonus_attack_damage_35"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"0"										// Physical protection.
+		
+		// Status
+		//----------------------------------------------------------------------------------------------
+		"StatusHealth"				"200"									
+		"StatusHealthRegen"			"0.5"									
+		"StatusMana"				"200"										
+		"StatusManaRegen" 			"0.5" 
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"20"													// Damage range min.
+		"AttackDamageMax"			"30"													// Damage range max.	
+		"AttackRate"				"1.5"													// Speed of attack.
+		"AttackAnimationPoint"		"0.2"													// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"700"													// Range within a target can be acquired.
+		"AttackRange"				"600"													// Range within a target can be attacked.
+		"ProjectileModel"			"particles/basic_projectile/basic_projectile.vpcf"		// Particle system model for projectile.
+		"ProjectileSpeed"			"750"													// Speed of projectile.
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributeBaseStrength"		"20"									// Base strength
+		"AttributeStrengthGain"		"2.0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"20"									// Base intelligence
+		"AttributeIntelligenceGain"	"2.0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"20"									// Base agility
+		"AttributeAgilityGain"		"2.0"									// Agility bonus per level.
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"315"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+	}
+
+	//=================================================================================================================
+	// HERO: Mario
+	//=================================================================================================================
+	"npc_dota_hero_mario"
+	{
+		// Hero
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"				"npc_dota_hero_brewmaster"			// Hero to override
+
+		"DisableWearables" "1"
+		
+		"Role" "Carry,Escape,Initiator,Nuker,Pusher,Support,Durable,Disabler,Jungler"
+		"Rolelevels" "2,2,1,1,1,0,0,0,0"
+		"Complexity" "2"
+
+		// Model
+		//-------------------------------------------------------------------------------------------------------------
+		"Model"						"models/heroes/mario/mario.vmdl"
+		"ModelScale" 				"1.00"
+
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		// Talent
+		"Ability10"					"special_bonus_magic_resistance_5"
+		"Ability11"					"special_bonus_armor_4"
+		"Ability12"					"special_bonus_spell_amplify_5"
+		"Ability13"					"special_bonus_agility_8"
+		"Ability14"					"special_bonus_hp_175"
+		"Ability15"					"special_bonus_mp_150"
+		"Ability16"					"special_bonus_movement_speed_30"
+		"Ability17"					"special_bonus_attack_damage_35"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"0"										// Physical protection.
+		
+		// Status
+		//----------------------------------------------------------------------------------------------
+		"StatusHealth"				"200"									
+		"StatusHealthRegen"			"0.5"									
+		"StatusMana"				"200"										
+		"StatusManaRegen" 			"0.5" 
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"20"													// Damage range min.
+		"AttackDamageMax"			"30"													// Damage range max.	
+		"AttackRate"				"1.5"													// Speed of attack.
+		"AttackAnimationPoint"		"0.2"													// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"700"													// Range within a target can be acquired.
+		"AttackRange"				"600"													// Range within a target can be attacked.
+		"ProjectileModel"			"particles/basic_projectile/basic_projectile.vpcf"		// Particle system model for projectile.
+		"ProjectileSpeed"			"750"													// Speed of projectile.
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributeBaseStrength"		"20"									// Base strength
+		"AttributeStrengthGain"		"2.0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"20"									// Base intelligence
+		"AttributeIntelligenceGain"	"2.0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"20"									// Base agility
+		"AttributeAgilityGain"		"2.0"									// Agility bonus per level.
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"315"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+	}
+
+	//=================================================================================================================
+	// HERO: Goku
+	//=================================================================================================================
+	"npc_dota_hero_goku"
+	{
+		// Hero
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"				"npc_dota_hero_life_stealer"			// Hero to override
+
+		"DisableWearables" "1"
+		
+		"Role" "Carry,Escape,Initiator,Nuker,Pusher,Support,Durable,Disabler,Jungler"
+		"Rolelevels" "2,2,1,1,1,0,0,0,0"
+		"Complexity" "2"
+
+		// Model
+		//-------------------------------------------------------------------------------------------------------------
+		"Model"						"models/heroes/goku/goku.vmdl"
+		"ModelScale" 				"1.10"
+
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		// Talent
+		"Ability10"					"special_bonus_magic_resistance_5"
+		"Ability11"					"special_bonus_armor_4"
+		"Ability12"					"special_bonus_spell_amplify_5"
+		"Ability13"					"special_bonus_agility_8"
+		"Ability14"					"special_bonus_hp_175"
+		"Ability15"					"special_bonus_mp_150"
+		"Ability16"					"special_bonus_movement_speed_30"
+		"Ability17"					"special_bonus_attack_damage_35"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"0"										// Physical protection.
+		
+		// Status
+		//----------------------------------------------------------------------------------------------
+		"StatusHealth"				"200"									
+		"StatusHealthRegen"			"0.5"									
+		"StatusMana"				"200"										
+		"StatusManaRegen" 			"0.5" 
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"20"													// Damage range min.
+		"AttackDamageMax"			"30"													// Damage range max.	
+		"AttackRate"				"1.5"													// Speed of attack.
+		"AttackAnimationPoint"		"0.2"													// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"700"													// Range within a target can be acquired.
+		"AttackRange"				"600"													// Range within a target can be attacked.
+		"ProjectileModel"			"particles/basic_projectile/basic_projectile.vpcf"		// Particle system model for projectile.
+		"ProjectileSpeed"			"750"													// Speed of projectile.
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributeBaseStrength"		"20"									// Base strength
+		"AttributeStrengthGain"		"2.0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"20"									// Base intelligence
+		"AttributeIntelligenceGain"	"2.0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"20"									// Base agility
+		"AttributeAgilityGain"		"2.0"									// Agility bonus per level.
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"315"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+	}
+}
