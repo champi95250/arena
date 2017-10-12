@@ -10,7 +10,7 @@ end
 
 function item_health_potion:OnSpellStart()
 	if IsServer() then
-		self:SpendCharge()
+		
 		local hp_restore_pct = self:GetSpecialValueFor( "hp_restore_pct" )
 		print("Lancer SPELL")
 		self:GetCaster():EmitSoundParams( "DOTA_Item.FaerieSpark.Activate", 0, 0.5, 0)
@@ -22,7 +22,7 @@ function item_health_potion:OnSpellStart()
 
 		local nFXIndex = ParticleManager:CreateParticle( "particles/items3_fx/fish_bones_active.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetCaster() )
 		ParticleManager:ReleaseParticleIndex( nFXIndex )
-
+		self:SpendCharge()
 		
 		print("DETRUIT SPELL")
 	end

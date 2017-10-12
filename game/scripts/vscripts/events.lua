@@ -25,19 +25,31 @@ function GameMode:OnGameRulesStateChange(keys)
     self.NewState_spawn = 0
     local numberOfPlayers = PlayerResource:GetPlayerCount()
     if numberOfPlayers > 7 then -- Plus de 7 
-      self.TEAM_POINT_TO_WIN = 250
+      self.TEAM_POINT_TO_WIN = 300
       print("250 Point for win")
     elseif numberOfPlayers > 4 and numberOfPlayers <= 7 then -- 7 ou plus de 4
-      self.TEAM_POINT_TO_WIN = 200
+      self.TEAM_POINT_TO_WIN = 250
+      print("200 Point for win")
+    elseif numberOfPlayers == 2 then -- 2
+      self.TEAM_POINT_TO_WIN = 125
       print("200 Point for win")
     else -- 4 ou moins 
-      self.TEAM_POINT_TO_WIN = 125
+      self.TEAM_POINT_TO_WIN = 200
       print("125 Point for win")
     end
   end
 
   if NewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-    --print( "OnGameRulesStateChange: Game In Progress" )
+    print( "OnGameRulesStateChange: Game In Progress" )
+    print("CUSTOM EVENT")
+    print("PTW : " .. self.TEAM_POINT_TO_WIN)
+    local battle_begiin =
+        {
+          Teampointtowin = self.TEAM_POINT_TO_WIN
+        }
+        local Teampointtowin = self.TEAM_POINT_TO_WIN
+        CustomGameEventManager:Send_ServerToAllClients( "battle_begiin", {Teampointtowin=Teampointtowin})
+
     self.NewState_spawn = 1
     print("[SupremeHeroesWars] Unlock All Players")
 
@@ -63,6 +75,7 @@ SPAWN_POINT[7] = 1
 SPAWN_POINT[8] = 1
 SPAWN_POINT[9] = 1
 SPAWN_POINT[10] = 1
+KILLSREMAINING_ITEM = 1
 
 -- NPC / HEROES SPAWN
 function GameMode:OnNPCSpawned(keys)
@@ -246,6 +259,7 @@ ScoreTeam[9] = 0 -- 7
 ScoreTeam[10] = 0 -- 8
 ScoreTeam[11] = 0 -- 9
 ScoreTeam[12] = 0 -- 10
+ScoreTeam[13] = 0 -- 10
 
 -- value
 function GameMode:Addscore(TeamID, value)
@@ -297,6 +311,58 @@ function GameMode:OnTeamKillCredit(event)
   if KillsRemaining <= 0 then
     --GameRules:SetCustomVictoryMessage( self.m_VictoryMessages[TeamID] )
     GameRules:SetGameWinner( TeamID )
+    KILLSREMAINING_ITEM = 0
+    broadcast_kill_event.victory = 1
+  elseif KillsRemaining == 10 then
+    EmitGlobalSound( "ui.npe_objective_complete" )
+    broadcast_kill_event.very_close_to_victory = 1
+  elseif KillsRemaining <= 30 then
+    EmitGlobalSound( "ui.npe_objective_given" )
+    broadcast_kill_event.close_to_victory = 1
+  elseif KillsRemaining <= 100 then
+      if itemspawn == nil then
+      itemspawn = 1
+      print("Item Gem")
+      -- POTION
+      local newItem = CreateItem( "item_crow_trow", nil, nil )
+      -- newItem:SetPurchaseTime( 0 )
+      local milieudelamap = Vector(0,0,0)
+      local drop = CreateItemOnPositionSync( milieudelamap, newItem )
+      --drop.Holdout_IsLootDrop = true
+      local dropTarget = milieudelamap + RandomVector( RandomFloat( 50, 350 ) )
+      newItem:LaunchLoot( false, 350, 2.0, dropTarget )
+      end
+  end
+  end)
+
+end
+
+function GameMode:pointwin_sanskill(hero, teamid)
+
+  local KillerID = hero
+  local TeamID = teamid
+
+  Timers:CreateTimer(FrameTime(), function()
+
+  print("SCORE TEAM PWSK : " .. ScoreTeam[TeamID])
+  local KillsRemaining = self.TEAM_POINT_TO_WIN - ScoreTeam[TeamID] -- par score maintenant PTW = 250
+
+  local broadcast_kill_event =
+  {
+    killer_id = hero,
+    team_id = teamid,
+    team_kills = TeamKills,
+    team_score = ScoreTeam[TeamID],
+    kills_remaining = KillsRemaining,
+    victory = 0,
+    close_to_victory = 0,
+    very_close_to_victory = 0,
+  }
+
+  if KillsRemaining <= 0 then
+    --GameRules:SetCustomVictoryMessage( self.m_VictoryMessages[TeamID] )
+    GameRules:SetGameWinner( TeamID )
+    KILLSREMAINING_ITEM = 0
     broadcast_kill_event.victory = 1
   elseif KillsRemaining == 1 then
     EmitGlobalSound( "ui.npe_objective_complete" )
@@ -321,6 +387,16 @@ function GameMode:OnEntityKilled( event )
 
   if killedUnit:GetUnitName() == "npc_dota_crystal_stone" then
     print("-- Kill Crystal --")
+      local particleName = "particles/crystal/destroywinter_destroy.vpcf"
+      local particle_effect = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, killedUnit)
+      ParticleManager:SetParticleControl(particle_effect, 0, killedUnit:GetAbsOrigin())
+
+      if killedUnit.particle_name then
+        -- local numberIndex = ParticleManager:CreateParticle("particles/crystal/aura.vpcf", PATTACH_POINT_FOLLOW, killedUnit)
+        ParticleManager:DestroyParticle( killedUnit.particle_name, false )
+        ParticleManager:ReleaseParticleIndex( killedUnit.particle_name )
+      end
+
       -- REMOVE DU POINT
       local original = killedUnit.original
       print("Le point de ce Crystal est le " .. original)
@@ -352,6 +428,25 @@ function GameMode:OnEntityKilled( event )
       newItem_mana:LaunchLoot( true, 200, 1.0, dropTarget )
   end
 
+  if killedUnit:GetUnitName() == "npc_dota_crystal_stone_golden" then
+    print("-- Kill Crystal Golden--")
+      local particleName = "particles/crystal/destroy_goldenwinter_destroy.vpcf"
+      local particle_effect = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, killedUnit)
+      ParticleManager:SetParticleControl(particle_effect, 0, killedUnit:GetAbsOrigin())
+
+      if killedUnit.particle_name then
+        -- local numberIndex = ParticleManager:CreateParticle("particles/crystal/aura.vpcf", PATTACH_POINT_FOLLOW, killedUnit)
+        ParticleManager:DestroyParticle( killedUnit.particle_name, false )
+        ParticleManager:ReleaseParticleIndex( killedUnit.particle_name )
+      end
+
+      GameMode:ScorekillUnit( "Golden_kill", hero )
+      local memberID = hero:GetPlayerID()
+
+      GameMode:pointwin_sanskill(hero, hero:GetTeamNumber())
+      PlayerResource:ModifyGold( memberID, 300, true, 0 )
+  end
+
 
   -- abilité utilisé pour le tué, or nil if not killed by an item/ability
   local killerAbility = nil
@@ -372,7 +467,7 @@ function GameMode:OnEntityKilled( event )
           {
             hero_id = hero:GetClassname()
           }
-        -- CustomGameEventManager:Send_ServerToAllClients( "kill_alert", kill_alert )
+        CustomGameEventManager:Send_ServerToAllClients( "kill_alert", kill_alert )
       else
         hero:AddExperience( 75, 0, false, false )
       end
@@ -384,6 +479,8 @@ function GameMode:OnEntityKilled( event )
           if attacker == killedUnit:GetAttacker( i ) then
             --print("Granting assist xp")
             attacker:AddExperience( 30, 0, false, false )
+            GameMode:ScorekillUnit( "assist", attacker )
+            GameMode:pointwin_sanskill(attacker, attacker:GetTeamNumber()) 
           end
         end
       end
@@ -506,13 +603,38 @@ function GameMode:SetRespawnTime( killedTeam, killedUnit, extraTime )
 end
 
 function GameMode:ScorekillUnit( killedTeam, hero )
-    TeamID = hero:GetTeamNumber()
-    hero.score = hero.score + 10
-    GameMode:Addscore(TeamID, 10)
-    if killedTeam == self.leadingTeam and self.isGameTied == false then
+    if killedTeam == "Golden_kill" then
+      TeamID = hero:GetTeamNumber()
       hero.score = hero.score + 5
       GameMode:Addscore(TeamID, 5)
+    elseif killedTeam == "Item_crow" then
+      TeamID = hero:GetTeamNumber()
+      if self.TEAM_POINT_TO_WIN == 300 then
+        hero.score = hero.score + 4
+        GameMode:Addscore(TeamID, 4)
+      elseif self.TEAM_POINT_TO_WIN == 125 then
+        hero.score = hero.score + 2
+        GameMode:Addscore(TeamID, 2)
+      else
+        hero.score = hero.score + 3
+        GameMode:Addscore(TeamID, 3)
+      end
+    elseif killedTeam == "assist" then
+      hero.score = hero.score + 1
+      GameMode:Addscore(TeamID, 1)
+    else
+      TeamID = hero:GetTeamNumber()
+      hero.score = hero.score + 10
+      GameMode:Addscore(TeamID, 10)
+        if killedTeam == self.leadingTeam and self.isGameTied == false then
+          hero.score = hero.score + 5
+          GameMode:Addscore(TeamID, 5)
+        end
     end
     print("SCORE :" .. hero.score)
 
 end
+
+
+
+ 

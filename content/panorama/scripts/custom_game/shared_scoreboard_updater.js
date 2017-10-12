@@ -1,5 +1,6 @@
 "use strict";
 
+var teamScores = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 //=============================================================================
 //=============================================================================
@@ -205,13 +206,14 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 
 	var teamPlayers = Game.GetPlayerIDsOnTeam( teamId )
 	var playersContainer = teamPanel.FindChildInLayoutFile( "PlayersContainer" );
+
 	if ( playersContainer )
 	{
 		for ( var playerId of teamPlayers )
 		{
 			_ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
 			var playerInfo = Game.GetPlayerInfo( playerId );
-			_ScoreboardUpdater_SetTextSafe( teamPanel, "TeamScore", playerInfo.player_kills)
+			_ScoreboardUpdater_SetTextSafe( teamPanel, "TeamScore", teamScores[teamId])
 		}
 	}
 	
@@ -296,11 +298,11 @@ function compareFunc( a, b ) // GameUI.CustomUIConfig().sort_teams_compare_func;
 	var playerInfoA = Game.GetPlayerInfo( idA );
 	var playerInfoB = Game.GetPlayerInfo( idB );
 	
-	if ( playerInfoA.player_kills < playerInfoB.player_kills )
+	if ( teamScores[a.team_id] < teamScores[b.team_id] )
 	{
 		return 1; // [ B, A ]
 	}
-	else if (  playerInfoA.player_kills > playerInfoB.player_kills )
+	else if (  teamScores[a.team_id] > teamScores[b.team_id] )
 	{
 		return -1; // [ A, B ]
 	}
@@ -451,3 +453,12 @@ function ScoreboardUpdater_GetSortedTeamInfoList( scoreboardHandle )
 	
 	return teamsList;
 }
+
+function SetTopBarValue( data )
+{
+    teamScores[data.teamId] = data.teamScore;
+}
+
+(function () {
+    GameEvents.Subscribe( "SetTopBarScoreValue", SetTopBarValue );
+})();

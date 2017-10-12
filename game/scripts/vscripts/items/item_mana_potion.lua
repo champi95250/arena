@@ -10,7 +10,7 @@ end
 
 function item_mana_potion:OnSpellStart()
 	if IsServer() then
-		self:SpendCharge()
+		
 		local mana_restore_pct = self:GetSpecialValueFor( "mana_restore_pct" )
 		self:GetCaster():EmitSoundParams( "DOTA_Item.Mango.Activate", 0, 0.5, 0 )
 
@@ -20,6 +20,7 @@ function item_mana_potion:OnSpellStart()
 
 		local nFXIndex = ParticleManager:CreateParticle( "particles/items3_fx/mango_active.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetCaster() )
 		ParticleManager:ReleaseParticleIndex( nFXIndex )
+		self:SpendCharge()
 
 		
 	end

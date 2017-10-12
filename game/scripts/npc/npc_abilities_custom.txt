@@ -39,6 +39,20 @@
 		"AbilityName"           			"dota_ability_xp_granter"
 		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_health_regen"				"3"
+			}
+			"02"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_mana_regen"				"3"
+			}
+		}
+
 		"Modifiers"
 		{
 			"modifier_dota_ability_xp_granter"
@@ -76,7 +90,7 @@
 						}
 						"XPAmount"		"7"
 						"SplitEvenly"	"0"
-						"GoldAmount"	"6"
+						"GoldAmount"	"8"
 						"ReliableGold"	"0"
 					}
 				}
@@ -87,6 +101,12 @@
 				"Passive"       "1"
 				"EffectName"	""
 				"TextureName"	"alchemist_goblins_greed"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%bonus_health_regen"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%bonus_mana_regen"
+				}
 			}
 		}
 	}
@@ -107,7 +127,7 @@
 				"Passive"				"1"
 				
 				"Aura"					"modifier_get_xp_global"
-				"Aura_Radius"			"8000"
+				"Aura_Radius"			"9000"
 				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 				"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
 				"Aura_ApplyToCaster"	"0"
@@ -134,9 +154,9 @@
 							"Types"			"DOTA_UNIT_TARGET_HERO"
 							"Flags"			"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
 						}
-						"XPAmount"		"4"
+						"XPAmount"		"5"
 						"SplitEvenly"	"0"
-						"GoldAmount"	"2"
+						"GoldAmount"	"3"
 						"ReliableGold"	"0"
 					}
 				}
@@ -145,7 +165,8 @@
 			"modifier_get_xp_global"
 			{
 				"Passive"       "1"
-				"EffectName"	"particles/econ/courier/courier_greevil_yellow/courier_greevil_yellow_ambient_3_b.vpcf"
+				"IsHidden"		"1"
+				"EffectName"	""
 				"TextureName"	"alchemist_goblins_greed"
 			}
 		}
@@ -165,7 +186,12 @@
 			"01"
 			{
 				"var_type"							"FIELD_INTEGER"
-				"bonus_health_regen"				"5"
+				"bonus_health_regen"				"15"
+			}
+			"02"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_mana_regen"				"7"
 			}
 		}
 
@@ -174,10 +200,10 @@
 			"modifier_crystal_stone_global"
 			{
 				"IsHidden"				"1"
-				"Passive"				"1"
+				"Passive"				"1"	
 				
 				"Aura"					"modifier_crystal_stone_regen"
-				"Aura_Radius"			"250"
+				"Aura_Radius"			"350"
 				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 				"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
 				"Aura_ApplyToCaster"	"0"
@@ -187,15 +213,6 @@
 				{
 					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"utility_functions/spawn_crystal.lua"
-						"Function"			"removespawncrystal"
-					}
 				}
 			}
 
@@ -209,6 +226,32 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%bonus_health_regen"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%bonus_mana_regen"
+				}
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// NPC: crystal stone Golden
+	//=================================================================================================================
+	"dota_ability_crystal_stone_golden"
+	{
+		"BaseClass"          			    "ability_datadriven"
+		"AbilityName"           			"dota_ability_crystal_stone"
+		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"Modifiers"
+		{
+			"modifier_crystal_stone_golden"
+			{
+				"IsHidden"				"1"
+				"Passive"				"1"	
+
+				"States"
+				{
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}

@@ -111,6 +111,7 @@ function GameMode:OnGameInProgress()
       return 30.0 -- Rerun this timer every 30 game-time seconds 
     end)
   GameMode:Thinkcustomcrystal()
+  GameMode:Thinkcustomcrystalgolden()
 end
 
 
@@ -128,6 +129,7 @@ function GameMode:InitGameMode()
   self.NewState_spawn = 0 -- check le states et le spawn
   self.m_GatheredShuffledTeams = {} -- Team
   self:GatherAndRegisterValidTeams()
+  GameRules:SetShowcaseTime(0.0) -- retire le showcase time
 
   GameRules:GetGameModeEntity():SetThink( "OnThink", self, 1 ) 
   ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(GameMode, 'OnGameRulesStateChange'), self)

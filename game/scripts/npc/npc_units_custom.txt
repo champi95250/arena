@@ -36,7 +36,23 @@
 	{
 		"BaseClass"					"npc_dota_creature"
 		"Model"						"models/prop/crystal_stone.vmdl"
+		"ModelScale" 				"1.10"
 		"Ability1"					"dota_ability_crystal_stone"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"BountyXP"					"0"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"StatusHealth"				"2"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+	}
+	//=================================================================================	
+	// Crystal Golden: Donne du gold et donne 3 points
+	//=================================================================================
+	"npc_dota_crystal_stone_golden"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/prop/crystal_stone_gold.vmdl"
+		"ModelScale" 				"1.2"
+		"Ability1"					"dota_ability_crystal_stone_golden"
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"					"0"
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"

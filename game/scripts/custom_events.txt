@@ -37,5 +37,9 @@
 	{
 		"timer_reminder"			"short"
 	}
+	"battle_begiin"
+    {	
+      	"Teampointtowin"			"short"
+    }
 }
 
