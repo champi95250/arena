@@ -13,17 +13,17 @@
   "npc_dota_hero_dragon_knight" "0"
   "npc_dota_hero_doom_bringer" "0"
   "npc_dota_hero_drow_ranger" "0"
-  "npc_dota_hero_earthshaker" "1"
+  "npc_dota_hero_earthshaker" "-1"
   "npc_dota_hero_enchantress" "0"
   "npc_dota_hero_enigma" "0"
   "npc_dota_hero_faceless_void" "0"
   "npc_dota_hero_furion" "0"
-  "npc_dota_hero_juggernaut" "1"				// Juggernaut 
+  "npc_dota_hero_juggernaut" "-1"				// Juggernaut 
   "npc_dota_hero_kunkka" "0"
   "npc_dota_hero_leshrac" "0"
   "npc_dota_hero_lich" "0"
   "npc_dota_hero_life_stealer" "0" 				// Goku 
-  "npc_dota_hero_lina" "1"						// Lina
+  "npc_dota_hero_lina" "-1"						// Lina
   "npc_dota_hero_lion" "0"
   "npc_dota_hero_mirana" "0"
   "npc_dota_hero_morphling" "0"
@@ -32,7 +32,7 @@
   "npc_dota_hero_night_stalker" "0"
   "npc_dota_hero_omniknight" "0"
   "npc_dota_hero_puck" "0"
-  "npc_dota_hero_pudge" "1"						// Pudge
+  "npc_dota_hero_pudge" "-1"						// Pudge
   "npc_dota_hero_pugna" "0"
   "npc_dota_hero_rattletrap" "0"
   "npc_dota_hero_razor" "0"
@@ -67,7 +67,7 @@
   "npc_dota_hero_bounty_hunter" "0"
   "npc_dota_hero_silencer" "0"
   "npc_dota_hero_spirit_breaker" "0"
-  "npc_dota_hero_invoker" "1"					// Invoker
+  "npc_dota_hero_invoker" "-1"					// Invoker
   "npc_dota_hero_clinkz" "0"
   "npc_dota_hero_obsidian_destroyer" "0"
   "npc_dota_hero_shadow_demon" "0"
@@ -78,7 +78,7 @@
   "npc_dota_hero_treant" "0"
   "npc_dota_hero_ogre_magi" "0"
   "npc_dota_hero_chaos_knight" "0"
-  "npc_dota_hero_phantom_assassin" "1"			// Phantom Assasin
+  "npc_dota_hero_phantom_assassin" "-1"			// Phantom Assasin
   "npc_dota_hero_gyrocopter" "0"
   "npc_dota_hero_rubick" "0"
   "npc_dota_hero_luna" "0"

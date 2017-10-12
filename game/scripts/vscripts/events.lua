@@ -24,15 +24,15 @@ function GameMode:OnGameRulesStateChange(keys)
   if NewState == DOTA_GAMERULES_STATE_PRE_GAME then
     self.NewState_spawn = 0
     local numberOfPlayers = PlayerResource:GetPlayerCount()
-    if numberOfPlayers > 7 then
-      self.TEAM_KILLS_TO_WIN = 25
-      nCOUNTDOWNTIMER = 901
-    elseif numberOfPlayers > 4 and numberOfPlayers <= 7 then
-      self.TEAM_KILLS_TO_WIN = 20
-      nCOUNTDOWNTIMER = 721
-    else
-      self.TEAM_KILLS_TO_WIN = 15
-      nCOUNTDOWNTIMER = 601
+    if numberOfPlayers > 7 then -- Plus de 7 
+      self.TEAM_POINT_TO_WIN = 250
+      print("250 Point for win")
+    elseif numberOfPlayers > 4 and numberOfPlayers <= 7 then -- 7 ou plus de 4
+      self.TEAM_POINT_TO_WIN = 200
+      print("200 Point for win")
+    else -- 4 ou moins 
+      self.TEAM_POINT_TO_WIN = 125
+      print("125 Point for win")
     end
   end
 
@@ -80,16 +80,16 @@ function GameMode:OnNPCSpawned(keys)
       RespawnAtSpawnPoint(npc)
       npc:AddNewModifier(npc, npc, "modifier_respawn_immu", {duration = 5})
       print("[SupremeHeroesWars] Spawn Check")
-      print("SPAWN 1 = " .. SPAWN_POINT[1])
-      print("SPAWN 2 = " .. SPAWN_POINT[2])
-      print("SPAWN 3 = " .. SPAWN_POINT[3])
-      print("SPAWN 4 = " .. SPAWN_POINT[4])
-      print("SPAWN 5 = " .. SPAWN_POINT[5])
-      print("SPAWN 6 = " .. SPAWN_POINT[6])
-      print("SPAWN 7 = " .. SPAWN_POINT[7])
-      print("SPAWN 8 = " .. SPAWN_POINT[8])
-      print("SPAWN 9 = " .. SPAWN_POINT[9])
-      print("SPAWN 10 = " .. SPAWN_POINT[10])
+      print("SPAWN 1 = " .. SPAWN_POINT[1]) -- radiant
+      print("SPAWN 2 = " .. SPAWN_POINT[2]) -- dire
+      print("SPAWN 3 = " .. SPAWN_POINT[3]) -- c8
+      print("SPAWN 4 = " .. SPAWN_POINT[4]) -- c1
+      print("SPAWN 5 = " .. SPAWN_POINT[5]) -- c2
+      print("SPAWN 6 = " .. SPAWN_POINT[6]) -- c3
+      print("SPAWN 7 = " .. SPAWN_POINT[7]) -- c4
+      print("SPAWN 8 = " .. SPAWN_POINT[8]) -- c5
+      print("SPAWN 9 = " .. SPAWN_POINT[9]) -- c7
+      print("SPAWN 10 = " .. SPAWN_POINT[10]) -- c    
     end
   end
 end
@@ -136,6 +136,7 @@ function GameMode:OnItemPickedUp(keys)
   local itemEntity = EntIndexToHScript(keys.ItemEntityIndex)
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local itemname = keys.itemname
+  print("X Rammase " .. itemname)
 end
 
 -- Player Reconnecter
@@ -250,6 +251,8 @@ ScoreTeam[12] = 0 -- 10
 function GameMode:Addscore(TeamID, value)
     ScoreTeam[TeamID] = ScoreTeam[TeamID] + value
     print("SCORE TEAM " .. TeamID .. " = " ..ScoreTeam[TeamID])
+    CustomGameEventManager:Send_ServerToAllClients("SetTopBarScoreValue", { teamId = TeamID, teamScore = ScoreTeam[TeamID] } )
+
 end
 
 -- A player killed another player in a multi-team context ?
@@ -284,6 +287,7 @@ function GameMode:OnTeamKillCredit(event)
     killer_id = event.killer_userid,
     team_id = event.teamnumber,
     team_kills = TeamKills,
+    team_score = ScoreTeam[TeamID],
     kills_remaining = KillsRemaining,
     victory = 0,
     close_to_victory = 0,
@@ -314,6 +318,40 @@ function GameMode:OnEntityKilled( event )
   local extraTime = 0
 
   local hero_playerID = hero:GetPlayerOwnerID()
+
+  if killedUnit:GetUnitName() == "npc_dota_crystal_stone" then
+    print("-- Kill Crystal --")
+      -- REMOVE DU POINT
+      local original = killedUnit.original
+      print("Le point de ce Crystal est le " .. original)
+      SPAWN_CRYSTAL_POINT[original] = 1
+
+      print("Item Potion")
+      -- POTION
+      local newItem = CreateItem( "item_health_potion", nil, nil )
+      newItem:SetPurchaseTime( 0 )
+      if newItem:IsPermanent() and newItem:GetShareability() == ITEM_FULLY_SHAREABLE then
+        item:SetStacksWithOtherOwners( false )
+      end
+      local drop = CreateItemOnPositionSync( killedUnit:GetAbsOrigin(), newItem )
+      drop.Holdout_IsLootDrop = true
+      local dropTarget = killedUnit:GetAbsOrigin() + RandomVector( RandomFloat( 50, 350 ) )
+      newItem:LaunchLoot( true, 150, 1.0, dropTarget )
+
+      print("Item Mana")
+      -- MANA
+      local newItem_mana = CreateItem( "item_mana_potion", nil, nil )
+      newItem_mana:SetPurchaseTime( 0 )
+      if newItem_mana:IsPermanent() and newItem_mana:GetShareability() == ITEM_FULLY_SHAREABLE then
+        item:SetStacksWithOtherOwners( false )
+      end
+      local drop = CreateItemOnPositionSync( killedUnit:GetAbsOrigin(), newItem_mana )
+      drop.Holdout_IsLootDrop = true
+      
+      local dropTarget = killedUnit:GetAbsOrigin() + RandomVector( RandomFloat( 50, 100 ) )
+      newItem_mana:LaunchLoot( true, 200, 1.0, dropTarget )
+  end
+
 
   -- abilité utilisé pour le tué, or nil if not killed by an item/ability
   local killerAbility = nil

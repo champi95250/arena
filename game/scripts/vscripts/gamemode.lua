@@ -48,6 +48,7 @@ require('events')
 -- custom ajouté
 require('utility_functions/utility_time_message')
 require('utility_functions/utility_functions')
+require('utility_functions/spawn_crystal')
 --[[
   This function should be used to set up Async precache calls at the beginning of the gameplay.
 
@@ -109,6 +110,7 @@ function GameMode:OnGameInProgress()
       DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
       return 30.0 -- Rerun this timer every 30 game-time seconds 
     end)
+  GameMode:Thinkcustomcrystal()
 end
 
 
@@ -142,6 +144,9 @@ end
 function GameMode:UpdateScoreboard()
   local sortedTeams = {}
   for _, team in pairs( self.m_GatheredShuffledTeams ) do
+    if ScoreTeam[team] == nil then
+      ScoreTeam[team] = 0 
+    end
     table.insert( sortedTeams, { teamID = team, teamScore = ScoreTeam[team] } )
   end
 
@@ -161,7 +166,6 @@ function GameMode:UpdateScoreboard()
   end
   -- Leader effects (moved from OnTeamKillCredit)
   local leader = sortedTeams[1].teamID
-  print("Leader = " .. leader)
   self.leadingTeam = leader
   self.runnerupTeam = sortedTeams[2].teamID
   self.leadingTeamScore = sortedTeams[1].teamScore

@@ -179,7 +179,7 @@ function containers_lua_targeting:OnSpellStart()
   owner:SetCursorPosition(pos)
   owner:SetCursorCastTarget(target)
 
-  item:OnSpellStart()
+  --item:OnSpellStart()
 end
 
 --------------------------------------------------------------------------------

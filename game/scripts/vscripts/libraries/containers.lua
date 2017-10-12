@@ -2001,7 +2001,7 @@ function Containers:CreateContainer(cont)
       if toggle then
         item:OnToggle()
       else
-        item:OnSpellStart()
+        --item:OnSpellStart()
       end
     else
       local abil = unit:FindAbilityByName("containers_lua_targeting")
