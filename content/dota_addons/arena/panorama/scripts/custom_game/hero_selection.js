@@ -178,121 +178,63 @@ function MakeDisabledHeroes(disabled_all) {
 	}
 }
 
+function AssignTeam(team, side) {
+	var i = 1;
+	var i_count = 1;
+	var class_option_count = 1;
+	var i_single = false
+	var TeamLevels = 0
+
+	$.Each( Game.GetPlayerIDsOnTeam( team ), function( player ) {
+		if (i_single == false) {
+			i_single = true
+			if (side == true) {
+				var ClassOptionPanel = $.CreatePanel("Panel", $("#LeftPlayers"), "PlayerRow" + team);
+				ClassOptionPanel.AddClass("PlayerOptionRow") // PlayerOptionRowV10 if missing slots
+			} else {
+				var ClassOptionPanel = $.CreatePanel("Panel", $("#RightPlayers"), "PlayerRow" + team);
+				ClassOptionPanel.AddClass("PlayerOptionRow") // PlayerOptionRowV10 if missing slots
+			}
+		}
+
+		$.Msg(team)
+		var playerPanel = Modular.Spawn( "picking_player", $("#PlayerRow" + team) );
+		playerPanel.SetPlayerName( player );
+
+		//Save the panel for later
+		playerPanels[player] = playerPanel;
+
+		i_count = i_count +1
+
+		// Make sure to cap player lines to 5!
+		if (i_count > 5) { // 5 = number of players in team
+			var ClassOptionPanel_alt = $.CreatePanel("Panel", $("#LeftPlayers"), "PlayerRow" + team);
+//			ClassOptionPanel_alt.AddClass("PlayerOptionRowV10")
+			i_count = 1
+		}
+
+		var plyData = CustomNetTables.GetTableValue("player_table", player);
+		if (plyData != null) {
+			$.Msg(plyData.Lvl)
+			TeamLevels = TeamLevels + plyData.Lvl
+			$("#AverageMMRTeamRadiant").text = $.Localize("average_mmr") + TeamLevels;
+		}
+	});
+}
+
 /* Add an empty element for each player in the game (steam avatar plus space for hero portrait) */
 function LoadPlayers() {
-var RadiantLevels = 0
-var DireLevels = 0
-
-	//Get the players for both teams
-	var radiantPlayers = Game.GetPlayerIDsOnTeam( DOTATeam_t.DOTA_TEAM_GOODGUYS );
-	var direPlayers = Game.GetPlayerIDsOnTeam( DOTATeam_t.DOTA_TEAM_BADGUYS );
-	var map_info = Game.GetMapInfo();
-
-	if (map_info.map_display_name == "imba_10v10" || map_info.map_display_name == "imba_custom_10v10" || map_info.map_display_name == "imba_12v12") {
-		//Assign radiant players
-		var i = 1;
-		var i_count = 1;
-		var class_option_count = 1;
-		var i_single = false
-		$.Each( radiantPlayers, function( player ) {
-			if (i_single == false) {
-				i_single = true
-				var ClassOptionPanel = $.CreatePanel("Panel", $("#LeftPlayers"), "PlayerRow" + class_option_count + "_good");
-				ClassOptionPanel.AddClass("PlayerOptionRowV10")
-			}
-
-			var playerPanel = Modular.Spawn( "picking_player", $("#PlayerRow" + class_option_count + "_good") );
-			playerPanel.SetPlayerName( player );
-
-			//Save the panel for later
-			playerPanels[player] = playerPanel;
-
-			i_count = i_count +1
-
-			// Make sure to cap player lines to 5!
-			if (i_count > 5) {
-				class_option_count = class_option_count +1
-				var ClassOptionPanel_alt = $.CreatePanel("Panel", $("#LeftPlayers"), "PlayerRow" + class_option_count + "_good");
-				ClassOptionPanel_alt.AddClass("PlayerOptionRowV10")
-				i_count = 1
-			}
-
-			var plyData = CustomNetTables.GetTableValue("player_table", player);
-			if (plyData != null) {
-				$.Msg(plyData.Lvl)
-				RadiantLevels = RadiantLevels + plyData.Lvl
-				$("#AverageMMRTeamRadiant").text = $.Localize("average_mmr") + RadiantLevels;
-			}
-		});
-
-		var i = 1;
-		var i_count = 1;
-		var class_option_count = 1;
-		var i_single = false
-		//Assign dire players
-		$.Each( direPlayers, function( player ) {
-			if (i_single == false) {
-				i_single = true
-				var ClassOptionPanel = $.CreatePanel("Panel", $("#RightPlayers"), "PlayerRow" + class_option_count + "_bad");
-				ClassOptionPanel.AddClass("PlayerOptionRowV10")
-			}
-
-			var playerPanel = Modular.Spawn( "picking_player", $("#PlayerRow" + class_option_count + "_bad") );
-			playerPanel.SetPlayerName( player );
-
-			//Save the panel for later
-			playerPanels[player] = playerPanel;
-
-			i_count = i_count +1
-
-			// Make sure to cap player lines to 5!
-			if (i_count > 5) {
-				class_option_count = class_option_count +1
-				var ClassOptionPanel_alt = $.CreatePanel("Panel", $("#RightPlayers"), "PlayerRow" + class_option_count + "_bad");
-				ClassOptionPanel_alt.AddClass("PlayerOptionRowV10")
-				i_count = 1
-			}
-
-			var plyData = CustomNetTables.GetTableValue("player_table", player);
-			if (plyData != null) {
-				$.Msg(plyData.Lvl)
-				DireLevels = DireLevels + plyData.Lvl
-				$("#AverageMMRTeamDire").text = $.Localize("average_mmr") + DireLevels;
-			}
-		});
-	} else {
-		var ClassOptionPanelRadiant = $.CreatePanel("Panel", $("#LeftPlayers"), "PlayerRow_good")
-		ClassOptionPanelRadiant.AddClass("PlayerOptionRow")
-		$.Each( radiantPlayers, function( player ) {
-			var playerPanel = Modular.Spawn( "picking_player", ClassOptionPanelRadiant );
-			playerPanel.SetPlayerName( player );
-
-			//Save the panel for later
-			playerPanels[player] = playerPanel;
-
-			var plyData = CustomNetTables.GetTableValue("player_table", player);
-			if (plyData != null) {
-				RadiantLevels = RadiantLevels + plyData.Lvl
-				$("#AverageMMRTeamRadiant").text = $.Localize("average_mmr") + RadiantLevels;
-			}
-		});
-
-		var ClassOptionPanelDire = $.CreatePanel("Panel", $("#RightPlayers"), "PlayerRow_bad")
-		ClassOptionPanelDire.AddClass("PlayerOptionRow")
-		$.Each( direPlayers, function( player ) {
-			var playerPanel = Modular.Spawn( "picking_player", ClassOptionPanelDire );
-			playerPanel.SetPlayerName( player );
-
-			//Save the panel for later
-			playerPanels[player] = playerPanel;
-
-			var plyData = CustomNetTables.GetTableValue("player_table", player);
-			if (plyData != null) {
-				RadiantLevels = RadiantLevels + plyData.Lvl
-				$("#AverageMMRTeamDire").text = $.Localize("average_mmr") + DireLevels;
-			}
-		});
-	}
+	
+	AssignTeam(DOTATeam_t.DOTA_TEAM_GOODGUYS, true)
+	AssignTeam(DOTATeam_t.DOTA_TEAM_BADGUYS, true)
+	AssignTeam(DOTATeam_t.DOTA_TEAM_CUSTOM_1, true)
+	AssignTeam(DOTATeam_t.DOTA_TEAM_CUSTOM_2, true)
+	AssignTeam(DOTATeam_t.DOTA_TEAM_CUSTOM_3, true)
+	AssignTeam(DOTATeam_t.DOTA_TEAM_CUSTOM_4, false)
+	AssignTeam(DOTATeam_t.DOTA_TEAM_CUSTOM_5, false)
+	AssignTeam(DOTATeam_t.DOTA_TEAM_CUSTOM_6, false)
+	AssignTeam(DOTATeam_t.DOTA_TEAM_CUSTOM_7, false)
+	AssignTeam(DOTATeam_t.DOTA_TEAM_CUSTOM_8, false)
 
 	var hero_list = CustomNetTables.GetTableValue("game_options", "hero_list");
 	var disabled_heroes = hero_list.Disabled
@@ -379,7 +321,7 @@ function SwitchToHeroPreview( heroName ) {
 function SelectHero( heroName ) {
 	// Do nothing if this hero is not available for the player's team
 	var selected_panel = $("#PickList").FindChildTraverse(heroName)
-
+	$.Msg(heroName)
 	// Set the appropriate hero image
 	// TODO: Replace this line with the other one, not working yet
 	$("#PickedHeroImage").style.backgroundImage = 'url("s2r://panorama/images/heroes/'+ heroName +'_png.vtex")';
@@ -612,48 +554,42 @@ GameEvents.Subscribe( "pick_abilities", OnReceiveAbilities );
 /* Initialisation - runs when the element is created
 =========================================================================*/
 (function () {
-	// If this player is a spectator, just kill the whole pick screen
-	var localTeam = Players.GetTeam(Players.GetLocalPlayer())
-	if ( localTeam != 2 && localTeam != 3 ) {
-	// Else, do pick screen stuff
-	} else {
-		///Load player elements
-		ShowHUD(false);
-		$.Schedule(2, LoadPlayers);
+	///Load player elements
+	ShowHUD(false);
+	$.Schedule(2, LoadPlayers);
 
-		// Show only map-specific elements
-		var parent_panel = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent()
-		var map_info = Game.GetMapInfo();
+	// Show only map-specific elements
+	var parent_panel = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent()
+	var map_info = Game.GetMapInfo();
 
-		if (map_info.map_display_name == "imba_arena") {
-			$('#GameModeSelectText').text = $.Localize( '#imba_gamemode_name_arena_mode' );
-		} else if (map_info.map_display_name == "imba_diretide") {
-			$('#GameModeSelectText').text = $.Localize( '#imba_gamemode_name_diretide' );
-		}
-
-		// If All Random is enabled, pick a random hero
-		var all_random_enabled = CustomNetTables.GetTableValue("game_options", "all_random" );
-		if (all_random_enabled != null && all_random_enabled[1] == 1) {
-			$("#PickHeroBtn").AddClass( "disabled" );
-			$("#RepickBtn").AddClass( "disabled" );
-			$('#GameModeSelectText').text = $.Localize( '#imba_gamemode_name_all_random' );
-			$.Schedule(5, SelectRandomHero);
-		}
-
-		// Tell the server this player's UI was initialized
-		GameEvents.SendCustomGameEventToServer( "ui_initialized", {} );
-
-//		var picked_herolist = [ 
-//			"npc_dota_hero_arc_warden",
-//			"npc_dota_hero_alchemist",
-//			"npc_dota_hero_beastmaster",
-//			"npc_dota_hero_axe"
-//		]
-
-		// DON'T FORGOT TO UNCOMMENT AFTER TEST DONE!!!!!
-//		PlayerReconnected(0, picked_herolist, picked_herolist, "", "");
-
-		//COOKIES: Custom Chat, created by Mahou Shoujo, approved to be used in IMBA
-		$("#HeroSelectionChat").BLoadLayout("file://{resources}/layout/custom_game/simple_chat.xml", false, false);
+	if (map_info.map_display_name == "imba_arena") {
+		$('#GameModeSelectText').text = $.Localize( '#imba_gamemode_name_arena_mode' );
+	} else if (map_info.map_display_name == "imba_diretide") {
+		$('#GameModeSelectText').text = $.Localize( '#imba_gamemode_name_diretide' );
 	}
+
+	// If All Random is enabled, pick a random hero
+	var all_random_enabled = CustomNetTables.GetTableValue("game_options", "all_random" );
+	if (all_random_enabled != null && all_random_enabled[1] == 1) {
+		$("#PickHeroBtn").AddClass( "disabled" );
+		$("#RepickBtn").AddClass( "disabled" );
+		$('#GameModeSelectText').text = $.Localize( '#imba_gamemode_name_all_random' );
+		$.Schedule(5, SelectRandomHero);
+	}
+
+	// Tell the server this player's UI was initialized
+	GameEvents.SendCustomGameEventToServer( "ui_initialized", {} );
+
+//	var picked_herolist = [ 
+//		"npc_dota_hero_arc_warden",
+//		"npc_dota_hero_alchemist",
+//		"npc_dota_hero_beastmaster",
+//		"npc_dota_hero_axe"
+//	]
+
+	// DON'T FORGOT TO UNCOMMENT AFTER TEST DONE!!!!!
+//	PlayerReconnected(0, picked_herolist, picked_herolist, "", "");
+
+	//COOKIES: Custom Chat, created by Mahou Shoujo, approved to be used in IMBA
+	$("#HeroSelectionChat").BLoadLayout("file://{resources}/layout/custom_game/simple_chat.xml", false, false);
 })();

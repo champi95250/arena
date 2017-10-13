@@ -18,8 +18,8 @@
 				<Panel id="PickInfoPanel">
 					<Panel id="TeamRadiant">
 						<Panel id="LabelsRadiant">
-							<Label id="PickScreenTeamTitleRadiant" text="#team_title_radiant" />
-							<Label id="AverageMMRTeamRadiant" text="#average_mmr" />
+<!--							<Label id="PickScreenTeamTitleRadiant" text="#team_title_radiant" />
+							<Label id="AverageMMRTeamRadiant" text="#average_mmr" /> -->
 						</Panel>
 						<Panel id="LeftPlayers">
 							<!-- JS Inserts player elements here -->
@@ -63,8 +63,8 @@
 
 					<Panel id="TeamDire">
 						<Panel id="LabelsDire">
-							<Label id="AverageMMRTeamDire" text="#average_mmr" />
-							<Label id="PickScreenTeamTitleDire" text="#team_title_dire" />
+<!--							<Label id="AverageMMRTeamDire" text="#average_mmr" />
+							<Label id="PickScreenTeamTitleDire" text="#team_title_dire" /> -->
 						</Panel>
 						<Panel id="RightPlayers">
 							<!-- JS Inserts player elements here -->

@@ -15,7 +15,10 @@
 			SetPlayerName : function( playerID ) {
 				var pID = playerID;
 				var playerInfo = Game.GetPlayerInfo( playerID );
+				$.Msg(playerInfo)
+				var teamColor = GameUI.CustomUIConfig().team_colors[ playerInfo.player_team_id ];
 				$('#PlayerName').text = Players.GetPlayerName(playerID);
+				$('#PlayerName').style.color = teamColor;
 			},
 
 			SetPreviewHero : function( heroName ) {

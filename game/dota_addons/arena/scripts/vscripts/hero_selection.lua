@@ -28,10 +28,11 @@ function HeroSelection:HeroListPreLoad()
 	for hero, attributes in pairs(NPC_HEROES_CUSTOM) do
 		for key, value in pairs(attributes) do
 			if key == "IsDisabled" then
+				HeroSelection:AddVanillaHeroToList(hero)
 				if value == 1 then
 					table.insert(HeroSelection.disabled_heroes, hero)
 				elseif value == 0 then
-					HeroSelection:AddVanillaHeroToList(hero)
+					-- Do stuff for enabled heroes
 				end
 			end
 		end
@@ -291,7 +292,6 @@ end
 		- event {table} - A table containing PlayerID and HeroID.
 ]]
 function HeroSelection:HeroSelect(event)
-
 	-- If this player has not picked yet give him the hero
 	if PlayerResource:GetConnectionState(event.PlayerID) == 1 then
 		HeroSelection:AssignHero( event.PlayerID, event.HeroName )
