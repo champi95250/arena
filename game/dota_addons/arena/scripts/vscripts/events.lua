@@ -32,16 +32,12 @@ function GameMode:OnGameRulesStateChange(keys)
 		local numberOfPlayers = PlayerResource:GetPlayerCount()
 		if numberOfPlayers > 7 then -- Plus de 7 
 			self.TEAM_POINT_TO_WIN = 300
-			print("250 Point for win")
 		elseif numberOfPlayers > 4 and numberOfPlayers <= 7 then -- 7 ou plus de 4
 			self.TEAM_POINT_TO_WIN = 250
-			print("200 Point for win")
 		elseif numberOfPlayers == 2 then -- 2
 			self.TEAM_POINT_TO_WIN = 125
-			print("200 Point for win")
 		else -- 4 ou moins 
 			self.TEAM_POINT_TO_WIN = 200
-			print("125 Point for win")
 		end
 	end
 
@@ -59,10 +55,10 @@ function GameMode:OnGameRulesStateChange(keys)
 		self.NewState_spawn = 1
 		print("[SupremeHeroesWars] Unlock All Players")
 
-		for _,hero in pairs(HeroList:GetAllHeroes()) do
-			if hero:HasModifier("modifier_prevent_game_start")  then
-				hero:RemoveModifierByName("modifier_prevent_game_start")
-			end
+		for _, hero in pairs(HeroList:GetAllHeroes()) do
+			if hero:GetUnitName() == "npc_dota_hero_wisp" then return end
+			hero:RemoveModifierByName("modifier_prevent_game_start")
+			PlayerResource:SetCameraTarget(hero:GetPlayerID(), nil)
 		end
 
 		self.countdownEnabled = true
@@ -90,25 +86,27 @@ function GameMode:OnNPCSpawned(keys)
 	if npc:IsRealHero() then -- Si héro
 		if self.NewState_spawn == 0 then -- Si 1er fois
 			print("[SupremeHeroesWars] 1st Spawn Hero")
-			npc:AddNewModifier(npc, npc, "modifier_prevent_game_start", {})
+			if GameRules:State_Get() == DOTA_GAMERULES_STATE_PRE_GAME then
+				npc:AddNewModifier(npc, npc, "modifier_prevent_game_start", {})
+				PlayerResource:SetCameraTarget(npc:GetPlayerID(), npc)
+			end
 			npc.score = 0
-
 			-- Le code pour appliqué le modifier qui stun tout le monde
 		else
 			if not npc.score then npc.score = 0 end
 			RespawnAtSpawnPoint(npc)
 			npc:AddNewModifier(npc, npc, "modifier_respawn_immu", {duration = 5})
-			print("[SupremeHeroesWars] Spawn Check")
-			print("SPAWN 1 = " .. SPAWN_POINT[1]) -- radiant
-			print("SPAWN 2 = " .. SPAWN_POINT[2]) -- dire
-			print("SPAWN 3 = " .. SPAWN_POINT[3]) -- c8
-			print("SPAWN 4 = " .. SPAWN_POINT[4]) -- c1
-			print("SPAWN 5 = " .. SPAWN_POINT[5]) -- c2
-			print("SPAWN 6 = " .. SPAWN_POINT[6]) -- c3
-			print("SPAWN 7 = " .. SPAWN_POINT[7]) -- c4
-			print("SPAWN 8 = " .. SPAWN_POINT[8]) -- c5
-			print("SPAWN 9 = " .. SPAWN_POINT[9]) -- c7
-			print("SPAWN 10 = " .. SPAWN_POINT[10]) -- c    
+--			print("[SupremeHeroesWars] Spawn Check")
+--			print("SPAWN 1 = " .. SPAWN_POINT[1]) -- radiant
+--			print("SPAWN 2 = " .. SPAWN_POINT[2]) -- dire
+--			print("SPAWN 3 = " .. SPAWN_POINT[3]) -- c8
+--			print("SPAWN 4 = " .. SPAWN_POINT[4]) -- c1
+--			print("SPAWN 5 = " .. SPAWN_POINT[5]) -- c2
+--			print("SPAWN 6 = " .. SPAWN_POINT[6]) -- c3
+--			print("SPAWN 7 = " .. SPAWN_POINT[7]) -- c4
+--			print("SPAWN 8 = " .. SPAWN_POINT[8]) -- c5
+--			print("SPAWN 9 = " .. SPAWN_POINT[9]) -- c7
+--			print("SPAWN 10 = " .. SPAWN_POINT[10]) -- c    
 		end
 	end
 end

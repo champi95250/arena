@@ -20,7 +20,7 @@ require('libraries/containers')
 -- require('libraries/modmaker')
 require('libraries/pathgraph')
 require('libraries/selection')
-
+require('libraries/keyvalues')
 require('internal/gamemode')
 require('internal/events')
 require('player_resource')

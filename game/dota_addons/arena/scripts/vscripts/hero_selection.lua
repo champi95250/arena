@@ -12,7 +12,6 @@ end
 
 function HeroSelection:HeroListPreLoad()
 	-- Retrieve heroes info
---	NPC_HEROES_KV = LoadKeyValues("scripts/npc/kv/hero_list.kv")
 	NPC_HEROES_CUSTOM = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
 	HeroSelection.strength_heroes = {}
 	HeroSelection.agility_heroes = {}
@@ -27,66 +26,18 @@ function HeroSelection:HeroListPreLoad()
 
 	-- New function that retrieves kv infos
 	for hero, attributes in pairs(NPC_HEROES_CUSTOM) do
-		HeroSelection:AddVanillaHeroToList(hero)
 		for key, value in pairs(attributes) do
 			if key == "IsDisabled" then
 				if value == 1 then
 					table.insert(HeroSelection.disabled_heroes, hero)
+				elseif value == 0 then
+					HeroSelection:AddVanillaHeroToList(hero)
 				end
 			end
 		end
 	end
 
 	HeroSelection:HeroList(0.1)
-end
-
-function HeroSelection:AddCustomHeroToList(hero_name)
-	for hero, attributes in pairs(NPC_HEROES_KV) do
-		if hero == hero_name then
---			print(hero)
-			for key, value in pairs(attributes) do
-				if key == "AttributePrimary" then
-					if value == "DOTA_ATTRIBUTE_STRENGTH" then
-						table.insert(HeroSelection.strength_heroes_custom, hero)
-					elseif value == "DOTA_ATTRIBUTE_AGILITY" then
-						table.insert(HeroSelection.agility_heroes_custom, hero)
-					elseif value == "DOTA_ATTRIBUTE_INTELLECT" then
-						table.insert(HeroSelection.intellect_heroes_custom, hero)
-					end
-				end
-			end
-		end
-	end
-
-	a = {}
-	for k, n in pairs(HeroSelection.strength_heroes_custom) do
-		table.insert(a, n)
-		HeroSelection.strength_heroes_custom = {}
-	end
-	table.sort(a)
-	for i,n in ipairs(a) do
-		table.insert(HeroSelection.strength_heroes_custom, n)
-	end
-
-	a = {}
-	for k, n in pairs(HeroSelection.agility_heroes_custom) do
-		table.insert(a, n)
-		HeroSelection.agility_heroes_custom = {}
-	end
-	table.sort(a)
-	for i,n in ipairs(a) do
-		table.insert(HeroSelection.agility_heroes_custom, n)
-	end
-
-	a = {}
-	for k, n in pairs(HeroSelection.intellect_heroes_custom) do
-		table.insert(a, n)
-		HeroSelection.intellect_heroes_custom = {}
-	end
-	table.sort(a)
-	for i,n in ipairs(a) do
-		table.insert(HeroSelection.intellect_heroes_custom, n)
-	end
 end
 
 function HeroSelection:AddVanillaHeroToList(hero_name)
@@ -187,7 +138,7 @@ function HeroSelection:Start(delay)
 		end
 
 		-- Start the pick timer
-		HeroSelection.TimeLeft = HERO_SELECTION_TIME
+		HeroSelection.TimeLeft = HERO_SELECT_TIME
 		Timers:CreateTimer( 0.04, HeroSelection.Tick )
 
 		-- Keep track of the number of players that have picked
@@ -572,15 +523,9 @@ end
 function HeroSelection:GetPickScreenAbilities(hero_name)
 local hero_abilities = {}
 
-	for hero, attributes in pairs(NPC_HEROES_CUSTOM) do
-		if hero == hero_name then
-			for key, value in pairs(attributes) do
-				if string.find(key, "Ability") then
-					if string.gsub(key, "Ability", "") <= 6 then
-						hero_abilities[string.gsub(key, "Ability", "")] = value
-					end
-				end
-			end
+	for i = 1, 8 do
+		if GetKeyValueByHeroName(hero_name, "Ability"..i) ~= nil then
+			hero_abilities[i] = GetKeyValueByHeroName(hero_name, "Ability"..i)
 		end
 	end
 	return hero_abilities
