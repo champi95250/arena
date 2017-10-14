@@ -1,0 +1,22 @@
+----------------------------------------------------------------------------
+13/10/2017
+Version 0.6e :
+- Add Loading Screen
+- Nerf Flesh Heap for pudge
+
+Version 0.6c ( and not 6.0 ) : 
+- Pick Screen
+- Work map 
+----------------------------------------------------------------------------
+13/10/2017
+Version 6.0 :
+- Don't lose gold if you died
+- Starting Gold with 600
+- One "Blue Crystal" spawn always 20 sec
+- Golden Crystal to 30-70
+- Golden Crystal give 5 point now ( 3 before )
+- Golden Crystal give 300 gold ( 200 gold before )
+- Gem of game +1 points 
+- Assist give 1 point now
+- Aura give more gold 
+- Add decoration map 

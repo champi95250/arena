@@ -1,0 +1,828 @@
+/* General layout
+=================================================================*/
+@define load_time: 5.0s;
+@keyframes 'fade'
+{
+	0%
+	{
+		opacity: 0.0;
+	}
+
+	100%
+	{
+		opacity: 0.4;
+	}
+}
+
+@keyframes 'fade_in'
+{
+	0%
+	{
+		opacity: 0.0;
+	}
+
+	50%
+	{
+		opacity: 0.0;
+	}
+
+	100%
+	{
+		opacity: 1.0;
+	}
+}
+
+@keyframes 'fade_out'
+{
+	0%
+	{
+		opacity: 1.0;
+	}
+
+	70%
+	{
+		opacity: 0.0;
+	}
+
+	100%
+	{
+		opacity: 0.0;
+	}
+}
+
+.PickingScreenMain {
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+}
+
+#PickingScreen {
+	width: 100%;
+	height: 100%;
+	flow-children: right;
+	animation-name: fade_in;
+	animation-duration: load_time;
+	animation-timing-function: ease-in;
+	animation-iteration-count: 1;
+	z-index: -100;
+}
+
+#TeamRadiant,
+#TeamDire {
+	width: 40%;
+	height: 100%;
+	flow-children: down;
+}
+
+#LeftStatsPanel,
+#RightStatsPanel {
+	width: 40%;
+	visibility: collapse;
+}
+
+#LeftStatsSubPanel,
+#RightStatsSubPanel {
+	horizontal-align: center;
+	flow-children: right;
+}
+
+.StatsPanel {
+	width: fit-children;
+	height: 100%;
+	margin-top: 5%;
+	padding: 0% 0% 1% 0%;
+	flow-children: right;
+}
+
+#LabelsRadiant,
+#LabelsDire {
+	width: 100%;
+	height: 20%;
+	flow-children: right;
+}
+
+#LeftPlayers,
+#RightPlayers {
+	width: 100%;
+	height: 80%;
+	flow-children: right;
+}
+
+#BackgroundPanel {
+	width: 100%;
+	height: 100%;
+	blur: gaussian(2.0);
+	z-index: -1000;
+}
+
+#Background {
+	width: 100%;
+	height: 100%;
+	background-color: #000000ea;
+	z-index: -100;
+}
+
+#PickList {
+	width: 100%;
+	height: 47%;
+	flow-children: right;
+	align: center center;
+	visibility: visible;
+}
+
+#BottomContainer {
+	width: 85%;
+	height: 23%;
+	align: center center;
+	flow-children: right;
+	visibility: visible;
+}
+
+#PostPickScreen {
+	width: 100%;
+	height: 100%;
+	visibility: collapse;
+	flow-children: down;
+}
+
+#PostPickScreenButtonContainer {
+	width: fit-children;
+	height: fit-children;
+	align: center center;
+	flow-children: right;
+}
+
+.ClassContainer{
+	width: 100%;
+	height: 100%;
+	flow-children: down;
+	color: #ffffff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	z-index: -10;
+}
+
+#HeroPreview {
+	width: 600px;
+	height: 600px;
+	horizontal-align: center;
+}
+
+/* 'Enter game' button
+=================================================================*/
+#EnterGameBtn,
+#RepickBtn {
+	align: center center;
+	box-shadow: fill #00000066 -4px -4px 8px 8px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #066319 ), to( #103F19 ) );
+	background-size: 320px 120px;
+	height: 55px;
+	width: 260px;
+}
+
+#RepickBtn {
+	background-color: orange;
+}
+
+#EnterGameBtn.disabled, #EnterGameBtn.disabled:Hover,
+#RepickBtn.disabled, #RepickBtn.disabled:Hover {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #9C9C9C ), to( #D1D1D133 ) );
+}
+
+#EnterGameBtn:Hover {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #6FDE75 ), to( #87d69533 ) );
+}
+
+#RepickBtn:Hover {
+	background-color: darkorange;
+}
+
+#EnterGameBtn Label,
+#RepickBtn Label {
+	horizontal-align: center;
+	vertical-align: center;
+	color: #fff;
+	font-size: 28px;
+	font-family: "Radiance";
+}
+
+.PickTypePanel {
+	width: 26.6%;
+	height: fit-children;
+	flow-children: down;
+}
+
+/* Hero options
+=================================================================*/
+.PlayerOptionRow {
+	width: 20%;
+	height: 60%;
+	flow-children: right;
+}
+
+.AspectRatio16x10 .PlayerOptionRow {
+	width: 100%;
+	height: 55%;
+	flow-children: right;
+}
+
+.AspectRatio4x3 .PlayerOptionRow {
+	width: 100%;
+	height: 50%;
+	flow-children: right;
+}
+
+.PlayerOptionRowV10 {
+	width: 100%;
+	height: 50%;
+	flow-children: right;
+}
+
+.ClassOptionRow {
+	width: fit-children;
+	height: fit-children;
+	padding-left: 1%;
+	padding-right: 1%;
+	horizontal-align: middle;
+	vertical-align: top;
+	flow-children: right;
+}
+
+.ClassNormalOption {
+	width: 85px;
+	height: 50px;
+	margin: 3px 0px 3px 1px;
+	horizontal-align: left;
+	wash-color: #7090B060;
+	background-size: 100% 100%;
+	pre-transform-scale2d: 0.90;
+}
+
+.AspectRatio16x10 .ClassNormalOption {
+	margin-left: 2.5px;
+	margin-right: 2.5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 67px;
+	height: 44px;
+	horizontal-align: left;
+	background-position: center;
+	wash-color: #7090B060;
+}
+
+.AspectRatio4x3 .ClassNormalOption {
+	margin-left: 2.5px;
+	margin-right: 2.5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 56px;
+	height: 48px;
+	horizontal-align: left;
+	background-position: center;
+	wash-color: #7090B060;
+}
+
+.ClassNormalOption {
+	border: 1px solid #656565;
+}
+
+.selected {
+	border: 1px solid white;
+	box-shadow: fill white -1px -1px 2px 2px;
+	wash-color: #00000000;
+}
+
+.ClassNormalOption:hover
+{
+	pre-transform-scale2d: 0.95;
+	wash-color: #00000000;
+}
+
+.ClassNormalOption.taken
+{
+	saturation: 0.0;
+	transform: none;
+	opacity: 0.2;
+	wash-color: #00000000;
+}
+
+/* Text elements and timer
+=================================================================*/
+#PickInfoPanel {
+	width: 80%;
+	height: 20%;
+	horizontal-align: center;
+	vertical-align: middle;
+	flow-children: right;
+	margin-top: 5%;
+	padding: 0% 0% 1% 0%;
+}
+
+.GameModeSelectText {
+	align: center center;
+	font-size: 30px;
+	font-family: "Radiance";
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #fff;
+}
+
+#PickTextPanel {
+	width: 20%;
+	align: center center;
+	flow-children: down;
+}
+
+#PickTimerPanel {
+	align: center center;
+	flow-children: down;
+}
+
+#PickTimer {
+	width: fit-children;
+	height: 60px;
+	margin-bottom: 1%;
+	vertical-align: middle;
+	horizontal-align: middle;
+}
+
+#TimerTxt {
+	width: 100px;
+	text-align: center;
+	font-size: 38px;
+	font-family: "Radiance";
+	color:#fff;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#ShowStatsPanel {
+	background-color: #000000aa;
+	align: center center;
+	flow-children: down;
+}
+
+#ShowStatsLabel {
+	width: 200px;
+	text-align: center;
+	font-size: 20px;
+	font-family: "Radiance";
+	color:#fff;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#ShowStatsPanel:hover {
+	box-shadow: fill black -2px -2px 4px 4px;
+	color: white;
+	opacity: .5;
+	border: 1px solid #333333;
+	background-color: #111111;
+}
+
+#ShowStatsPanel:active {
+	box-shadow: fill grey -2px -2px 4px 4px;
+	color: white;
+	border: 1px solid #333333;
+	background-color: #111111;
+}
+
+#GameOptionsPanelContainer {
+	horizontal-align: center;
+	vertical-align: bottom;
+	flow-children: down;
+}
+
+.GameModeLabelPanel,
+.GameModeValuePanel,
+{
+	margin-top: 5px;
+	flow-children: down;
+}
+
+.GameModeValuePanel
+{
+	margin-left: 10px;
+	margin-right: 50px;
+}
+
+#GameOptionsLabelPanel {
+	visibility: collapse;
+}
+
+.GameModeValue,
+.GameModeLabel
+{
+	text-align: center;
+	font-size: 22px;
+	font-family: "Radiance";
+}
+
+.AspectRatio4x3 .GameModeLabel
+{
+	text-align: center;
+	font-size: 20px;
+	font-family: "Radiance";
+}
+
+.GameModeLabel {
+	horizontal-align : left;
+	color:#FFFFFF;
+}
+
+.GameModeValue {
+	horizontal-align : right;
+	color:#FF7800;
+}
+
+#PickScreenTeamTitleRadiant,
+#PickScreenTeamTitleDire {
+	width: 50%;
+	height: 100%;
+	margin-bottom: 15%;
+	
+//	text-align: left;
+	font-size: 26px;
+	font-family: "Bold";
+	color: green;
+}
+
+#AverageMMRTeamRadiant,
+#AverageMMRTeamDire {
+	width: 50%;
+	height: 100%;
+	margin-bottom: 15%;
+	
+	text-align: left;
+	font-size: 18px;
+	font-family: "Bold";
+	color: grey;
+}
+
+#AverageMMRTeamRadiant {
+	text-align: right;
+}
+
+
+#PickScreenTeamTitleDire {
+	horizontal-align: right;
+	text-align: right;
+	padding-right: 3%;
+	color: darkred;
+}
+
+#SeparatorImage {
+	width: 45px;
+	height: 45px;
+}
+
+.PickListTitlePanel {
+	margin-left: 12%;
+	horizontal-align: left;
+	flow-children: right;
+}
+
+.PickListText {
+	align: left center;
+	font-size: 20px;
+	font-family: "Radiance";
+	color: white;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#PickListSeparator1,
+#PickListSeparator2,
+#PickListSeparator3
+{
+	margin: 0% 0% 1% 0%;
+	width: 84%;
+	height: 2px;
+	opacity: 0.3;
+	horizontal-align: middle;
+}
+
+.AspectRatio16x10 #PickListSeparator1,
+.AspectRatio16x10 #PickListSeparator2,
+.AspectRatio16x10 #PickListSeparator3
+{
+	width: 370px;
+}
+
+.AspectRatio4x3 #PickListSeparator1,
+.AspectRatio4x3 #PickListSeparator2,
+.AspectRatio4x3 #PickListSeparator3
+{
+	width: 300px;
+	height: 2px;
+	opacity: 0.2;
+	horizontal-align: middle;
+}
+
+#PickListSeparator1 {
+	
+	background-color: red;
+}
+
+#PickListSeparator2 {
+	background-color: lightgreen;
+}
+
+#PickListSeparator3 {
+	background-color: dodgerblue;
+}
+
+/* Hero details panel
+=================================================================*/
+#CustomPickList
+{
+	width: 33%;
+	height: 100%;
+	flow-children: right;
+	align: center center;
+}
+
+#HeroDetailsContainer {
+	width: 33%;
+	height: 100%;
+	margin-right: 0.5%;
+	flow-children: down;
+}
+
+#HeroDetailsPanel {
+	width: 85%;
+	height: 85%;
+	align: center center;
+	flow-children: down;
+}
+
+#WelcomePanel {
+	vertical-align: middle;
+	horizontal-align: middle;
+	flow-children: down;
+	animation-name: fade;
+	animation-duration: 5.0s;
+	animation-timing-function: ease-out;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+}
+
+#WelcomeText {
+	vertical-align: middle;
+	horizontal-align: middle;
+	font-size: 40px;
+	font-family: "Radiance";
+	color: #CE6722;
+}
+
+#PickedHeroPanel {
+	width: 80%;
+	height: 30%;
+	margin-top: 1%;
+	horizontal-align: center;
+	flow-children: right;
+}
+
+#PickedHeroAbilitiesPanel {
+	width: 80%;
+	height: 35%;
+	horizontal-align: center;
+	flow-children: right;
+}
+
+#PickedHeroName {
+	horizontal-align: middle;
+	text-align: left;
+	font-size: 26px;
+	font-family: "Radiance";
+	color: #ffffff;
+}
+
+/*
+	128x72 landscape default size
+*/
+#PickedHeroImage {
+	horizontal-align: center;
+	width: 30%;
+	height: 100%;
+}
+
+#HeroAbilitiesParentPanel {
+	width: 100%;
+	height: 100%;
+	flow-children: right;
+	visibility: collapse;
+}
+
+#HeroAbilitiesParentPanel.four_abilities .PickedHeroAbility {
+	width: fill-parent-flow( 0.24 );
+}
+
+#HeroAbilitiesParentPanel.five_abilities .PickedHeroAbility {
+	width: fill-parent-flow( 0.19 );
+}
+
+#HeroAbilitiesParentPanel.six_abilities .PickedHeroAbility {
+	width: fill-parent-flow( 0.15 );
+}
+
+.PickedHeroAbility {
+	margin-left: 1px;
+	margin-right: 1px;
+	border-radius: 0px;
+	vertical-align: middle;
+}
+
+/* 'Pick random hero' button
+=================================================================*/
+#RandomButtonContainer
+{
+	width: 50%;
+	height: fit-children;
+	flow-children: down;
+	align: center center;
+}
+
+#RandomPickBtn
+{
+	width: 256px;
+	height: 72px;
+	border-radius: 4px;
+	horizontal-align: center;
+	vertical-align: middle;
+	saturation: 1.0;
+	background-color: gradient(linear, 0% 0%, 0% 100%, from(grey), to (black));
+	background-image: url("s2r://panorama/images/custom_game/random_button_png.vtex");
+}
+
+#RandomPickBtn:hover
+{
+	box-shadow: fill white -2px -2px 4px 4px;
+	wash-color: #00000000;
+}
+
+#RandomPickBtnTxt
+{
+	horizontal-align: center;
+	vertical-align: bottom;
+	color: #FFFFFF;
+	font-size: 22px;
+	font-family: "Radiance";
+}
+
+/* 'Confirm pick' button
+=================================================================*/
+#PickHeroBtn {
+	box-shadow: fill #00000066 -4px -4px 8px 8px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #066319 ), to( #103F19 ) );
+	background-size: 320px 120px;
+	height: 100%;
+	width: 70%;
+	horizontal-align: middle;
+	visibility: collapse;
+}
+
+#PickHeroBtn.Banned {
+	background-color: grey;
+}
+
+#PickHeroBtn.Banned:Active {
+	background-color: grey;
+}
+
+
+#PickHeroBtn:Hover {
+	saturation: 0.8;
+}
+
+#PickHeroBtn:Active {
+	background-color: darkgreen;
+}
+
+#PickHeroBtn.disabled, #PickHeroBtn.disabled:Hover {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #9C9C9C ), to( #D1D1D133 ) );
+}
+
+#PickHeroBtn Label {
+	color: #FFFFFF;
+	font-size: 24px;
+	align: center center;
+	font-family: "Radiance";
+	text-transform: uppercase;
+}
+
+/* Right now this is just a dummy panel, to keep in place the others following
+===============================================================*/
+#HeroSelectionChat
+{
+	width: 33%;
+	margin-right: 0.5%;
+	align: center bottom;
+	height: 100%;
+//	background-color: #000000da;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+#BanTabMessage
+{
+	width: 365px;
+	margin-top: 30%;
+	color: #FFFFFF;
+	font-size: 30px;
+	font-family: "Radiance";
+	text-align: center;
+}
+
+.AspectRatio16x10 #BanTabMessage
+{
+	width: 330px;
+}
+
+.AspectRatio4x3 #BanTabMessage
+{
+	width: 230px;
+}
+
+#LoadingPanel {
+	vertical-align: center;
+	horizontal-align: center;
+	background-color: #000000da;
+	border-radius: 10px;
+	padding: 4px 4px 4px 4px;
+	animation-name: fade_out;
+	animation-duration: load_time;
+	animation-direction: alternate;
+	opacity: 0;
+}
+
+#LoadingLabel {
+	font-size: 40px;
+	font-family: "Radiance";
+	color: white;
+}
+
+#HeroListSTR {
+	margin-left: 10%;
+}
+
+#VanillaToCustom {
+	width: 10%;
+	height: 100%;
+}
+
+#PickingScreenSwap {
+	width: 200px; /* replace with 100% once there is enough custom heroes */
+	height: 500px; /* replace with 100% once there is enough custom heroes */
+
+	opacity: .5;
+	vertical-align: top;
+	flow-children: right;
+	transition-property: background-color;
+	transition-duration: .2s;
+
+	background-image: url("s2r://panorama/images/control_icons/icon_hero_next_arrow_png.vtex");
+	background-repeat: no-repeat;
+	background-size: 50px 46px;
+}
+
+#PickingScreenSwapLabel {
+	width: 100%;
+	height: 10%;
+	font-size: 20px;
+	font-family: "Radiance";
+	text-align: center;
+
+/*	text-overflow: shrink; */
+	text-transform: uppercase;
+	transition-property: position, opacity;
+	transition-duration: 0.2s;
+
+	vertical-align: middle;
+	white-space: normal;
+	width: 180px;
+	font-size: 18px;
+	color: #aabfbf;
+/*	tranform: scaleX(-1); */
+}
+
+#PickingScreenSwap:hover
+{
+	color: white;
+	opacity: .5;
+	//border: 1px solid #333333;
+	background-color: #111111;
+}
+
+#PickingScreenSwap:active
+{
+	//border: 1px solid #555555;
+	background-color: #666666;
+	sound: "ui_hero_select_slide";
+}
+
+#HeroListSTR_Custom,
+#HeroListAGI_Custom,
+#HeroListINT_Custom {
+	visibility: collapse;
+}

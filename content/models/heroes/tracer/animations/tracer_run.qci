@@ -1,0 +1,7 @@
+$sequence layer_tracer_run "tracer_run.dmx" fps 24.000000 hidden
+$sequence tracer_run "tracer_run.dmx" fps 24.000000 noanimation {
+	numframes 205
+	blendlayer layer_tracer_run 0 -1 205 204
+	event AE_WPN_HIDE 0
+	event AE_WPN_UNHIDE 204
+}

@@ -1,8 +1,8 @@
 "CustomHeroList"
 {
   "npc_dota_hero_ancient_apparition" "0"
-  "npc_dota_hero_antimage" "0"
-  "npc_dota_hero_axe" "0"
+  "npc_dota_hero_antimage" "-1"
+  "npc_dota_hero_axe" "-1"
   "npc_dota_hero_bane" "0"
   "npc_dota_hero_beastmaster" "0"
   "npc_dota_hero_bloodseeker" "-1"
@@ -52,7 +52,7 @@
   "npc_dota_hero_viper" "0"
   "npc_dota_hero_weaver" "0"
   "npc_dota_hero_windrunner" "0"
-  "npc_dota_hero_witch_doctor" "0"
+  "npc_dota_hero_witch_doctor" "-1"
   "npc_dota_hero_zuus" "0"
   "npc_dota_hero_broodmother" "0"
   "npc_dota_hero_skeleton_king" "0"
@@ -85,7 +85,7 @@
   "npc_dota_hero_wisp" "0"
   "npc_dota_hero_disruptor" "0"
   "npc_dota_hero_undying" "0"
-  "npc_dota_hero_templar_assassin" "0"			// Tracer
+  "npc_dota_hero_templar_assassin" "-1"			// Tracer
   "npc_dota_hero_naga_siren" "0"
   "npc_dota_hero_nyx_assassin" "0"
   "npc_dota_hero_keeper_of_the_light" "0"

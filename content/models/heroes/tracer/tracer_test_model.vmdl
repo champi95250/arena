@@ -1,0 +1,1090 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	m_meshList = 
+	{
+		m_meshList = 
+		[
+			{
+				m_meshName = "tracer_test_model"
+				m_meshFile = "models/heroes/tracer/tracer_test_model.fbx"
+				m_materialSearchPath = ""
+				m_bSkinParentedObjects = true
+				m_bLegacySkinParentedTransforms = false
+				m_bExpensiveTangents = false
+				m_bHighPrecisionTexCoords = false
+				m_bPerVertexCurvature = false
+				m_bBentNormals = false
+				m_bIgnoreCloth = false
+				m_bGetSkinningFromLod0 = false
+				m_pMorphInfo = null
+			},
+		]
+	}
+	m_clothProxyMeshList = 
+	{
+		_class = "CVClothProxyMeshList"
+		m_flClothEnableThreshold = 0.05
+		m_bCreateStaticBone = false
+		m_nMaxBonesPerVertex = 4
+		m_bRemoveUnusedBonesEnabled = false
+		m_bDriveMeshesWithBacksolvedJointsOnly = true
+		m_flMatchProxiesToMeshes = 1.0
+		m_flFallbackEnvelope = 1.0
+		m_nReservedInt = 0
+		m_bReservedBool1 = false
+		m_bReservedBool2 = false
+		m_bReservedBool3 = false
+		m_bReservedBool4 = false
+		m_clothProxyMeshList = [  ]
+	}
+	m_physicsMeshList = 
+	{
+		m_meshList = [  ]
+	}
+	m_pModelInfo = null
+	m_pBoneFlagList = 
+	{
+		m_pObject = null
+	}
+	m_pHitBoxSetLists = 
+	[
+		{
+			m_pObject = 
+			{
+				m_HitBoxSets = 
+				[
+					{
+						m_name = "default"
+						m_HitBoxes = 
+						[
+							{
+								m_name = "bip_pelvis"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_pelvis"
+								m_vMinBounds = [ -7.446433, -6.02095, -5.313602 ]
+								m_vMaxBounds = [ 7.382927, 8.773636, 4.984471 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_spine_0"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_spine_0"
+								m_vMinBounds = [ -7.452805, -4.428486, -5.631305 ]
+								m_vMaxBounds = [ 7.376997, 7.992153, 4.178217 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_spine_1"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_spine_1"
+								m_vMinBounds = [ -6.187617, -2.568672, -5.867785 ]
+								m_vMaxBounds = [ 6.136836, 9.525967, 5.414117 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_spine_2"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_spine_2"
+								m_vMinBounds = [ -7.573762, -3.717442, -9.064308 ]
+								m_vMaxBounds = [ 7.533413, 11.805042, 7.888649 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_spine_3"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_spine_3"
+								m_vMinBounds = [ -5.847308, -3.367287, -5.599993 ]
+								m_vMaxBounds = [ 5.829607, 6.641712, 4.752766 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_collar_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_collar_L"
+								m_vMinBounds = [ -6.227949, -0.509622, -3.296551 ]
+								m_vMaxBounds = [ 5.073957, 7.618792, 4.434357 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_collar_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_collar_R"
+								m_vMinBounds = [ -4.996539, -0.509604, -3.40654 ]
+								m_vMaxBounds = [ 6.203759, 7.618798, 4.407478 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_upperArm_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_upperArm_L"
+								m_vMinBounds = [ -3.915699, -2.007011, -4.073649 ]
+								m_vMaxBounds = [ 3.722672, 12.326256, 3.571056 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_upperArm_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_upperArm_R"
+								m_vMinBounds = [ -3.72266, -2.006992, -4.073655 ]
+								m_vMaxBounds = [ 3.915707, 12.326275, 3.571048 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_lowerArm_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_lowerArm_L"
+								m_vMinBounds = [ -2.50312, -1.897053, -5.978872 ]
+								m_vMaxBounds = [ 2.925705, 11.720551, 2.747168 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_lowerArm_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_lowerArm_R"
+								m_vMinBounds = [ -2.925716, -1.897057, -5.978877 ]
+								m_vMaxBounds = [ 2.503105, 11.72056, 2.747148 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_hip_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_hip_L"
+								m_vMinBounds = [ -5.111063, -4.043034, -4.589274 ]
+								m_vMaxBounds = [ 3.989416, 24.063709, 5.09261 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_hip_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_hip_R"
+								m_vMinBounds = [ -4.210822, -4.043053, -4.603374 ]
+								m_vMaxBounds = [ 5.111035, 24.063665, 5.092603 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_hand_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_hand_L"
+								m_vMinBounds = [ -2.387347, -0.455015, -1.353733 ]
+								m_vMaxBounds = [ 2.323678, 5.358789, 1.955063 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_hand_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_hand_R"
+								m_vMinBounds = [ -2.323708, -0.455002, -1.353725 ]
+								m_vMaxBounds = [ 2.387319, 5.358818, 1.955044 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_knee_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_knee_L"
+								m_vMinBounds = [ -2.12052, -2.490028, -3.432665 ]
+								m_vMaxBounds = [ 2.732216, 24.311785, 4.006082 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_knee_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_knee_R"
+								m_vMinBounds = [ -2.732958, -2.490118, -3.432649 ]
+								m_vMaxBounds = [ 2.147186, 24.311689, 4.007241 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_neck"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_neck"
+								m_vMinBounds = [ -2.245899, 0.671947, -2.669111 ]
+								m_vMaxBounds = [ 2.234879, 4.046398, 1.837114 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_thumb_0_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_thumb_0_L"
+								m_vMinBounds = [ -1.21389, -1.322868, -1.022381 ]
+								m_vMaxBounds = [ 2.215466, 3.40527, 1.713633 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_index_0_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_index_0_L"
+								m_vMinBounds = [ -1.103196, -0.820866, -0.734398 ]
+								m_vMaxBounds = [ 1.234309, 2.887417, 1.319378 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_middle_0_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_middle_0_L"
+								m_vMinBounds = [ -1.394947, -1.225998, -0.781815 ]
+								m_vMaxBounds = [ 1.029998, 3.037081, 1.387249 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_ring_0_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_ring_0_L"
+								m_vMinBounds = [ -1.120658, -1.248564, -0.812561 ]
+								m_vMaxBounds = [ 0.905593, 2.573122, 1.326859 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_pinky_0_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_pinky_0_L"
+								m_vMinBounds = [ -1.132803, -0.733761, -0.578896 ]
+								m_vMaxBounds = [ 0.7377, 2.261608, 1.188744 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_index_0_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_index_0_R"
+								m_vMinBounds = [ -1.234333, -0.820854, -0.734383 ]
+								m_vMaxBounds = [ 1.103168, 2.887432, 1.319389 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_thumb_0_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_thumb_0_R"
+								m_vMinBounds = [ -2.215473, -1.322865, -1.022348 ]
+								m_vMaxBounds = [ 1.213886, 3.405285, 1.713661 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_middle_0_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_middle_0_R"
+								m_vMinBounds = [ -1.03002, -1.225996, -0.781807 ]
+								m_vMaxBounds = [ 1.394925, 3.037094, 1.387253 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_ring_0_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_ring_0_R"
+								m_vMinBounds = [ -0.905616, -1.24855, -0.812553 ]
+								m_vMaxBounds = [ 1.120634, 2.573139, 1.326866 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_pinky_0_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_pinky_0_R"
+								m_vMinBounds = [ -0.737718, -0.73373, -0.578892 ]
+								m_vMaxBounds = [ 1.132782, 2.261639, 1.188751 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_foot_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_foot_L"
+								m_vMinBounds = [ -3.254755, -2.62359, -2.241114 ]
+								m_vMaxBounds = [ 2.843899, 9.182344, 5.281259 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_foot_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_foot_R"
+								m_vMinBounds = [ -2.877095, -2.622009, -2.447735 ]
+								m_vMaxBounds = [ 3.213989, 9.194134, 5.28067 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_head"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_head"
+								m_vMinBounds = [ -6.513012, -1.044586, -4.914218 ]
+								m_vMaxBounds = [ 4.147512, 13.564255, 5.27085 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_thumb_1_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_thumb_1_L"
+								m_vMinBounds = [ -0.829214, -0.994835, -0.753586 ]
+								m_vMaxBounds = [ 1.53898, 2.166084, 1.587742 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_index_1_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_index_1_L"
+								m_vMinBounds = [ -0.585124, -0.620155, -0.545033 ]
+								m_vMaxBounds = [ 0.58328, 2.06192, 0.808161 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_middle_1_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_middle_1_L"
+								m_vMinBounds = [ -0.592067, -0.248379, -0.542471 ]
+								m_vMaxBounds = [ 0.497335, 2.181847, 0.500921 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_ring_1_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_ring_1_L"
+								m_vMinBounds = [ -0.599414, -0.626686, -0.385569 ]
+								m_vMaxBounds = [ 0.536642, 1.798008, 0.578548 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_pinky_1_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_pinky_1_L"
+								m_vMinBounds = [ -0.479926, -0.564915, -0.46995 ]
+								m_vMaxBounds = [ 0.442449, 1.240875, 0.648026 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_index_1_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_index_1_R"
+								m_vMinBounds = [ -0.583301, -0.620136, -0.545013 ]
+								m_vMaxBounds = [ 0.585102, 2.061943, 0.808182 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_thumb_1_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_thumb_1_R"
+								m_vMinBounds = [ -1.538986, -0.994816, -0.753555 ]
+								m_vMaxBounds = [ 0.829206, 2.166096, 1.587753 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_middle_1_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_middle_1_R"
+								m_vMinBounds = [ -0.497359, -0.248379, -0.542469 ]
+								m_vMaxBounds = [ 0.592044, 2.181847, 0.500923 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_ring_1_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_ring_1_R"
+								m_vMinBounds = [ -0.536665, -0.626686, -0.385567 ]
+								m_vMaxBounds = [ 0.599389, 1.798019, 0.578556 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_pinky_1_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_pinky_1_R"
+								m_vMinBounds = [ -0.442467, -0.564896, -0.469934 ]
+								m_vMaxBounds = [ 0.479908, 1.240891, 0.648039 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "hlp_foot_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "hlp_foot_L"
+								m_vMinBounds = [ -1.207737, -0.261264, -2.405069 ]
+								m_vMaxBounds = [ 1.848746, 3.921014, 0.733054 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "hlp_foot_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "hlp_foot_R"
+								m_vMinBounds = [ -1.888428, -0.251513, -1.482162 ]
+								m_vMaxBounds = [ 1.180013, 3.913553, 0.770253 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "prp_goggles"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "prp_goggles"
+								m_vMinBounds = [ -3.229355, -2.128769, -2.331248 ]
+								m_vMaxBounds = [ 3.229348, 2.187775, 1.329602 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "pistol_deploy_2_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "pistol_deploy_2_L"
+								m_vMinBounds = [ -7.968878, -1.41869, -0.358276 ]
+								m_vMaxBounds = [ 4.511446, 3.893372, 1.489609 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "pistol_deploy_1_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "pistol_deploy_1_L"
+								m_vMinBounds = [ -7.950588, -1.397382, -1.314819 ]
+								m_vMaxBounds = [ 4.542088, 3.902622, 0.153122 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_thumb_2_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_thumb_2_L"
+								m_vMinBounds = [ -0.555159, -0.8148, -0.563162 ]
+								m_vMaxBounds = [ 0.609276, 1.535469, 0.518803 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_index_2_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_index_2_L"
+								m_vMinBounds = [ -0.583204, -0.606812, -0.446234 ]
+								m_vMaxBounds = [ 0.557785, 1.102375, 0.457989 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_middle_2_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_middle_2_L"
+								m_vMinBounds = [ -0.571232, -0.732494, -0.493898 ]
+								m_vMaxBounds = [ 0.481775, 1.060081, 0.362038 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_ring_2_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_ring_2_L"
+								m_vMinBounds = [ -0.451045, -0.559292, -0.323948 ]
+								m_vMaxBounds = [ 0.524471, 1.116753, 0.514147 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_pinky_2_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_pinky_2_L"
+								m_vMinBounds = [ -0.440499, -0.389717, -0.354538 ]
+								m_vMaxBounds = [ 0.403983, 0.860115, 0.361692 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "hlp_forearm_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "hlp_forearm_L"
+								m_vMinBounds = [ -1.707489, -3.403172, -1.846945 ]
+								m_vMaxBounds = [ 2.176567, 6.45225, 2.638153 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "pistol_deploy_2_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "pistol_deploy_2_R"
+								m_vMinBounds = [ -4.511459, -1.418701, -0.358295 ]
+								m_vMaxBounds = [ 7.96888, 3.893373, 1.489582 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "pistol_deploy_1_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "pistol_deploy_1_R"
+								m_vMinBounds = [ -4.542093, -1.397375, -1.314827 ]
+								m_vMaxBounds = [ 7.950598, 3.902631, 0.153111 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_index_2_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_index_2_R"
+								m_vMinBounds = [ -0.557811, -0.606781, -0.446218 ]
+								m_vMaxBounds = [ 0.583179, 1.102406, 0.458004 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_thumb_2_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_thumb_2_R"
+								m_vMinBounds = [ -0.609278, -0.814777, -0.563136 ]
+								m_vMaxBounds = [ 0.555155, 1.535496, 0.518828 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_middle_2_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_middle_2_R"
+								m_vMinBounds = [ -0.4818, -0.732498, -0.493891 ]
+								m_vMaxBounds = [ 0.571208, 1.060081, 0.362047 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_ring_2_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_ring_2_R"
+								m_vMinBounds = [ -0.524498, -0.559288, -0.323935 ]
+								m_vMaxBounds = [ 0.451017, 1.116768, 0.51417 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_pinky_2_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_pinky_2_R"
+								m_vMinBounds = [ -0.404004, -0.389702, -0.354546 ]
+								m_vMaxBounds = [ 0.440476, 0.86013, 0.361685 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "hlp_forearm_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "hlp_forearm_R"
+								m_vMinBounds = [ -2.179993, -3.424154, -1.827777 ]
+								m_vMaxBounds = [ 1.722164, 6.422991, 2.633824 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "prp_collar_mid_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "prp_collar_mid_L"
+								m_vMinBounds = [ -2.901603, -0.113579, -0.865185 ]
+								m_vMaxBounds = [ 2.285689, 3.436905, 2.410273 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "prp_collar_frnt_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "prp_collar_frnt_L"
+								m_vMinBounds = [ -2.845322, -3.033043, -1.998219 ]
+								m_vMaxBounds = [ 3.305418, 4.401764, 1.489689 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "prp_collar_frnt_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "prp_collar_frnt_R"
+								m_vMinBounds = [ -4.197996, -3.033024, -1.998241 ]
+								m_vMaxBounds = [ 2.845341, 4.401772, 1.489685 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "prp_collar_mid_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "prp_collar_mid_R"
+								m_vMinBounds = [ -2.285686, -0.113564, -0.865196 ]
+								m_vMaxBounds = [ 2.901606, 3.43692, 2.410265 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "prp_collar_back"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "prp_collar_back"
+								m_vMinBounds = [ -3.44236, -0.18557, -0.74592 ]
+								m_vMaxBounds = [ 3.400847, 3.133713, 2.305289 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "prp_chest_latch"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "prp_chest_latch"
+								m_vMinBounds = [ -4.103153, -2.976929, -3.457921 ]
+								m_vMaxBounds = [ 4.103149, 1.102177, 1.39848 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "holo_outer"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "holo_outer"
+								m_vMinBounds = [ -3.370961, -2.940311, -0.289262 ]
+								m_vMaxBounds = [ 3.370959, 3.389511, 0.015633 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "holo_inner"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "holo_inner"
+								m_vMinBounds = [ -0.000005, -2.042843, -2.031603 ]
+								m_vMaxBounds = [ 0.183751, 1.772144, 2.031742 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "holo_back"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "holo_back"
+								m_vMinBounds = [ -2.814796, -2.830284, -0.000038 ]
+								m_vMaxBounds = [ 2.814786, 2.455208, 0.254624 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_toe_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_toe_L"
+								m_vMinBounds = [ -2.892239, -2.371065, -1.361489 ]
+								m_vMaxBounds = [ 3.326892, 4.078902, 1.956774 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "hlp_foot_1_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "hlp_foot_1_L"
+								m_vMinBounds = [ -1.195888, -1.056294, -1.260597 ]
+								m_vMaxBounds = [ 1.516563, 2.334922, 0.8256 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "bip_toe_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "bip_toe_R"
+								m_vMinBounds = [ -3.287848, -2.343199, -1.361454 ]
+								m_vMaxBounds = [ 2.925312, 4.100299, 1.956751 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "hlp_foot_1_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "hlp_foot_1_R"
+								m_vMinBounds = [ -1.531856, -1.045393, -1.2371 ]
+								m_vMaxBounds = [ 1.180012, 2.315768, 0.827485 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "hlp_hip_L"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "hlp_hip_L"
+								m_vMinBounds = [ -2.975544, 3.092679, -2.203002 ]
+								m_vMaxBounds = [ 3.951569, 5.013166, 3.541636 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+							{
+								m_name = "hlp_hip_R"
+								m_sSurfaceProperty = ""
+								m_nGroupId = 0
+								m_sBoneName = "hlp_hip_R"
+								m_vMinBounds = [ -3.951569, 3.092693, -2.202979 ]
+								m_vMaxBounds = [ 2.975544, 5.01315, 3.133273 ]
+								m_bTranslationOnly = false
+								m_cRenderColor = [ 0, 0, 0, 0 ]
+							},
+						]
+					},
+				]
+				m_AutoCreateSetName = ""
+			}
+		},
+	]
+	m_pAttachmentLists = 
+	[
+		{
+			m_pObject = 
+			{
+				m_name = ""
+				m_attachments = 
+				[
+					{
+						m_name = "attach_hitloc"
+						m_influences = 
+						[
+							{
+								m_influenceName = "bip_spine_2"
+								m_vTranslationOffset = [ 0.0, 0.0, 0.0 ]
+								m_vRotationOffset = [ 0.0, 0.0, 0.0 ]
+								m_flWeight = 1.0
+								m_bRoot = false
+							},
+						]
+					},
+				]
+			}
+		},
+	]
+	m_pAnimGroup = 
+	{
+		m_pObject = 
+		{
+			m_Name = ""
+			m_pReferenceSkeleton = 
+			{
+				m_pObject = null
+			}
+			m_pBoneFlagList = 
+			{
+				m_pObject = null
+			}
+			m_pSeqGroup = 
+			{
+				m_pObject = null
+			}
+			m_pAnimGroups = [  ]
+			m_Vanim = 
+			[
+				{
+					m_Animationname = "tracer_idle"
+					m_Filepath = "models/heroes/tracer/animations/tracer_idle.dmx"
+					m_nStartframe = 7
+					m_nEndframe = 70
+					m_flFps = 50.0
+					m_Loop = 
+					{
+						m_bLoop = true
+						m_bSmoothLoop = false
+						m_nSmoothLoopStart = 0
+						m_nSmoothLoopEnd = 0
+						m_StartLoop = 
+						{
+							_class = "CVAnimCmdStartLoop"
+							m_bEnabled = false
+							m_nLoopRestart = 0
+						}
+					}
+					m_bHidden = false
+					m_bDisable = false
+					m_Activities = 
+					[
+						{
+							m_Name = "ACT_DOTA_IDLE"
+							m_nWeight = 1
+						},
+					]
+					m_AnimationEvents = [  ]
+					m_MotionFrames = [  ]
+					m_pIkRules = [  ]
+					m_pAlignAnimation = null
+					m_adjustAnimation = 
+					{
+						m_translation = [ 0.0, 0.0, 4.0 ]
+						m_rotation = [ 0.0, 0.0, 0.0 ]
+					}
+					m_Keywords = [  ]
+					m_sequenceParams = 
+					{
+						m_flFadeInTime = 0.2
+						m_flFadeOutTime = 0.2
+					}
+					m_folderName = ""
+					m_MotionFramesRootBone = ""
+				},
+				{
+					m_Animationname = "tracer_run"
+					m_Filepath = "models/heroes/tracer/animations/tracer_run.dmx"
+					m_nStartframe = 0
+					m_nEndframe = 13
+					m_flFps = 3.0
+					m_Loop = 
+					{
+						m_bLoop = true
+						m_bSmoothLoop = false
+						m_nSmoothLoopStart = 0
+						m_nSmoothLoopEnd = 0
+						m_StartLoop = 
+						{
+							_class = "CVAnimCmdStartLoop"
+							m_bEnabled = false
+							m_nLoopRestart = 0
+						}
+					}
+					m_bHidden = false
+					m_bDisable = false
+					m_Activities = 
+					[
+						{
+							m_Name = "ACT_DOTA_RUN"
+							m_nWeight = 1
+						},
+					]
+					m_AnimationEvents = [  ]
+					m_MotionFrames = 
+					[
+						{
+							m_nFrame = 0
+							m_bExtractTX = true
+							m_bExtractTY = true
+							m_bExtractTZ = false
+							m_bExtractRX = false
+							m_bExtractRY = false
+							m_bExtractRZ = false
+							m_bDiscardTX = false
+							m_bDiscardTY = false
+							m_bDiscardTZ = false
+							m_bDiscardRX = false
+							m_bDiscardRY = false
+							m_bDiscardRZ = false
+						},
+					]
+					m_pIkRules = [  ]
+					m_pAlignAnimation = null
+					m_adjustAnimation = 
+					{
+						m_translation = [ 0.0, 0.0, 4.0 ]
+						m_rotation = [ 0.0, 0.0, 0.0 ]
+					}
+					m_Keywords = [  ]
+					m_sequenceParams = 
+					{
+						m_flFadeInTime = 0.2
+						m_flFadeOutTime = 0.2
+					}
+					m_folderName = ""
+					m_MotionFramesRootBone = ""
+				},
+			]
+			m_sScripts = [  ]
+			m_folderNames = [  ]
+			m_sCompileScripts = [  ]
+		}
+	}
+	m_pMaterialGroupList = 
+	{
+		m_pObject = null
+	}
+	m_pMeshGroupList = 
+	{
+		m_pObject = null
+	}
+	m_pLodGroupList = 
+	{
+		m_pObject = null
+	}
+	m_pPropBreakableList = 
+	{
+		m_pObject = null
+	}
+	m_pPropDataList = 
+	{
+		m_pObject = null
+	}
+	m_pConstraintLists = [  ]
+	m_collision = ""
+	m_softbody = ""
+	m_sMDLFilename = ""
+	m_sOffsetHitboxSets = [  ]
+	m_vHitboxSetOffset = [ 0.0, 0.0, 0.0 ]
+	m_scriptFiles = [  ]
+	m_pMaterialRemapList = 
+	{
+		m_vMaterialRemapList = 
+		[
+			{
+				m_sSearchMaterial = "head.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer07.vmat"
+			},
+			{
+				m_sSearchMaterial = "eye_r_2.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer04.vmat"
+			},
+			{
+				m_sSearchMaterial = "eye_l_2.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer04.vmat"
+			},
+			{
+				m_sSearchMaterial = "lashes.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer07.vmat"
+			},
+			{
+				m_sSearchMaterial = "mouth.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer07.vmat"
+			},
+			{
+				m_sSearchMaterial = "eye_l.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer04.vmat"
+			},
+			{
+				m_sSearchMaterial = "eye_r.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer04.vmat"
+			},
+			{
+				m_sSearchMaterial = "hair_2.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer06.vmat"
+			},
+			{
+				m_sSearchMaterial = "hair.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer06.vmat"
+			},
+			{
+				m_sSearchMaterial = "goggles.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer08.vmat"
+			},
+			{
+				m_sSearchMaterial = "goggles2.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer08.vmat"
+			},
+			{
+				m_sSearchMaterial = "holo.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer02.vmat"
+			},
+			{
+				m_sSearchMaterial = "body_leggings.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer01.vmat"
+			},
+			{
+				m_sSearchMaterial = "body_ch.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer01.vmat"
+			},
+			{
+				m_sSearchMaterial = "body.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer01.vmat"
+			},
+			{
+				m_sSearchMaterial = "decals.vmat"
+				m_sReplaceMaterial = "f:\\program files (x86)\\steamlibrary\\steamapps\\common\\dota 2 beta\\content\\dota_addons\\all_deathmatch\\materials\\models\\heroes\\tracer\\tracer03.vmat"
+			},
+		]
+	}
+	m_flFbxScale = 1.0
+	m_flQCScale = 1.0
+	m_vOrigin = [ 0.0, 0.0, 0.0 ]
+	m_pPsfList = null
+	m_keyValueText = ""
+	m_bStaticProp = false
+	m_bEnableClothProcessing = true
+	m_flClothEnableThreshold = 0.05
+	m_nMaxClothVertsPerMesh = 2048
+	m_bBuildClothBoneHierarchy = false
+	m_nNavType = "AUTH_NAV_MESH"
+	m_bMakeUniqueVMeshes = false
+	m_bMakeImplicitBindPoseSequence = false
+	m_bAdjustSkeletonFromBoneFlags = false
+	m_bHiddenAssetFlag = false
+	m_pAnimGroups = [  ]
+}

@@ -1,0 +1,52 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "hero.vfx"
+
+	//---- Blend To Full ----
+	g_flEnvMapBlendToFull "1.000"
+	g_flMetalnessBlendToFull "0.000"
+	g_flReflectionsTintByBaseBlendToNone "0.000"
+	g_flSelfIllumBlendToFull "0.000"
+	g_flSpecularBlendToFull "0.143"
+	g_flSpecularExponentBlendToFull "0.011"
+
+	//---- Cloak ----
+	g_flCloakBlurAmount "0.038"
+	g_flCloakIntensity "0.850"
+	g_flCloakRefractAmount "0.100"
+	g_flMaterialCloakFactor "0.500"
+	g_vCloakColorTint "[1.000 7.500 1.000]"
+
+	//---- Color ----
+	g_flDiffuseModulationAmount "1.000"
+	g_flTexCoordRotation "0.000"
+	g_vTexCoordOffset "[0.000 0.000]"
+	g_vTexCoordScale "[1.000 1.000]"
+	TextureColor "materials/models/heroes/tracer/chestholo.tga"
+
+	//---- Fresnel ----
+	g_flFresnelModulatesAlpha "0.418"
+	TextureFresnelWarpColor "materials/default/default_fresnelwarpcolor.tga"
+	TextureFresnelWarpRim "[0.866000 0.866000 0.866000 0.000000]"
+	TextureFresnelWarpSpec "materials/default/default_fresnelwarpspec.tga"
+
+	//---- Lighting ----
+	g_flAmbientScale "4.186"
+	g_flBloomScale "0.035"
+	g_flBloomShift "0.000"
+	g_vBloomColor "[1.000000 1.000000 1.000000 0.000000]"
+
+	//---- Normal Map ----
+	TextureNormal "[0.501961 0.501961 1.000000 0.000000]"
+
+	//---- Rim ----
+	g_flRimLightScale "1.000"
+	g_vRimLightColor "[1.000000 1.000000 1.000000 0.000000]"
+
+	//---- Specular ----
+	g_flSpecularExponent "439.000"
+	g_flSpecularScale "806.122"
+	g_vSpecularColor "[1.000000 1.000000 1.000000 0.000000]"
+}

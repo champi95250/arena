@@ -3,22 +3,22 @@
 	//=================================================================================================================
 	// HERO: Tracer
 	//=================================================================================================================
-	"npc_dota_hero_tracer"
+	"npc_dota_hero_zz_tracer"
 	{
 		// Hero
 		//-------------------------------------------------------------------------------------------------------------
 		"override_hero"				"npc_dota_hero_templar_assassin"			// Hero to override
 
-		"DisableWearables" "1"
-		
-		"Role" "Carry,Escape,Initiator,Nuker,Pusher,Support,Durable,Disabler,Jungler"
-		"Rolelevels" "2,2,1,1,1,0,0,0,0"
-		"Complexity" "2"
+		"DisableWearables"			"1"
+
+		//Picking Screen
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"IsDisabled"				"1"
 
 		// Model
 		//-------------------------------------------------------------------------------------------------------------
-		"Model"						"models/heroes/tracer/tracer_model.vmdl"
-		"ModelScale" 				"1.00"
+		"Model"						"models/heroes/tracer/tracer_test_model.vmdl"
+		"ModelScale" 				"2.27" // size is x0.5 
 
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
@@ -46,10 +46,10 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"20"													// Damage range min.
-		"AttackDamageMax"			"30"													// Damage range max.	
-		"AttackRate"				"1.5"													// Speed of attack.
-		"AttackAnimationPoint"		"0.2"													// Normalized time in animation cycle to attack.
+		"AttackDamageMin"			"0"													// Damage range min.
+		"AttackDamageMax"			"7"													// Damage range max.	
+		"AttackRate"				"0.8"													// Speed of attack.
+		"AttackAnimationPoint"		"0.0"													// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"700"													// Range within a target can be acquired.
 		"AttackRange"				"600"													// Range within a target can be attacked.
 		"ProjectileModel"			"particles/basic_projectile/basic_projectile.vpcf"		// Particle system model for projectile.
@@ -61,29 +61,29 @@
 		"AttributeStrengthGain"		"2.0"									// Strength bonus per level.
 		"AttributeBaseIntelligence"	"20"									// Base intelligence
 		"AttributeIntelligenceGain"	"2.0"									// Intelligence bonus per level.
-		"AttributeBaseAgility"		"20"									// Base agility
-		"AttributeAgilityGain"		"2.0"									// Agility bonus per level.
+		"AttributeBaseAgility"		"11"									// Base agility
+		"AttributeAgilityGain"		"1.0"									// Agility bonus per level.
 
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
-		"MovementSpeed"				"315"									// Speed.
-		"MovementTurnRate"			"0.5"									// Turning rate.
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"60000"									// Turning rate.
 	}
 
 	//=================================================================================================================
 	// HERO: Mario
 	//=================================================================================================================
-	"npc_dota_hero_mario"
+	"npc_dota_hero_zz_mario"
 	{
 		// Hero
 		//-------------------------------------------------------------------------------------------------------------
 		"override_hero"				"npc_dota_hero_brewmaster"			// Hero to override
 
-		"DisableWearables" "1"
-		
-		"Role" "Carry,Escape,Initiator,Nuker,Pusher,Support,Durable,Disabler,Jungler"
-		"Rolelevels" "2,2,1,1,1,0,0,0,0"
-		"Complexity" "2"
+		"DisableWearables"			"1"
+
+		//Picking Screen
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"IsDisabled"				"1"
 
 		// Model
 		//-------------------------------------------------------------------------------------------------------------
@@ -143,17 +143,17 @@
 	//=================================================================================================================
 	// HERO: Goku
 	//=================================================================================================================
-	"npc_dota_hero_goku"
+	"npc_dota_hero_zz_goku"
 	{
 		// Hero
 		//-------------------------------------------------------------------------------------------------------------
 		"override_hero"				"npc_dota_hero_life_stealer"			// Hero to override
 
-		"DisableWearables" "1"
-		
-		"Role" "Carry,Escape,Initiator,Nuker,Pusher,Support,Durable,Disabler,Jungler"
-		"Rolelevels" "2,2,1,1,1,0,0,0,0"
-		"Complexity" "2"
+		"DisableWearables"			"1"
+
+		//Picking Screen
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"IsDisabled"				"1"
 
 		// Model
 		//-------------------------------------------------------------------------------------------------------------
@@ -208,5 +208,242 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementSpeed"				"315"									// Speed.
 		"MovementTurnRate"			"0.5"									// Turning rate.
+	}
+	//=================================================================================================================
+	// HERO: Ici pour la deco
+	//=================================================================================================================
+	"npc_dota_hero_zz_custom_agi_1"
+	{
+		"override_hero"				"npc_dota_hero_monkey_king"
+		"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+	}
+	"npc_dota_hero_zz_custom_int_1"
+	{
+		"override_hero"				"npc_dota_hero_visage"
+		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+	}
+	"npc_dota_hero_zz_custom_int_2"
+	{
+		"override_hero"				"npc_dota_hero_silencer"
+		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+	}
+
+	//=================================================================================================================
+	// HERO: Earthshaker
+	//=================================================================================================================
+	"npc_dota_hero_earthshaker"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_STRENGTH"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"earthshaker_fissure"
+		"Ability2"				"earthshaker_enchant_totem"
+		"Ability3"				"earthshaker_aftershock"
+		"Ability4"				"earthshaker_echo_slam"
+	}
+
+	//=================================================================================================================
+	// HERO: Pudge
+	//=================================================================================================================
+	"npc_dota_hero_pudge"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_STRENGTH"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"pudge_meat_hook"
+		"Ability2"				"pudge_rot"
+		"Ability3"				"pudge_flesh_heap"
+		"Ability4"				"pudge_dismember"
+	}
+
+	//=================================================================================================================
+	// HERO: Clockwerk
+	//=================================================================================================================
+	"npc_dota_hero_rattletrap"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_STRENGTH"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"rattletrap_battery_assault"
+		"Ability2"				"rattletrap_power_cogs"
+		"Ability3"				"rattletrap_rocket_flare"
+		"Ability4"				"rattletrap_hookshot"
+	}
+
+	//=================================================================================================================
+	// HERO: Timbersaw
+	//=================================================================================================================
+	"npc_dota_hero_shredder"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_STRENGTH"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"shredder_whirling_death"
+		"Ability2"				"shredder_timber_chain"
+		"Ability3"				"shredder_reactive_armor"
+		"Ability6"				"shredder_chakram"
+	}
+
+	//=================================================================================================================
+	// HERO: Tiny
+	//=================================================================================================================
+	"npc_dota_hero_tiny"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_STRENGTH"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"tiny_avalanche"
+		"Ability2"				"tiny_toss"
+		"Ability3"				"tiny_craggy_exterior"
+		"Ability4"				"tiny_grow"
+	}
+
+	//=================================================================================================================
+	// HERO: Bloodseeker
+	//=================================================================================================================
+	"npc_dota_hero_bloodseeker"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"bloodseeker_bloodrage"
+		"Ability2"				"bloodseeker_blood_bath"
+		"Ability3"				"bloodseeker_thirst"
+		"Ability4"				"bloodseeker_rupture"
+	}
+
+	//=================================================================================================================
+	// HERO: Gyrocopter
+	//=================================================================================================================
+	"npc_dota_hero_gyrocopter"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"gyrocopter_rocket_barrage"
+		"Ability2"				"gyrocopter_homing_missile"
+		"Ability3"				"gyrocopter_flak_cannon"
+		"Ability6"				"gyrocopter_call_down"
+	}
+
+	//=================================================================================================================
+	// HERO: Juggernaut
+	//=================================================================================================================
+	"npc_dota_hero_juggernaut"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"juggernaut_blade_fury"
+		"Ability2"				"juggernaut_healing_ward"
+		"Ability3"				"juggernaut_blade_dance"
+		"Ability4"				"juggernaut_omni_slash"
+	}
+
+	//=================================================================================================================
+	// HERO: Phantom Assassin
+	//=================================================================================================================
+	"npc_dota_hero_phantom_assassin"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"phantom_assassin_stifling_dagger"
+		"Ability2"				"phantom_assassin_phantom_strike"
+		"Ability3"				"phantom_assassin_blur"
+		"Ability4"				"phantom_assassin_coup_de_grace"
+	}
+
+	//=================================================================================================================
+	// HERO: Sniper
+	//=================================================================================================================
+	"npc_dota_hero_sniper"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"sniper_shrapnel"
+		"Ability2"				"sniper_headshot"
+		"Ability3"				"sniper_take_aim"
+		"Ability4"				"sniper_assassinate"
+	}
+
+	//=================================================================================================================
+	// HERO: Invoker
+	//=================================================================================================================
+	"npc_dota_hero_invoker"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"invoker_quas"
+		"Ability2"				"invoker_wex"
+		"Ability3"				"invoker_exort"
+		"Ability4"				"invoker_empty1"
+		"Ability5"				"invoker_empty2"
+		"Ability6"				"invoker_invoke"
+	}
+
+	//=================================================================================================================
+	// HERO: Lina
+	//=================================================================================================================
+	"npc_dota_hero_lina"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"lina_dragon_slave"
+		"Ability2"				"lina_light_strike_array"
+		"Ability3"				"lina_fiery_soul"
+		"Ability4"				"lina_laguna_blade"
+	}
+
+	//=================================================================================================================
+	// HERO: Queen of Pain
+	//=================================================================================================================
+	"npc_dota_hero_queenofpain"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"queenofpain_shadow_strike"
+		"Ability2"				"queenofpain_blink"
+		"Ability3"				"queenofpain_scream_of_pain"
+		"Ability4"				"queenofpain_sonic_wave"
+	}
+
+	//=================================================================================================================
+	// HERO: Rubick
+	//=================================================================================================================
+	"npc_dota_hero_rubick"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"rubick_telekinesis"
+		"Ability3"				"rubick_fade_bolt"
+		"Ability4"				"rubick_null_field"
+		"Ability5"				"rubick_empty1"
+		"Ability6"				"rubick_empty2"
+		"Ability7"				"rubick_spell_steal"
+	}
+
+	//=================================================================================================================
+	// HERO: Techies
+	//=================================================================================================================
+	"npc_dota_hero_techies"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"techies_land_mines"
+		"Ability2"				"techies_stasis_trap"
+		"Ability3"				"techies_suicide"
+		"Ability4"				"techies_focused_detonate"
+		"Ability5"				"techies_minefield_sign"
+		"Ability6"				"techies_remote_mines"
 	}
 }
