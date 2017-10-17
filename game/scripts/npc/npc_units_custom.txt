@@ -1,0 +1,164 @@
+// Units File
+"DOTAUnits"
+{
+	"Version"	"1"
+	
+	//=================================================================================	
+	// Invisible: XP
+	//=================================================================================
+	"npc_dota_xp_granter"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/development/invisiblebox.vmdl"
+		"Ability1"					"dota_ability_xp_granter"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"BountyXP"					"0"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"StatusHealth"				"5000"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+	}
+	"npc_dota_xp_global"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/development/invisiblebox.vmdl"
+		"Ability1"					"dota_ability_xp_global"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"BountyXP"					"0"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"StatusHealth"				"5000"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+	}
+
+	//=================================================================================	
+	// Crystal: Détruite, donne de la vie
+	//=================================================================================
+	"npc_dota_crystal_stone"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/prop/crystal_stone.vmdl"
+		"ModelScale" 				"1.10"
+		"Ability1"					"dota_ability_crystal_stone"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"BountyXP"					"0"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"StatusHealth"				"2"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+	}
+	//=================================================================================	
+	// Crystal Golden: Donne du gold et donne 3 points
+	//=================================================================================
+	"npc_dota_crystal_stone_golden"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/prop/crystal_stone_gold.vmdl"
+		"ModelScale" 				"1.2"
+		"Ability1"					"dota_ability_crystal_stone_golden"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"BountyXP"					"0"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"StatusHealth"				"2"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+	}
+	//=================================================================================
+	// Creature: Bonus Chicken
+	//=================================================================================
+	"npc_dota_creature_bonus_chicken"
+	{										
+		// General
+		//----------------------------------------------------------------
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/props_gameplay/chicken.vmdl"
+		"SoundSet"					"n_creep_Melee"
+		"Level"						"1"
+		"ModelScale" 				"1.5"
+		"IsNeutralUnitType"			"1"
+		"IsAncient"					"1"
+		"ConsideredHero"			"1"
+		"HasInventory"				"1"
+
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					"creature_bonus_chicken"
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"1"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"22"
+		"AttackDamageMax"			"24"
+		"AttackRate"				"1.45"
+		"AttackAnimationPoint"		"0.33"
+		"AttackAcquisitionRange"	"500"
+		"AttackRange"				"100"
+		"ProjectileModel"			""
+		"ProjectileSpeed"			"0"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"45"
+		"HealthBarOffset"			"150"
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"62"
+		"BountyGoldMin"				"22"
+		"BountyGoldMax"				"26"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"500"
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"1"
+		"StatusHealthRegen"			"0.5"
+		"StatusMana"				"60000"
+		"StatusManaRegen"			"500"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"800"
+		"VisionNighttimeRange"		"800"
+
+		// Minimap
+		//----------------------------------------------------------------
+		"MinimapIcon"					"minimap_roshancamp"
+		"MinimapIconSize"				"300"
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		// Creature Data
+		//----------------------------------------------------------------------------------------------------------------------
+		"Creature"
+		{
+			"EquippedItems"
+			{
+				"Travels"
+				{
+					"Item"					"item_travel_boots"
+				}
+			}
+
+			//Level Up
+			"HPGain"					"45"
+			"DamageGain"				"2"
+			"ArmorGain"					"0.25"
+			"MagicResistGain"			"0.1"
+			"MoveSpeedGain"				"1"
+			"BountyGain"				"2"
+			"XPGain"					"13"
+		}
+	}
+}

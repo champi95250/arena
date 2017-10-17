@@ -1,0 +1,291 @@
+// Dota Heroes File
+"DOTAAbilities"
+{
+	"Version"		"1"
+
+	//=================================================================================================================
+	// NPC: Ability Vision Revealer
+	//=================================================================================================================
+	"dota_ability_vision_revealer"
+	{
+		"BaseClass"          			    "ability_datadriven"
+		"AbilityName"           			"dota_ability_vision_revealer"
+		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"Modifiers"
+		{
+			"modifier_dota_ability_vision_revealer"
+			{
+				"IsHidden"				"1"
+				"Passive"				"1"
+				
+				"States"
+				{
+					"MODIFIER_STATE_PROVIDES_VISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_OUT_OF_GAME"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+	//=================================================================================================================
+	// NPC: Ability XP Middle
+	//=================================================================================================================
+	"dota_ability_xp_granter"
+	{
+		"BaseClass"          			    "ability_datadriven"
+		"AbilityName"           			"dota_ability_xp_granter"
+		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_health_regen"				"3"
+			}
+			"02"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_mana_regen"				"3"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_dota_ability_xp_granter"
+			{
+				"IsHidden"				"1"
+				"Passive"				"1"
+				
+				"Aura"					"modifier_get_xp"
+				"Aura_Radius"			"800"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
+				"Aura_ApplyToCaster"	"0"
+				"Aura_Flags"    		"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
+
+				"States"
+				{
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_OUT_OF_GAME"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+				"ThinkInterval"	"0.5"
+
+				"OnIntervalThink"
+				{
+					"GrantXPGold"
+					{
+						"Target"
+						{
+							"Center"		"CASTER"
+							"radius"		"800"
+							"Types"			"DOTA_UNIT_TARGET_HERO"
+							"Flags"			"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
+						}
+						"XPAmount"		"7"
+						"SplitEvenly"	"0"
+						"GoldAmount"	"8"
+						"ReliableGold"	"0"
+					}
+				}
+			}
+
+			"modifier_get_xp"
+			{
+				"Passive"       "1"
+				"EffectName"	""
+				"TextureName"	"alchemist_goblins_greed"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%bonus_health_regen"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%bonus_mana_regen"
+				}
+			}
+		}
+	}
+	//=================================================================================================================
+	// NPC: Ability XP Global
+	//=================================================================================================================
+	"dota_ability_xp_global"
+	{
+		"BaseClass"          			    "ability_datadriven"
+		"AbilityName"           			"dota_ability_xp_global"
+		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"Modifiers"
+		{
+			"modifier_dota_ability_xp_global"
+			{
+				"IsHidden"				"1"
+				"Passive"				"1"
+				
+				"Aura"					"modifier_get_xp_global"
+				"Aura_Radius"			"9000"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
+				"Aura_ApplyToCaster"	"0"
+				"Aura_Flags"    		"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
+
+				"States"
+				{
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_OUT_OF_GAME"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+				"ThinkInterval"	".5"
+
+				"OnIntervalThink"
+				{
+					"GrantXPGold"
+					{
+						"Target"
+						{
+							"Center"		"CASTER"
+							"radius"		"3400"
+							"Types"			"DOTA_UNIT_TARGET_HERO"
+							"Flags"			"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
+						}
+						"XPAmount"		"5"
+						"SplitEvenly"	"0"
+						"GoldAmount"	"3"
+						"ReliableGold"	"0"
+					}
+				}
+			}
+
+			"modifier_get_xp_global"
+			{
+				"Passive"       "1"
+				"IsHidden"		"1"
+				"EffectName"	""
+				"TextureName"	"alchemist_goblins_greed"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// NPC: crystal stone
+	//=================================================================================================================
+	"dota_ability_crystal_stone"
+	{
+		"BaseClass"          			    "ability_datadriven"
+		"AbilityName"           			"dota_ability_crystal_stone"
+		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_health_regen"				"15"
+			}
+			"02"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_mana_regen"				"7"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_crystal_stone_global"
+			{
+				"IsHidden"				"1"
+				"Passive"				"1"	
+				
+				"Aura"					"modifier_crystal_stone_regen"
+				"Aura_Radius"			"350"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
+				"Aura_ApplyToCaster"	"0"
+				"Aura_Flags"    		"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
+
+				"States"
+				{
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+
+			"modifier_crystal_stone_regen"
+			{
+				"Passive"       "1"
+				"EffectName"	""
+				"TextureName"	"crystal_maiden_brilliance_aura"
+				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%bonus_health_regen"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%bonus_mana_regen"
+				}
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// NPC: crystal stone Golden
+	//=================================================================================================================
+	"dota_ability_crystal_stone_golden"
+	{
+		"BaseClass"          			    "ability_datadriven"
+		"AbilityName"           			"dota_ability_crystal_stone"
+		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"Modifiers"
+		{
+			"modifier_crystal_stone_golden"
+			{
+				"IsHidden"				"1"
+				"Passive"				"1"	
+
+				"States"
+				{
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Creature: Bonus Chicken passive
+	//=================================================================================================================
+	"creature_bonus_chicken"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"AbilityTextureName"			"alchemist_goblins_greed"
+		"ScriptFile"					"abilities/creature_bonus_chicken"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"total_gold"			"4"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"time_limit"			"9.0"
+			}
+		}
+	}
+
+}

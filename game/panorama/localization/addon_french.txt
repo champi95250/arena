@@ -26,6 +26,8 @@
 	"BattleBeginb"			"Conditions:"
 	"BattleBeginc"			"{s:Teampointtowin} points."
 
+	"Battle_Chicken"		"CHICKEN BATTLE !"
+
 	"npc_dota_hero_silencer_notification"			"Silencer"
 	"npc_dota_hero_necrolyte_notification"			"Necrophos"
 	"npc_dota_hero_zuus_notification"				"Zeus"

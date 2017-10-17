@@ -1,7 +1,0 @@
-$sequence layer_tracer_idle "tracer_idle.dmx" fps 24.000000 hidden
-$sequence tracer_idle "tracer_idle.dmx" fps 24.000000 noanimation {
-	numframes 65
-	blendlayer layer_tracer_idle 0 -1 65 64
-	event AE_WPN_HIDE 0
-	event AE_WPN_UNHIDE 64
-}

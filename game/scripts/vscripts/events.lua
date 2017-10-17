@@ -31,14 +31,18 @@ function GameMode:OnGameRulesStateChange(keys)
 		self.NewState_spawn = 0
 		local numberOfPlayers = PlayerResource:GetPlayerCount()
 		if numberOfPlayers > 7 then -- Plus de 7 
-			self.TEAM_POINT_TO_WIN = 300
+			self.TEAM_POINT_TO_WIN = 400
 		elseif numberOfPlayers > 4 and numberOfPlayers <= 7 then -- 7 ou plus de 4
-			self.TEAM_POINT_TO_WIN = 250
-		elseif numberOfPlayers == 2 then -- 2
-			self.TEAM_POINT_TO_WIN = 125
+			self.TEAM_POINT_TO_WIN = 300
 		else -- 4 ou moins 
 			self.TEAM_POINT_TO_WIN = 200
 		end
+		for _, hero in pairs(HeroList:GetAllHeroes()) do
+			if hero:GetUnitName() == "npc_dota_hero_wisp" then return end
+			hero:RemoveModifierByName("modifier_prevent_game_start")
+			PlayerResource:SetCameraTarget(hero:GetPlayerID(), nil)
+		end
+
 	end
 
 	if NewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
@@ -55,11 +59,12 @@ function GameMode:OnGameRulesStateChange(keys)
 		self.NewState_spawn = 1
 		print("[SupremeHeroesWars] Unlock All Players")
 
-		for _, hero in pairs(HeroList:GetAllHeroes()) do
-			if hero:GetUnitName() == "npc_dota_hero_wisp" then return end
-			hero:RemoveModifierByName("modifier_prevent_game_start")
-			PlayerResource:SetCameraTarget(hero:GetPlayerID(), nil)
-		end
+		Timers:CreateTimer(0.3, function()
+			for _, hero in pairs(HeroList:GetAllHeroes()) do
+				hero:RemoveModifierByName("modifier_prevent_game_start")
+				PlayerResource:SetCameraTarget(hero:GetPlayerID(), nil)
+			end
+		end)
 
 		self.countdownEnabled = true
 		--CustomGameEventManager:Send_ServerToAllClients( "show_timer", {} ) -- (montre le timer dans le panorama)
@@ -306,7 +311,7 @@ function GameMode:pointwin_sanskill(hero, teamid)
 
 	Timers:CreateTimer(FrameTime(), function()
 
-	print("SCORE TEAM PWSK : " .. ScoreTeam[TeamID])
+	--print("SCORE TEAM PWSK : " .. ScoreTeam[TeamID])
 	local KillsRemaining = self.TEAM_POINT_TO_WIN - ScoreTeam[TeamID] -- par score maintenant PTW = 250
 
 	local broadcast_kill_event =
@@ -333,8 +338,66 @@ function GameMode:pointwin_sanskill(hero, teamid)
 		EmitGlobalSound( "ui.npe_objective_given" )
 		broadcast_kill_event.close_to_victory = 1
 	end
+	if spawnchicken_start == nil then
+		spawnchicken_start = 0
+	end
+
+	if spawnchicken_start == 0 then
+		local numberOfPlayers = PlayerResource:GetPlayerCount()
+		if numberOfPlayers > 7 and KillsRemaining <= 200 then -- 300
+			spawnchicken_start = 1
+			CustomGameEventManager:Send_ServerToAllClients( "battle_chiken", {})
+			print("spawn chicken")
+			GameMode:Thinkcustomchicken()
+		elseif numberOfPlayers > 4 and numberOfPlayers <= 7 and KillsRemaining <= 150 then -- 250
+			spawnchicken_start = 1
+			CustomGameEventManager:Send_ServerToAllClients( "battle_chiken", {})
+			print("spawn chicken")
+			GameMode:Thinkcustomchicken()
+		elseif KillsRemaining <= 125 then -- 175
+			spawnchicken_start = 1
+			CustomGameEventManager:Send_ServerToAllClients( "battle_chiken", {})
+			print("spawn chicken")
+			GameMode:Thinkcustomchicken()
+		end
+	end
+
+	if spawngem_start == nil then
+		spawngem_start = 0
+	end
+
+
+	if spawngem_start == 0 then
+		local numberOfPlayers = PlayerResource:GetPlayerCount()
+		if numberOfPlayers > 7 and KillsRemaining <= 160 then -- 300
+			spawngem_start = 1
+			print("spawn Gem")
+			GameMode:SpawnGem()
+		elseif numberOfPlayers > 4 and numberOfPlayers <= 7 and KillsRemaining <= 125 then -- 250
+			spawngem_start = 1
+			print("spawn Gem")
+			GameMode:SpawnGem()
+		elseif KillsRemaining <= 100 then -- 175
+			spawngem_start = 1
+			print("spawn Gem")
+			GameMode:SpawnGem()
+		end
+	end
+
 	end)
 
+end
+
+function GameMode:SpawnGem()
+	print("Item Gem")
+	-- POTION
+	local newItem = CreateItem( "item_crow_trow", nil, nil )
+	-- newItem:SetPurchaseTime( 0 )
+	local milieudelamap = Vector(0,0,0)
+	local drop = CreateItemOnPositionSync( milieudelamap, newItem )
+	--drop.Holdout_IsLootDrop = true
+	local dropTarget = milieudelamap + RandomVector( RandomFloat( 200, 450 ) )
+	newItem:LaunchLoot( false, 350, 2.0, dropTarget )
 end
 
 -- Unité meurt
@@ -364,7 +427,6 @@ function GameMode:OnEntityKilled( event )
 			print("Le point de ce Crystal est le " .. original)
 			SPAWN_CRYSTAL_POINT[original] = 1
 
-			print("Item Potion")
 			-- POTION
 			local newItem = CreateItem( "item_health_potion", nil, nil )
 			newItem:SetPurchaseTime( 0 )
@@ -376,7 +438,6 @@ function GameMode:OnEntityKilled( event )
 			local dropTarget = killedUnit:GetAbsOrigin() + RandomVector( RandomFloat( 50, 350 ) )
 			newItem:LaunchLoot( true, 150, 1.0, dropTarget )
 
-			print("Item Mana")
 			-- MANA
 			local newItem_mana = CreateItem( "item_mana_potion", nil, nil )
 			newItem_mana:SetPurchaseTime( 0 )
@@ -586,6 +647,11 @@ function GameMode:ScorekillUnit( killedTeam, hero )
 			GameMode:Addscore(TeamID, 3)
 		end
 	elseif killedTeam == "assist" then
+		TeamID = hero:GetTeamNumber()
+		hero.score = hero.score + 1
+		GameMode:Addscore(TeamID, 1)
+	elseif killedTeam == "poulet" then
+		TeamID = hero:GetTeamNumber()
 		hero.score = hero.score + 1
 		GameMode:Addscore(TeamID, 1)
 	else

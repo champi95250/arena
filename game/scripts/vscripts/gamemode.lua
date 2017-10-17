@@ -33,6 +33,17 @@ require('events')
 require('utility_functions/utility_time_message')
 require('utility_functions/utility_functions')
 require('utility_functions/spawn_crystal')
+require('utility_functions/spawn_chicken')
+require('internal/funcs')
+
+if IsClient() then	-- Load clientside utility lib
+	require('libraries/client_util')
+
+	--Load ability KVs
+	AbilityKV = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
+    -- IMBA_GENERIC_TALENT_LIST = LoadKeyValues("scripts/npc/KV/imba_generic_talent_list.kv")
+end
+
 
 function GameMode:PostLoadPrecache()
 	DebugPrint("[SupremeHeroesWars] Performing Post-Load precache")    
@@ -77,6 +88,14 @@ function GameMode:OnGameInProgress()
 
 	Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
 		function()
+			local NewState = GameRules:State_Get()
+			if NewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+				for _, hero in pairs(HeroList:GetAllHeroes()) do
+				if hero:GetUnitName() == "npc_dota_hero_wisp" then return end
+				hero:RemoveModifierByName("modifier_prevent_game_start")
+				PlayerResource:SetCameraTarget(hero:GetPlayerID(), nil)
+				end
+			end
 			DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
 			return 30.0 -- Rerun this timer every 30 game-time seconds 
 		end)

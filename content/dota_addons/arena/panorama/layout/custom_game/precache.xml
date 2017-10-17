@@ -1,7 +1,0 @@
-<root>
-	<Panel style="visibility:collapse;">
-		<Panel id="container" style="visibility:collapse;">
-			<Image src="file://panorama/images/random_button.png" hittest="false" />
-		</Panel>
-	</Panel>
-</root>
