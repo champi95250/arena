@@ -61,8 +61,7 @@ function modifier_item_item_crow_trow:OnIntervalThink()
 		print(KILLSREMAINING_ITEM)
 		if KILLSREMAINING_ITEM == 1 then
 			print(KILLSREMAINING_ITEM)
-      		GameMode:ScorekillUnit( "Item_crow", parent )
-      		GameMode:pointwin_sanskill(parent, teamid)
+      		Score:ScoreGem( parent )
      	end
 	end
 end
@@ -76,7 +75,7 @@ function modifier_item_vision_crow_trow:IsPurgable() return false end
 function modifier_item_vision_crow_trow:GetAttributes() return MODIFIER_ATTRIBUTE_MULTIPLE end
 
 function modifier_item_vision_crow_trow:DeclareFunctions()
-	local decFuncs = {MODIFIER_PROPERTY_PROVIDES_FOW_POSITION}
+	local decFuncs = {MODIFIER_PROPERTY_PROVIDES_FOW_POSITION, MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE}
 
 	return decFuncs
 end
@@ -85,11 +84,16 @@ function modifier_item_vision_crow_trow:OnCreated(keys)
 	self.caster = self:GetCaster()
 	self.ability = self:GetAbility()
 	self.parent = self:GetParent()
+	self.curse_slow = -25
 	if IsServer() then
 		local parent = self:GetParent()
 		if parent:HasModifier("modifier_item_vision_crow_trow") then
 		end
 	end
+end
+
+function modifier_item_vision_crow_trow:GetModifierMoveSpeedBonus_Percentage( params )
+	return self.curse_slow
 end
 
 function modifier_item_vision_crow_trow:OnDestroy(keys)

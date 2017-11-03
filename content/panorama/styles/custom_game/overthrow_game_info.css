@@ -1,0 +1,173 @@
+.OverthrowGameInfo
+{
+    width:100%;
+    flow-children: down;
+}
+ 
+Label
+{
+    font-size: 18px;
+    color: #999999;
+    vertical-align: top;
+}
+ 
+#Title
+{
+    flow-children: right;
+}
+
+#TitleIcon
+{
+    width: 0px;
+    height: 0px;
+    vertical-align: center;
+}
+
+#TitleName
+{
+    background-image: url("file://panorama/images/custom_game/loading_screen/gamemode.png"); background-size: 552px 225px;height: 225px;
+    width: 552px;
+    color: #cccccc;
+    font-size: 64px;
+    margin-left: -16px;
+    margin-top: -46px;
+    text-transform: uppercase;
+    vertical-align: center;
+}
+
+#BriefDescription
+{
+}
+
+#ThroneText,
+#CoinsText,
+#ItemsText
+{
+    width: 50%;
+}
+
+.Header
+{
+	font-size: 18px;
+    font-weight: bold;
+	margin-top: 36px;
+	text-transform: uppercase;
+}
+
+#ObjectiveHeader
+{
+	margin-top: 18px;
+}
+
+#ThroneRow
+{
+    margin-top: -40px;
+}
+
+#ThroneText
+{
+    margin-top: 60px;
+	text-align: right;
+}
+
+#ThroneImage
+{
+    margin-top: -20px;
+    width: 240px;
+    height: 352px;
+}
+
+#CoinsRow
+{
+    margin-top: -120px;
+}
+
+#CoinsImage
+{
+    width: 240px;
+    height: 256px;
+}
+
+#CoinsText
+{
+    height: 100%;
+    margin-top: 160px;
+}
+
+#ItemsRow
+{
+    margin-top: 0px;
+}
+
+#ItemsImage
+{
+    width: 181px;
+    height: 381px;
+}
+
+#ItemsText
+{
+    margin-top: 40px;
+	text-align: right;
+}
+
+#TipsHeader
+{
+	margin-top: -18px;
+}
+
+#TipsRow
+{
+	flow-children: down;
+	margin-right: 92px;
+	margin-top: 18px;
+}
+
+.TipText
+{
+	margin-left: 16px;
+    margin-top: 0px;
+}
+
+.InfoRow
+{
+    flow-children: right;
+    width: 100%;
+}
+
+
+Label .midas_throne,
+Label .overboss,
+Label .treasure
+{
+    color: #cccccc;
+    font-weight: bold;
+}
+
+Label .items,
+Label .gold,
+Label .xp
+{
+    color: #fcaf3d;
+    font-weight: bold;
+}
+
+#ScoreRow
+{
+    flow-children: down;
+    margin-right: 92px;
+    margin-left: 12px;
+    margin-top: 28px;
+}
+
+#ScoreImage
+{
+    width: 507px;
+    height: 347px;
+}
+
+.TipScoreText
+{
+    margin-left: 0px;
+    margin-top: 0px;
+}

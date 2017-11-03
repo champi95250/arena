@@ -1,0 +1,91 @@
+"F:\Program Files (x86)\SteamLibrary\steamapps\common\dota 2 beta\game\bin\win64\dota2.exe" -addon all_deathmatch -tools -steam
+
+f:\program files (x86)\steamlibrary\steamapps\common\dota 2 beta\game\dota_addons\all_deathmatch\elements\sessions\session3_play3.dmx#0
+
+1280x720 @24.00 fps
+motion blur samples:    per-camera settings
+depth of field samples: 64
+
+Frame  	Frame  	Total  	Shot                   	Map                    	DoF    	MBlur  	Total
+Number 	Time   	Time   	Name                   	Name                   	Count  	Count  	Count
+      0	  2.161	      2	shot1                 	sources_film_maker_int	   64	    8	   64
+      1	  1.118	      3	shot1                 	sources_film_maker_int	   64	    8	   64
+      2	  1.098	      4	shot1                 	sources_film_maker_int	   64	    8	   64
+      3	  1.170	      6	shot1                 	sources_film_maker_int	   64	    8	   64
+      4	  1.274	      7	shot1                 	sources_film_maker_int	   64	    8	   64
+      5	  1.228	      8	shot1                 	sources_film_maker_int	   64	    8	   64
+      6	  1.260	      9	shot1                 	sources_film_maker_int	   64	    8	   64
+      7	  1.228	     11	shot1                 	sources_film_maker_int	   64	    8	   64
+      8	  1.194	     12	shot1                 	sources_film_maker_int	   64	    8	   64
+      9	  1.237	     13	shot1                 	sources_film_maker_int	   64	    8	   64
+     10	  1.232	     14	shot1                 	sources_film_maker_int	   64	    8	   64
+     11	  1.211	     15	shot1                 	sources_film_maker_int	   64	    8	   64
+     12	  1.190	     17	shot1                 	sources_film_maker_int	   64	    8	   64
+     13	  1.213	     18	shot1                 	sources_film_maker_int	   64	    8	   64
+     14	  1.213	     19	shot1                 	sources_film_maker_int	   64	    8	   64
+     15	  1.205	     20	shot1                 	sources_film_maker_int	   64	    8	   64
+     16	  1.230	     21	shot1                 	sources_film_maker_int	   64	    8	   64
+     17	  1.250	     23	shot1                 	sources_film_maker_int	   64	    8	   64
+     18	  1.288	     24	shot1                 	sources_film_maker_int	   64	    8	   64
+     19	  1.221	     25	shot1                 	sources_film_maker_int	   64	    8	   64
+     20	  1.222	     26	shot1                 	sources_film_maker_int	   64	    8	   64
+     21	  1.189	     28	shot1                 	sources_film_maker_int	   64	    8	   64
+     22	  1.148	     29	shot1                 	sources_film_maker_int	   64	    8	   64
+     23	  1.164	     30	shot1                 	sources_film_maker_int	   64	    8	   64
+     24	  1.154	     31	shot1                 	sources_film_maker_int	   64	    8	   64
+     25	  1.275	     32	shot1                 	sources_film_maker_int	   64	    8	   64
+     26	  1.148	     34	shot1                 	sources_film_maker_int	   64	    8	   64
+     27	  1.163	     35	shot1                 	sources_film_maker_int	   64	    8	   64
+     28	  1.188	     36	shot1                 	sources_film_maker_int	   64	    8	   64
+     29	  1.161	     37	shot1                 	sources_film_maker_int	   64	    8	   64
+     30	  1.116	     38	shot1                 	sources_film_maker_int	   64	    8	   64
+     31	  1.140	     39	shot1                 	sources_film_maker_int	   64	    8	   64
+     32	  1.158	     40	shot1                 	sources_film_maker_int	   64	    8	   64
+     33	  1.234	     42	shot1                 	sources_film_maker_int	   64	    8	   64
+     34	  1.198	     43	shot1                 	sources_film_maker_int	   64	    8	   64
+     35	  1.171	     44	shot1                 	sources_film_maker_int	   64	    8	   64
+     36	  1.166	     45	shot1                 	sources_film_maker_int	   64	    8	   64
+     37	  1.170	     46	shot1                 	sources_film_maker_int	   64	    8	   64
+     38	  1.185	     48	shot1                 	sources_film_maker_int	   64	    8	   64
+     39	  1.149	     49	shot1                 	sources_film_maker_int	   64	    8	   64
+     40	  1.169	     50	shot1                 	sources_film_maker_int	   64	    8	   64
+     41	  1.208	     51	shot1                 	sources_film_maker_int	   64	    8	   64
+     42	  1.193	     52	shot1                 	sources_film_maker_int	   64	    8	   64
+     43	  1.182	     53	shot1                 	sources_film_maker_int	   64	    8	   64
+     44	  1.204	     55	shot1                 	sources_film_maker_int	   64	    8	   64
+     45	  1.167	     56	shot1                 	sources_film_maker_int	   64	    8	   64
+     46	  1.164	     57	shot1                 	sources_film_maker_int	   64	    8	   64
+     47	  1.178	     58	shot1                 	sources_film_maker_int	   64	    8	   64
+     48	  1.176	     59	shot1                 	sources_film_maker_int	   64	    8	   64
+     49	  1.228	     61	shot1                 	sources_film_maker_int	   64	    8	   64
+     50	  1.169	     62	shot1                 	sources_film_maker_int	   64	    8	   64
+     51	  1.233	     63	shot1                 	sources_film_maker_int	   64	    8	   64
+     52	  1.180	     64	shot1                 	sources_film_maker_int	   64	    8	   64
+     53	  1.390	     66	shot1                 	sources_film_maker_int	   64	    8	   64
+     54	  1.285	     67	shot1                 	sources_film_maker_int	   64	    8	   64
+     55	  1.205	     68	shot1                 	sources_film_maker_int	   64	    8	   64
+     56	  1.211	     69	shot1                 	sources_film_maker_int	   64	    8	   64
+     57	  1.207	     70	shot1                 	sources_film_maker_int	   64	    8	   64
+     58	  1.171	     72	shot1                 	sources_film_maker_int	   64	    8	   64
+     59	  1.175	     73	shot1                 	sources_film_maker_int	   64	    8	   64
+     60	  1.174	     74	shot1                 	sources_film_maker_int	   64	    8	   64
+     61	  1.152	     75	shot1                 	sources_film_maker_int	   64	    8	   64
+     62	  1.154	     76	shot1                 	sources_film_maker_int	   64	    8	   64
+     63	  1.183	     77	shot1                 	sources_film_maker_int	   64	    8	   64
+     64	  1.174	     79	shot1                 	sources_film_maker_int	   64	    8	   64
+     65	  1.167	     80	shot1                 	sources_film_maker_int	   64	    8	   64
+     66	  1.177	     81	shot1                 	sources_film_maker_int	   64	    8	   64
+     67	  1.162	     82	shot1                 	sources_film_maker_int	   64	    8	   64
+     68	  1.151	     83	shot1                 	sources_film_maker_int	   64	    8	   64
+     69	  1.163	     84	shot1                 	sources_film_maker_int	   64	    8	   64
+     70	  1.153	     86	shot1                 	sources_film_maker_int	   64	    8	   64
+     71	  1.183	     87	shot1                 	sources_film_maker_int	   64	    8	   64
+     72	  1.154	     88	shot1                 	sources_film_maker_int	   64	    8	   64
+     73	  1.137	     89	shot1                 	sources_film_maker_int	   64	    8	   64
+     74	  1.203	     90	shot1                 	sources_film_maker_int	   64	    8	   64
+     75	  1.146	     91	shot1                 	sources_film_maker_int	   64	    8	   64
+     76	  1.138	     93	shot1                 	sources_film_maker_int	   64	    8	   64
+     77	  1.178	     94	shot1                 	sources_film_maker_int	   64	    8	   64
+     78	  1.136	     95	shot1                 	sources_film_maker_int	   64	    8	   64
+
+finished rendering 79 frames

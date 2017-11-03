@@ -40,8 +40,8 @@ function GameMode:_OnNPCSpawned(keys)
 
   if npc:IsRealHero() and npc.bFirstSpawned == nil then
     npc.bFirstSpawned = true
-    GameMode:OnHeroInGame(npc)
   end
+  GameMode:OnHeroInGame(npc)
 
   GameMode._reentrantCheck = true
   GameMode._reentrantCheck = false
@@ -63,11 +63,7 @@ function GameMode:_OnEntityKilled( keys )
   end
 
   if killedUnit:IsRealHero() then 
-    DebugPrint("KILLED, KILLER: " .. killedUnit:GetName() .. " -- " .. killerEntity:GetName())
-    if END_GAME_ON_KILLS and GetTeamHeroKills(killerEntity:GetTeam()) >= KILLS_TO_END_GAME_FOR_TEAM then
-      GameRules:SetSafeToLeave( true )
-      GameRules:SetGameWinner( killerEntity:GetTeam() )
-    end
+    -- DebugPrint("KILLED, KILLER: " .. killedUnit:GetName() .. " -- " .. killerEntity:GetName())
 
     --PlayerResource:GetTeamKills
     if SHOW_KILLS_ON_TOPBAR then

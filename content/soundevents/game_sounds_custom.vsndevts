@@ -177,3 +177,316 @@
 		}
 	}
 }
+
+"General.FemaleLevelUp"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"src1_3d"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/ui/levelup_female.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value" "0.800000"
+					}
+					"pitch"
+					{
+						"value" "1.000000"
+					}
+					"event_type"
+					{
+						"value"		"3.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"General.Chicken"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"src1_3d"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/skywrath/taunt_chicken.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value" "1.000000"
+					}
+					"pitch"
+					{
+						"value" "1.000000"
+					}
+					"event_type"
+					{
+						"value"		"3.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"General.Begin"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"src1_3d"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/addons/conquest/capture_point_timer.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value" "0.800000"
+					}
+					"pitch"
+					{
+						"value" "1.000000"
+					}
+					"event_type"
+					{
+						"value"		"3.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"General.Player_Finish"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"src1_3d"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/ui/menu/trophy_new.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value" "1.000000"
+					}
+					"pitch"
+					{
+						"value" "1.000000"
+					}
+					"event_type"
+					{
+						"value"		"3.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"General.Loup"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"src1_3d"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/ambient/soundscapes/diretide/diretide_wolf_04.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value" "1.000000"
+					}
+					"pitch"
+					{
+						"value" "1.000000"
+					}
+					"event_type"
+					{
+						"value"		"3.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"Music.Roshan"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack" "dota_src1_3d"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/addons/conquest/stinger_hulk_hallow.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value"		"6.000000"
+					}
+					"volume_min"
+					{
+						"value"		"6.000000"
+					}
+					"volume_max"
+					{
+						"value"		"6.000000"
+					}
+					"pitch_min"
+					{
+						"value"		"1.000000"
+					}
+					"pitch_max"
+					{
+						"value"		"1.000000"
+					}
+					"chan_type"
+					{
+						"value"		"6"
+					}
+					"memory_type"
+					{
+						"value"		"0"
+					}
+				"soundlevel" { "value" "100.00000" }
+				}
+			}
+		}
+	}
+}
+
+"Roshann.Tombe"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_src1_3d"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/creep/roshan/slam.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value" "1.000000"
+					}
+					"pitch"
+					{
+						"value" "1.000000"
+					}
+					"event_type"
+					{
+						"value"		"1.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"Roshan.Cryy"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"src1_3d"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/creep/roshan/dt/scream.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value" "1.000000"
+					}
+					"pitch"
+					{
+						"value" "1.000000"
+					}
+					"event_type"
+					{
+						"value"		"3.000000"
+					}
+				}
+			}
+		}
+	}
+}

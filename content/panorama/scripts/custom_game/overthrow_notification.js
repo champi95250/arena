@@ -238,7 +238,7 @@ function Onbattlechiken( data )
 {
 //	$.Msg( "Overtime Goal: ", data );
 	$.GetContextPanel().SetHasClass( "On_battlechiken", true );
-	$.Schedule( 5, ClearKillMessagebattlechiken );
+	$.Schedule( 1, ClearKillMessagebattlechiken );
 }
 		
 function ClearKillMessagebattlechiken()

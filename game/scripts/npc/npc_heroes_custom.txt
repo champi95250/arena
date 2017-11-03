@@ -213,4 +213,217 @@
 		"Ability3"				"crystal_maiden_brilliance_aura"					
 		"Ability4" 				"crystal_maiden_freezing_field" 
 	}
+	//=================================================================================================================
+	// HERO: Omni
+	//=================================================================================================================
+	"npc_dota_hero_omniknight"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_STRENGTH"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"omniknight_purification"
+		"Ability2"				"omniknight_repel"
+		"Ability3"				"omniknight_degen_aura"
+		"Ability4"				"omniknight_guardian_angel"		
+	}
+	//=================================================================================================================
+	// HERO: SK
+	//=================================================================================================================
+	"npc_dota_hero_sand_king"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_STRENGTH"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"					"sandking_burrowstrike"					// Ability 1
+		"Ability2"					"sandking_sand_storm"					// Ability 2
+		"Ability3"					"sandking_caustic_finale"				// Ability 3
+		"Ability4"					"sandking_epicenter"		
+	}
+	//=================================================================================================================
+	// HERO: Spirit Breaker
+	//=================================================================================================================
+	"npc_dota_hero_spirit_breaker"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_STRENGTH"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"					"spirit_breaker_charge_of_darkness"		// Ability 1
+		"Ability2"					"spirit_breaker_empowering_haste"		// Ability 2
+		"Ability3"					"spirit_breaker_greater_bash"			// Ability 3
+		"Ability4"					"spirit_breaker_nether_strike"	
+	}
+	//=================================================================================================================
+	// HERO: Axe
+	//=================================================================================================================
+	"npc_dota_hero_axe" 
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_STRENGTH"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"axe_berserkers_call"						// Ability 1
+		"Ability2"				"axe_battle_hunger"							// Ability 2
+		"Ability3"				"axe_counter_helix"							// Ability 3
+		"Ability4"				"axe_culling_blade"	
+	}
+	//=================================================================================================================
+	// HERO: Sven
+	//=================================================================================================================
+	"npc_dota_hero_sven"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_STRENGTH"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"sven_storm_bolt"						// Ability 1
+		"Ability2"				"sven_great_cleave"						// Ability 2
+		"Ability3"				"sven_warcry"							// Ability 3
+		"Ability4"				"sven_gods_strength"	
+	}
+	//=================================================================================================================
+	// HERO: Antimage
+	//=================================================================================================================
+	"npc_dota_hero_antimage"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"					"antimage_mana_break"					// Ability 1
+		"Ability2"					"antimage_blink"						// Ability 2
+		"Ability3"					"antimage_spell_shield"					// Ability 3
+		"Ability4"					"antimage_mana_void"
+	}
+	//=================================================================================================================
+	// HERO: Spectre
+	//=================================================================================================================
+	"npc_dota_hero_spectre"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"					"spectre_spectral_dagger"	// Ability 1
+		"Ability2"					"spectre_desolate"			// Ability 2
+		"Ability3"					"spectre_dispersion"		// Ability 3
+		"Ability4"					"spectre_reality"			// Ability 4
+		"Ability5"					"spectre_haunt"
+	}
+	//=================================================================================================================
+	// HERO: Ogre Magi
+	//=================================================================================================================
+	"npc_dota_hero_ogre_magi"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"					"ogre_magi_fireblast"
+		"Ability2"					"ogre_magi_ignite"
+		"Ability3"					"ogre_magi_bloodlust"
+		"Ability5"					"ogre_magi_multicast" 
+	}
+	//=================================================================================================================
+	// HERO: Viper
+	//=================================================================================================================
+	"npc_dota_hero_viper"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"viper_poison_attack"					// Ability 1
+		"Ability2"				"viper_nethertoxin"						// Ability 2
+		"Ability3"				"viper_corrosive_skin"					// Ability 3
+		"Ability4"				"viper_viper_strike"	
+	}
+	//=================================================================================================================
+	// HERO: Drow
+	//=================================================================================================================
+	"npc_dota_hero_drow_ranger"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"					"drow_ranger_frost_arrows"				// Ability 1
+		"Ability2"					"drow_ranger_wave_of_silence"					// Ability 2
+		"Ability3"					"drow_ranger_trueshot"					// Ability 3
+		"Ability4"					"drow_ranger_marksmanship"
+	}
+	//=================================================================================================================
+	// HERO: Mirana
+	//=================================================================================================================
+	"npc_dota_hero_mirana"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"mirana_starfall"							// Ability 1
+		"Ability2"				"mirana_arrow"								// Ability 2
+		"Ability3"				"mirana_leap"								// Ability 3
+		"Ability4"				"mirana_invis"	
+	}
+	//=================================================================================================================
+	// HERO: Zeus
+	//=================================================================================================================
+	"npc_dota_hero_zuus"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"					"zuus_arc_lightning"					// Ability 1
+		"Ability2"					"zuus_lightning_bolt"					// Ability 2
+		"Ability3"					"zuus_static_field"						// Ability 3
+		"Ability5"					"zuus_thundergods_wrath"	
+	}
+	//=================================================================================================================
+	// HERO: Lion
+	//=================================================================================================================
+	"npc_dota_hero_lion"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"lion_impale"				// Ability 1
+		"Ability2"				"lion_voodoo"				// Ability 2
+		"Ability3"				"lion_mana_drain"			// Ability 3
+		"Ability4"				"lion_finger_of_death"		
+	}
+	//=================================================================================================================
+	// HERO: Silencer
+	//=================================================================================================================
+	"npc_dota_hero_silencer"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"					"silencer_curse_of_the_silent"
+		"Ability2"					"silencer_glaives_of_wisdom"
+		"Ability3"					"silencer_last_word"
+		"Ability4"					"silencer_global_silence"		
+	}
+	//=================================================================================================================
+	// HERO: Windrunner
+	//=================================================================================================================
+	"npc_dota_hero_windrunner"
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+
+		"Ability1"				"windrunner_shackleshot"					// Ability 1
+		"Ability2"				"windrunner_powershot"						// Ability 2
+		"Ability3"				"windrunner_windrun"						// Ability 3
+		"Ability4"				"windrunner_focusfire"		
+	}
+
+
+
+
+	// DISABLE TECHIES FOR THE MOMENT
+	"npc_dota_hero_techies" 
+	{
+		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"IsDisabled"			"0" // Obligatoire pour être visible
+	
+		"Ability1"					"techies_land_mines"									
+		"Ability2"					"techies_stasis_trap"									
+		"Ability3"					"techies_suicide"								
+		"Ability4"					"techies_focused_detonate"
+		"Ability5"					"techies_minefield_sign"								
+		"Ability6"					"techies_remote_mines"	
+	}
 }

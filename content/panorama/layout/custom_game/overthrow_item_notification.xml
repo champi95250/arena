@@ -1,22 +1,18 @@
 <root>
 	<styles>
 		<include src="file://{resources}/styles/dotastyles.css" />
+	    <include src="file://{resources}/styles/hud.css"/>
+	    <include src="file://{resources}/styles/hudstyles.css"/>
+	    <include src="file://{resources}/styles/dashboard_page_controlslibrary.css" />
 		<include src="file://{resources}/styles/custom_game/overthrow_item_notification.css" />
+		<include src="file://{resources}/styles/custom_game/hud_main.css" />
 	</styles>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/overthrow_notification.js" />
+		<include src="file://{resources}/scripts/custom_game/hud_main.js" />
 	</scripts>
 	<Panel hittest="false" class="OverthrowNotification">
 		<Panel hittest="false" class="OverthrowItemNotification">
-			<Panel hittest="false" id="AlertTimer" text="">
-				<Label hittest="false" id="AlertTimer_Text" class="TitleFont" text="" />
-				<Label hittest="false" id="AlertTimer_Remaining" class="TitleFont" text="#Remaining" />
-			</Panel>
-			<Panel hittest="false" id="Overtime" text="">
-				<Label hittest="false" id="Overtime_Text" class="TitleFont" text="#Overtime" />
-				<Label hittest="false" id="Overtime_Instructions" class="TitleFont" text="#OvertimeInstructions" />
-				<Label hittest="false" id="Overtime_Goal" class="TitleFont" text="" />
-			</Panel>
 			<Panel hittest="false" id="AlertMessage" text="">
 				<Label hittest="false" id="AlertMessage_Chest" class="TitleFont" text="" html="true" />
 				<Label hittest="false" id="AlertMessage_Delivery" class="TitleFont" text="" html="true" />
@@ -37,13 +33,20 @@
 				<Label hittest="false" id="KillMessage_Bounty" class="TitleFont" text="#KillMessageBounty" />
 			</Panel>
 			<Panel hittest="false" id="BeginMessage" text="">
-				<Label hittest="false" id="Battle_Begin" class="TitleFont" text="#BattleBegin" />
+				<Label hittest="false" id="Battle_Begin" class="TitleFont" text="#" />
 				<Label hittest="false" id="Battle_Begin_a" class="TitleFont" text="#BattleBeginb" />
 				<Label hittest="false" id="Battle_Begin_b" class="TitleFont" text="#BattleBeginc" />
 			</Panel>
 			<Panel hittest="false" id="BattleChiken" text="">
 				<Label hittest="false" id="Battle_Chicken" class="TitleFont" text="#Battle_Chicken" />
 			</Panel>
+
+			<Panel id="RoundStartPanel" hittest="false">
+				<Panel hittest="false" id="PickupImages" text="">
+					<Panel id="RoundArt" hittest="false"/>
+				 </Panel>
+		    </Panel>
+
 		</Panel>
 	</Panel>
 </root>

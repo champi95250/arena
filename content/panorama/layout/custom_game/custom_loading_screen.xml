@@ -6,8 +6,5 @@
 		<Panel id="CustomFond" >
 			<Image id="gamemodefond" class="SeqImgcustom" src="file://{images}/custom_game/loading_screen/loading_screen_picture.png" />
 		</Panel>
-		<Panel id="CustomBg" >
-			<Image id="gamemode" class="SeqImg" src="file://{images}/custom_game/loading_screen/gamemode.png" />
-		</Panel>
 	</Panel>
 </root>

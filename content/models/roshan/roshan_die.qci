@@ -1,0 +1,7 @@
+$sequence layer_roshan_die "roshan_die.dmx" fps 24.000000 hidden
+$sequence roshan_die "roshan_die.dmx" fps 24.000000 noanimation {
+	numframes 185
+	blendlayer layer_roshan_die 0 4 180 184
+	event AE_WPN_HIDE 0
+	event AE_WPN_UNHIDE 184
+}

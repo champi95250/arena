@@ -30,9 +30,9 @@ function CountdownTimer()
             timer_second_10 = s10,
             timer_second_01 = s01,
         }
-    CustomGameEventManager:Send_ServerToAllClients( "countdown", broadcast_gametimer )
+    --CustomGameEventManager:Send_ServerToAllClients( "countdown", broadcast_gametimer )
     if t <= 120 then -- si le temps arrive a moins de 120 = 2 minutes 
-        CustomGameEventManager:Send_ServerToAllClients( "time_remaining", broadcast_gametimer )
+        --CustomGameEventManager:Send_ServerToAllClients( "time_remaining", broadcast_gametimer )
     end
 end
 

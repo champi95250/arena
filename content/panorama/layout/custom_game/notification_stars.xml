@@ -1,0 +1,18 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/notification_stars.css" />
+		<include src="s2r://panorama/styles/dotastyles.css" /> 
+		 <!-- <include src="s2r://panorama/styles/dotastyles.css" />  -->
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/notification_stars.js" />
+	</scripts>
+	<Panel hittest="false" class="StarsNotification">
+		<Panel hittest="false" class="StarsNotificationsss">
+			<Panel hittest="false" id="StarsMessage" text="">
+				<Image hittest="false" id="PickupMessage_Etoile" />
+				<Label hittest="false" id="AlertMessage_etoile" text="X 10" />
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

@@ -23,22 +23,42 @@ function GameMode:OnGameRulesStateChange(keys)
 
 	-- Picking Screen init..
 	if NewState == DOTA_GAMERULES_STATE_HERO_SELECTION then
-		print("Running Hero Selection script")
-		HeroSelection:HeroListPreLoad()
+
+		-- Pick Random hero if the player don't pick
+		Timers:CreateTimer(HERO_SELECTION_TIME, function()
+			for i = 0, DOTA_MAX_TEAM_PLAYERS do
+				if PlayerResource:IsValidPlayer(i) then
+					if PlayerResource:HasSelectedHero(i) == false then
+						local player = PlayerResource:GetPlayer(i)
+						player:MakeRandomHeroSelection()
+					end
+				end
+			end
+		end)
 	end
 
 	if NewState == DOTA_GAMERULES_STATE_PRE_GAME then
 		self.NewState_spawn = 0
 		local numberOfPlayers = PlayerResource:GetPlayerCount()
-		if numberOfPlayers > 7 then -- Plus de 7 
-			self.TEAM_POINT_TO_WIN = 400
-		elseif numberOfPlayers > 4 and numberOfPlayers <= 7 then -- 7 ou plus de 4
-			self.TEAM_POINT_TO_WIN = 300
-		else -- 4 ou moins 
-			self.TEAM_POINT_TO_WIN = 200
+		if numberOfPlayers == 10 or numberOfPlayers == 9 then 
+			self.TEAM_POINT_TO_WIN = 425
+		elseif numberOfPlayers == 8 or numberOfPlayers == 7 then 
+			self.TEAM_POINT_TO_WIN = 325
+		elseif numberOfPlayers == 6 or numberOfPlayers == 5 then 
+			self.TEAM_POINT_TO_WIN = 250
+		elseif numberOfPlayers == 4 or numberOfPlayers == 3 then 
+			self.TEAM_POINT_TO_WIN = 210
+		elseif numberOfPlayers == 2 or numberOfPlayers == 1 then 
+			self.TEAM_POINT_TO_WIN = 150
 		end
+		local battle_begiin =
+		{
+			Teampointtowin = self.TEAM_POINT_TO_WIN
+		}
+		local Teampointtowin = self.TEAM_POINT_TO_WIN
+		CustomGameEventManager:Send_ServerToAllClients( "victory_condition", {Teampointtowin=Teampointtowin})
 		for _, hero in pairs(HeroList:GetAllHeroes()) do
-			if hero:GetUnitName() == "npc_dota_hero_wisp" then return end
+			-- if hero:GetUnitName() == "npc_dota_hero_wisp" then return end
 			hero:RemoveModifierByName("modifier_prevent_game_start")
 			PlayerResource:SetCameraTarget(hero:GetPlayerID(), nil)
 		end
@@ -47,22 +67,33 @@ function GameMode:OnGameRulesStateChange(keys)
 
 	if NewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 		print( "OnGameRulesStateChange: Game In Progress" )
-		print("CUSTOM EVENT")
-		print("PTW : " .. self.TEAM_POINT_TO_WIN)
+		print("Point pour Win la game : " .. self.TEAM_POINT_TO_WIN)
+		print("Initilisation des scores des joueurs présents")
+		Score:Init()
 		local battle_begiin =
 			{
 				Teampointtowin = self.TEAM_POINT_TO_WIN
 			}
 			local Teampointtowin = self.TEAM_POINT_TO_WIN
 			CustomGameEventManager:Send_ServerToAllClients( "battle_begiin", {Teampointtowin=Teampointtowin})
+			CustomGameEventManager:Send_ServerToAllClients( "victory_condition", {Teampointtowin=Teampointtowin})
 
 		self.NewState_spawn = 1
 		print("[SupremeHeroesWars] Unlock All Players")
+		--PingMiniMapAtLocation(Vector(0, 0, 0) ) -- Ping a 0 0 0 
+		EmitGlobalSound( "General.Begin" )
 
 		Timers:CreateTimer(0.3, function()
 			for _, hero in pairs(HeroList:GetAllHeroes()) do
 				hero:RemoveModifierByName("modifier_prevent_game_start")
 				PlayerResource:SetCameraTarget(hero:GetPlayerID(), nil)
+
+				heroenti = EntIndexToHScript(hero:entindex())
+				playerID = heroenti:GetPlayerID()
+				local nombredetoile = 0
+				CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "stars_notification", { nombredetoile = nombredetoile } )
+				-- le score a t il etait crée pour le héro ? 1 = oui
+				hero.score = 1
 			end
 		end)
 
@@ -95,12 +126,16 @@ function GameMode:OnNPCSpawned(keys)
 				npc:AddNewModifier(npc, npc, "modifier_prevent_game_start", {})
 				PlayerResource:SetCameraTarget(npc:GetPlayerID(), npc)
 			end
-			npc.score = 0
 			-- Le code pour appliqué le modifier qui stun tout le monde
 		else
-			if not npc.score then npc.score = 0 end
 			RespawnAtSpawnPoint(npc)
-			npc:AddNewModifier(npc, npc, "modifier_respawn_immu", {duration = 5})
+			local ply = npc:GetPlayerID()
+			-- print("Player ID : " .. ply)
+			if npc.score == nil then
+				print("Nouveau player sans score")
+				Score:InitPlayer(ply)
+				npc.score = 1
+			end
 --			print("[SupremeHeroesWars] Spawn Check")
 --			print("SPAWN 1 = " .. SPAWN_POINT[1]) -- radiant
 --			print("SPAWN 2 = " .. SPAWN_POINT[2]) -- dire
@@ -119,8 +154,18 @@ end
 function RespawnAtSpawnPoint(hero)
 	local random = RandomInt(1, 10)
 	local point = Entities:FindByName(nil, "spawn_point_"..random)
+
+	if hero.reincarnationspawn == nil then
+		hero.reincarnationspawn = 0
+	end
+
+	if hero.reincarnationspawn == 1 then
+		hero.reincarnationspawn = 0
+		return nil
+	end
 	if SPAWN_POINT[random] == 1 then
 		SPAWN_POINT[random] = 0 
+		hero:AddNewModifier(hero, hero, "modifier_respawn_immu", {duration = 5})
 		FindClearSpaceForUnit(hero, point:GetAbsOrigin(), false)
 		PlayerResource:SetCameraTarget(hero:GetPlayerOwnerID(), hero)
 		Timers:CreateTimer(0.1, function()
@@ -256,26 +301,13 @@ function GameMode:OnPlayerPickHero(keys)
 	local player = EntIndexToHScript(keys.player)
 end
 
-ScoreTeam = {} -- Spawn Point activé? 1 = oui
-ScoreTeam[2] = 0 -- radiant
-ScoreTeam[3] = 0 -- dire 
-ScoreTeam[4] = 0 -- NEUTRE
-ScoreTeam[5] = 0 -- 3
-ScoreTeam[6] = 0 -- 4 
-ScoreTeam[7] = 0 -- 5
-ScoreTeam[8] = 0 -- 6
-ScoreTeam[9] = 0 -- 7
-ScoreTeam[10] = 0 -- 8
-ScoreTeam[11] = 0 -- 9
-ScoreTeam[12] = 0 -- 10
-ScoreTeam[13] = 0 -- 10
-
--- value
-function GameMode:Addscore(TeamID, value)
-		ScoreTeam[TeamID] = ScoreTeam[TeamID] + value
-		print("SCORE TEAM " .. TeamID .. " = " ..ScoreTeam[TeamID])
-		CustomGameEventManager:Send_ServerToAllClients("SetTopBarScoreValue", { teamId = TeamID, teamScore = ScoreTeam[TeamID] } )
-
+function GameMode:OnHeroInGame(hero)
+	Timers:CreateTimer(0.1, function()
+		if hero:GetUnitName() ~= "npc_dota_hero_wisp" then
+			print("Hero No Io")
+			hero.picked = true
+		end
+	end)
 end
 
 -- A player killed another player in a multi-team context ?
@@ -300,7 +332,7 @@ function GameMode:OnTeamKillCredit(event)
 
 		end
 	end ]]
-	GameMode:pointwin_sanskill(KillerID, TeamID)
+	--GameMode:pointwin_sanskill(KillerID, TeamID)
 
 end
 
@@ -327,6 +359,9 @@ function GameMode:pointwin_sanskill(hero, teamid)
 	}
 
 	if KillsRemaining <= 0 then
+
+		GameMode:tpendplayer()
+
 		GameRules:SetCustomVictoryMessage( self.m_VictoryMessages[TeamID] )
 		GameRules:SetGameWinner( TeamID )
 		KILLSREMAINING_ITEM = 0
@@ -334,61 +369,300 @@ function GameMode:pointwin_sanskill(hero, teamid)
 	elseif KillsRemaining == 1 then
 		EmitGlobalSound( "ui.npe_objective_complete" )
 		broadcast_kill_event.very_close_to_victory = 1
-	elseif KillsRemaining <= 5 then
-		EmitGlobalSound( "ui.npe_objective_given" )
+	elseif KillsRemaining == 20 then
+		EmitGlobalSound( "General.Player_Finish" )
+		local netTable = {}
+		netTable["round_number"] = 7
+		CustomGameEventManager:Send_ServerToAllClients( "round_started", netTable )
+		broadcast_kill_event.close_to_victory = 1
+	elseif KillsRemaining == 10 then
+		EmitGlobalSound( "General.Player_Finish" )
+		local netTable = {}
+		netTable["round_number"] = 7
+		CustomGameEventManager:Send_ServerToAllClients( "round_started", netTable )
 		broadcast_kill_event.close_to_victory = 1
 	end
+
 	if spawnchicken_start == nil then
 		spawnchicken_start = 0
 	end
-
-	if spawnchicken_start == 0 then
-		local numberOfPlayers = PlayerResource:GetPlayerCount()
-		if numberOfPlayers > 7 and KillsRemaining <= 200 then -- 300
-			spawnchicken_start = 1
-			CustomGameEventManager:Send_ServerToAllClients( "battle_chiken", {})
-			print("spawn chicken")
-			GameMode:Thinkcustomchicken()
-		elseif numberOfPlayers > 4 and numberOfPlayers <= 7 and KillsRemaining <= 150 then -- 250
-			spawnchicken_start = 1
-			CustomGameEventManager:Send_ServerToAllClients( "battle_chiken", {})
-			print("spawn chicken")
-			GameMode:Thinkcustomchicken()
-		elseif KillsRemaining <= 125 then -- 175
-			spawnchicken_start = 1
-			CustomGameEventManager:Send_ServerToAllClients( "battle_chiken", {})
-			print("spawn chicken")
-			GameMode:Thinkcustomchicken()
-		end
-	end
-
 	if spawngem_start == nil then
 		spawngem_start = 0
 	end
 
-
-	if spawngem_start == 0 then
+	-- Poulet Début de game
+	if spawnchicken_start == 0 then
 		local numberOfPlayers = PlayerResource:GetPlayerCount()
-		if numberOfPlayers > 7 and KillsRemaining <= 160 then -- 300
-			spawngem_start = 1
-			print("spawn Gem")
-			GameMode:SpawnGem()
-		elseif numberOfPlayers > 4 and numberOfPlayers <= 7 and KillsRemaining <= 125 then -- 250
-			spawngem_start = 1
-			print("spawn Gem")
-			GameMode:SpawnGem()
-		elseif KillsRemaining <= 100 then -- 175
-			spawngem_start = 1
-			print("spawn Gem")
-			GameMode:SpawnGem()
+		if numberOfPlayers == 10 or numberOfPlayers == 9 then 
+			if KillsRemaining <= 340 then
+				EmitGlobalSound( "General.Chicken" )
+				
+				spawnchicken_start = 1
+				print("spawn chicken")
+				GameMode:Thinkcustomchicken()
+
+				local netTable = {}
+				netTable["round_number"] = 1
+				CustomGameEventManager:Send_ServerToAllClients( "round_started", netTable )
+
+			end
+		elseif numberOfPlayers == 8 or numberOfPlayers == 7 then 
+			if KillsRemaining <= 260 then
+				EmitGlobalSound( "General.Chicken" )
+				spawnchicken_start = 1
+				print("spawn chicken")
+				GameMode:Thinkcustomchicken()
+
+				local netTable = {}
+				netTable["round_number"] = 1
+				CustomGameEventManager:Send_ServerToAllClients( "round_started", netTable )
+				
+			end
+		elseif numberOfPlayers == 6 or numberOfPlayers == 5 then 
+			if KillsRemaining <= 200 then
+				EmitGlobalSound( "General.Chicken" )
+				spawnchicken_start = 1
+				print("spawn chicken")
+				GameMode:Thinkcustomchicken()
+
+				local netTable = {}
+				netTable["round_number"] = 1
+				CustomGameEventManager:Send_ServerToAllClients( "round_started", netTable )
+				
+			end
+		elseif numberOfPlayers == 4 or numberOfPlayers == 3 then 
+			if KillsRemaining <= 165 then
+				EmitGlobalSound( "General.Chicken" )
+				spawnchicken_start = 1
+				print("spawn chicken")
+				GameMode:Thinkcustomchicken()
+
+				local netTable = {}
+				netTable["round_number"] = 1
+				CustomGameEventManager:Send_ServerToAllClients( "round_started", netTable )
+				
+			end
+		elseif numberOfPlayers == 2 or numberOfPlayers == 1 then 
+			if KillsRemaining <= 110 then
+				EmitGlobalSound( "General.Chicken" )
+				spawnchicken_start = 1
+				print("spawn chicken")
+				GameMode:Thinkcustomchicken()
+
+				local netTable = {}
+				netTable["round_number"] = 1
+				CustomGameEventManager:Send_ServerToAllClients( "round_started", netTable )
+				
+			end
 		end
 	end
 
+	if self.Roundwolf == 0 then
+		local numberOfPlayers = PlayerResource:GetPlayerCount()
+		if numberOfPlayers == 10 or numberOfPlayers == 9 then 
+			if KillsRemaining <= 140 then
+				print("Loup Mode")
+				Score:TrieScore()
+			end
+		elseif numberOfPlayers == 8 or numberOfPlayers == 7 then 
+			if KillsRemaining <= 110 then
+				print("Loup Mode")
+				Score:TrieScore()
+			end
+		elseif numberOfPlayers == 6 or numberOfPlayers == 5 then 
+			if KillsRemaining <= 85 then
+				print("Loup Mode")
+				Score:TrieScore()
+			end
+		elseif numberOfPlayers == 4 then 
+			if KillsRemaining <= 70 then
+				print("Loup Mode")
+				Score:TrieScore()
+			end
+		elseif numberOfPlayers == 2 or numberOfPlayers == 1 or numberOfPlayers == 3 then 
+			if KillsRemaining <= 50 then
+			print("Pas de loup mode en 1 / 2 / 3 players ")
+			end
+		end
+
+	end
+
+	if spawnroshan_start == nil then
+		spawnroshan_start = 0
+	end
+
+
+	if spawnroshan_start == 0 then
+		-- Wolf cancel if roshan start
+		local numberOfPlayers = PlayerResource:GetPlayerCount()
+		if numberOfPlayers == 10 or numberOfPlayers == 9 then 
+			if KillsRemaining <= 90 then
+				self.Roundwolf = 1
+				spawnroshan_start = 1
+				Score:Roshan()
+			end
+		elseif numberOfPlayers == 8 or numberOfPlayers == 7 then 
+			if KillsRemaining <= 65 then
+				self.Roundwolf = 1
+				spawnroshan_start = 1
+				Score:Roshan()
+			end
+		elseif numberOfPlayers == 6 or numberOfPlayers == 5 then 
+			if KillsRemaining <= 50 then
+				self.Roundwolf = 1
+				spawnroshan_start = 1
+				Score:Roshan()
+			end
+		elseif numberOfPlayers == 4 or numberOfPlayers == 3 then 
+			if KillsRemaining <= 42 then
+				self.Roundwolf = 1
+				spawnroshan_start = 1
+				Score:Roshan()
+			end
+		elseif numberOfPlayers == 2 or numberOfPlayers == 1 then 
+			if KillsRemaining <= 30 then
+				self.Roundwolf = 1
+				spawnroshan_start = 1
+				Score:Roshan()
+			end
+		end
+	end
+
+	-- Gem Apparait en milieu de game
+	if spawngem_start == 0 then
+		local numberOfPlayers = PlayerResource:GetPlayerCount()
+		if numberOfPlayers == 10 or numberOfPlayers == 9 then 
+			if KillsRemaining <= 280 then
+				spawngem_start = 1
+				print("spawn Gem")
+				GameMode:SpawnGem()
+			end
+		elseif numberOfPlayers == 8 or numberOfPlayers == 7 then 
+			if KillsRemaining <= 216 then
+				spawngem_start = 1
+				print("spawn Gem")
+				GameMode:SpawnGem()
+			end
+		elseif numberOfPlayers == 6 or numberOfPlayers == 5 then 
+			if KillsRemaining <= 166 then
+				spawngem_start = 1
+				print("spawn Gem")
+				GameMode:SpawnGem()
+			end
+		elseif numberOfPlayers == 4 or numberOfPlayers == 3 then 
+			if KillsRemaining <= 140 then
+				spawngem_start = 1
+				print("spawn Gem")
+				GameMode:SpawnGem()
+			end
+		elseif numberOfPlayers == 2 or numberOfPlayers == 1 then 
+			if KillsRemaining <= 100 then
+				spawngem_start = 1
+				print("spawn Gem")
+				GameMode:SpawnGem()
+			end
+		end
+	end
+
+	-- Fin Timer
 	end)
 
 end
 
+function GameMode:tpendplayer()
+
+	local foundTeams = {}
+    for _, playerStart in pairs( HeroList:GetAllHeroes() ) do
+        print(playerStart:GetTeam())
+        foundTeams[  playerStart:GetTeam() ] = true
+    end
+
+	local numTeams = TableCount(foundTeams)
+
+	local foundplayer = {}
+
+	for _, playerStart in pairs( HeroList:GetAllHeroes() ) do
+        playerStart = playerStart:GetPlayerOwner():GetAssignedHero()
+        local player_ent = EntIndexToHScript(playerStart:entindex())
+        table.insert( foundplayer, { player = player_ent, teamScore = ScoreTeam[playerStart:GetTeam()] } )
+    end
+
+    table.sort( foundplayer, function(a,b) return ( a.teamScore > b.teamScore ) end )
+
+	if numTeams == 0 then
+		return nil
+	end
+
+	if numTeams >= 1 then -- Si 1 joueur ou plus
+		FindClearSpaceForUnit(foundplayer[1].player, Vector(0,-600,0), false)
+		foundplayer[1].player:SetAngles(0,-90,0)
+		foundplayer[1].player:StartGesture(ACT_DOTA_VICTORY)
+
+		local origin_point = Vector(-210,-580,-20)
+	    local trophy = CreateUnitByName("npc_dota_trophy", origin_point, false, nil, nil, DOTA_TEAM_NEUTRALS)
+	    -- FindClearSpaceForUnit(trophy, origin_point, true)
+
+	    local origin_point2 = Vector(210,-580,-20)
+	    local trophy2 = CreateUnitByName("npc_dota_trophy", origin_point2, false, nil, nil, DOTA_TEAM_NEUTRALS)
+	    -- FindClearSpaceForUnit(trophy2, origin_point2, true)
+	end
+
+	if numTeams >= 2 then -- Si 2 joueur ou plus, si 1 il n'y as pas
+		FindClearSpaceForUnit(foundplayer[2].player, Vector(-150,-400,0), false)
+		foundplayer[2].player:SetAngles(0,-90,0)
+	end
+
+	if numTeams >= 3 then
+		FindClearSpaceForUnit(foundplayer[3].player, Vector(150,-400,0), false)
+		foundplayer[3].player:SetAngles(0,-90,0)
+	end
+
+	if numTeams >= 4 then
+		FindClearSpaceForUnit(foundplayer[4].player, Vector(-420,-200,0), false)
+		foundplayer[4].player:SetAngles(0,-90,0)
+	end
+
+	if numTeams >= 5 then
+		FindClearSpaceForUnit(foundplayer[5].player, Vector(0,-180,0), false)
+		foundplayer[5].player:SetAngles(0,-90,0)
+	end
+
+	if numTeams >= 6 then
+		FindClearSpaceForUnit(foundplayer[6].player, Vector(420,-200,0), false)
+		foundplayer[6].player:SetAngles(0,-90,0)
+	end
+
+
+	if numTeams >= 7 then
+		FindClearSpaceForUnit(foundplayer[7].player, Vector(-440,100,0), false)
+		foundplayer[7].player:SetAngles(0,-90,0)
+	end
+
+	if numTeams >= 8 then
+		FindClearSpaceForUnit(foundplayer[8].player, Vector(-180,100,0), false)
+		foundplayer[8].player:SetAngles(0,-90,0)
+	end
+
+	if numTeams >= 9 then
+		FindClearSpaceForUnit(foundplayer[9].player, Vector(180,100,0), false)
+		foundplayer[9].player:SetAngles(0,-90,0)
+	end
+
+	if numTeams >= 10 then
+		FindClearSpaceForUnit(foundplayer[10].player, Vector(440,100,0), false)
+		foundplayer[10].player:SetAngles(0,-90,0)
+	end
+
+end
+
 function GameMode:SpawnGem()
+
+	local netTable = {}
+	netTable["round_number"] = 2
+	CustomGameEventManager:Send_ServerToAllClients( "round_started", netTable )
+
+	EmitGlobalSound("General.FemaleLevelUp")
+
 	print("Item Gem")
 	-- POTION
 	local newItem = CreateItem( "item_crow_trow", nil, nil )
@@ -409,6 +683,16 @@ function GameMode:OnEntityKilled( event )
 	local extraTime = 0
 
 	local hero_playerID = hero:GetPlayerOwnerID()
+
+	if killedUnit:GetUnitName() == "npc_dota_creature_roshan_ice" then
+		-- StopSound("Music.Roshan")
+
+		if not hero:IsHero() then
+			local hero = hero:GetMainControllingPlayer()
+		end
+
+		Score:ScoreKillRoshan( hero )
+	end
 
 	if killedUnit:GetUnitName() == "npc_dota_crystal_stone" then
 		print("-- Kill Crystal --")
@@ -466,12 +750,17 @@ function GameMode:OnEntityKilled( event )
 				ParticleManager:DestroyParticle( killedUnit.particle_name, false )
 				ParticleManager:ReleaseParticleIndex( killedUnit.particle_name )
 			end
+			if not hero:IsHero() then
+				local hero = hero:GetMainControllingPlayer()
+				-- local hero = GetPlayerData(playerID)
+				PlayerResource:ModifyGold( hero, 300, true, 0 )
+			else
+				local memberID = hero:GetPlayerID()
+				PlayerResource:ModifyGold( memberID, 300, true, 0 )
+			end
 
-			GameMode:ScorekillUnit( "Golden_kill", hero )
-			local memberID = hero:GetPlayerID()
-
-			GameMode:pointwin_sanskill(hero, hero:GetTeamNumber())
-			PlayerResource:ModifyGold( memberID, 300, true, 0 )
+			Score:ScoreGolden( hero )
+			-- local memberID = hero:GetPlayerID()
 	end
 
 
@@ -483,7 +772,7 @@ function GameMode:OnEntityKilled( event )
 
 	if killedUnit:IsRealHero() then
 		self.allSpawned = true -- ??
-		if hero:IsRealHero() and heroTeam ~= killedTeam then
+		if hero:IsHero() and heroTeam ~= killedTeam then
 			if killedUnit:GetTeam() == self.leadingTeam and self.isGameTied == false then -- Team leader tuée
 				local memberID = hero:GetPlayerID()
 				PlayerResource:ModifyGold( memberID, 500, true, 0 )
@@ -506,8 +795,6 @@ function GameMode:OnEntityKilled( event )
 					if attacker == killedUnit:GetAttacker( i ) then
 						--print("Granting assist xp")
 						attacker:AddExperience( 30, 0, false, false )
-						GameMode:ScorekillUnit( "assist", attacker )
-						GameMode:pointwin_sanskill(attacker, attacker:GetTeamNumber()) 
 					end
 				end
 			end
@@ -515,19 +802,90 @@ function GameMode:OnEntityKilled( event )
 			if killedUnit:GetRespawnTime() > 5 then
 				--print("Hero has long respawn time")
 				if killedUnit:IsReincarnating() == true then
+					killedUnit.reincarnationspawn = 1
 					--print("Set time for Wraith King respawn disabled")
 					return nil
 				else
-				 
-					GameMode:ScorekillUnit( killedTeam, hero )
+					----------------------
+				 	-- score Unité Tué
+				 	----------------------
+				 	GameMode:Etoiletomber(killedUnit)
+					Score:ScoreKill( killedTeam, killedUnit, hero )
 					GameMode:SetRespawnTime( killedTeam, killedUnit, extraTime )
 				end
 			else
-					GameMode:ScorekillUnit( killedTeam, hero )
+				if killedUnit:IsReincarnating() == true then
+					killedUnit.reincarnationspawn = 1
+					--print("Set time for Wraith King respawn disabled")
+					return nil
+				else
+					----------------------
+				 	-- score Unité Tué
+				 	----------------------
+				 	GameMode:Etoiletomber(killedUnit)
+					Score:ScoreKill( killedTeam, killedUnit, hero )
 					GameMode:SetRespawnTime( killedTeam, killedUnit, extraTime )
+				end
+			end
+		elseif not hero:IsHero() and heroTeam ~= killedTeam then
+			if killedUnit:IsReincarnating() == true then
+				killedUnit.reincarnationspawn = 1
+					--print("Set time for Wraith King respawn disabled")
+					return nil
+				else
+			GameMode:SetRespawnTime( killedTeam, killedUnit, extraTime )
+			if hero:GetUnitName() == "npc_dota_creature_roshan_ice" then
+				return nil
+			end
+				if not hero:IsHero() then
+					local hero = hero:GetMainControllingPlayer()
+				end
+				----------------------
+				-- score Unité Tué
+				----------------------
+				GameMode:Etoiletomber(killedUnit)
+				Score:ScoreKill( killedTeam, killedUnit, hero )
 			end
 		end
 	end
+end
+
+function GameMode:Etoiletomber(killedUnit)
+	print("ETOILE A TOMBER")
+	if killedUnit:IsHero() then
+ 		herouniter = EntIndexToHScript(killedUnit:entindex())
+		playerid = herouniter:GetPlayerID()
+		print("SCORE DE L'UNITER TUER : " .. Score.data[playerid].starobtenue )
+		if Score.data[playerid].starobtenue ~= 0 then 
+			print("SPAWN ETOILE")
+			local etoiletomber = math.floor(Score.data[playerid].starobtenue / 2)
+			print(etoiletomber)
+			math.floor(etoiletomber)
+			if etoiletomber > 17 then
+				etoiletomber = 17
+			end
+			Score.data[playerid].starobtenue = Score.data[playerid].starobtenue - etoiletomber
+			local nombredetoile = Score.data[playerid].starobtenue 
+	        CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerid), "stars_notification", { nombredetoile = nombredetoile } )
+				Timers:CreateTimer(function()
+					if etoiletomber ~= 0 then
+						local newItem = CreateItem( "item_stars_ground", nil, nil )
+						newItem:SetPurchaseTime( 0 )
+						if newItem:IsPermanent() and newItem:GetShareability() == ITEM_FULLY_SHAREABLE then
+							item:SetStacksWithOtherOwners( false )
+						end
+						local drop = CreateItemOnPositionSync( killedUnit:GetAbsOrigin(), newItem )
+						drop.Holdout_IsLootDrop = true
+						local dropTarget = killedUnit:GetAbsOrigin() + RandomVector( RandomFloat( 50, 350 ) )
+						newItem:LaunchLoot( true, 150, 1.0, dropTarget )
+						etoiletomber = etoiletomber - 1 
+						return 0.07
+					elseif etoiletomber == 0 then
+						return nil
+					end
+				end)
+		end
+ 	end
 end
 
 -- Player connect fonction 1 à 2 fois 
@@ -538,15 +896,13 @@ end
 
 -- tout le monde connecter
 function GameMode:OnConnectFull(keys)
-	--DebugPrint('[BAREBONES] OnConnectFull')
-	--DebugPrintTable(keys)
+DebugPrint('[BAREBONES] OnConnectFull')
+	DebugPrintTable(keys)
+	-- Server_SendAndGetInfoForAll()
 	
 	local entIndex = keys.index+1
-	-- entité player de l'user  
 	local ply = EntIndexToHScript(entIndex)
-	
-	-- ID du Player qui a rejoing
-	local playerID = ply:GetPlayerID()
+	local player_id = ply:GetPlayerID()
 end
 
 -- illusion crée
@@ -628,44 +984,5 @@ function GameMode:SetRespawnTime( killedTeam, killedUnit, extraTime )
 		killedUnit:SetTimeUntilRespawn( 5 + extraTime )
 	end
 end
-
-function GameMode:ScorekillUnit( killedTeam, hero )
-	if killedTeam == "Golden_kill" then
-		TeamID = hero:GetTeamNumber()
-		hero.score = hero.score + 5
-		GameMode:Addscore(TeamID, 5)
-	elseif killedTeam == "Item_crow" then
-		TeamID = hero:GetTeamNumber()
-		if self.TEAM_POINT_TO_WIN == 300 then
-			hero.score = hero.score + 4
-			GameMode:Addscore(TeamID, 4)
-		elseif self.TEAM_POINT_TO_WIN == 125 then
-			hero.score = hero.score + 2
-			GameMode:Addscore(TeamID, 2)
-		else
-			hero.score = hero.score + 3
-			GameMode:Addscore(TeamID, 3)
-		end
-	elseif killedTeam == "assist" then
-		TeamID = hero:GetTeamNumber()
-		hero.score = hero.score + 1
-		GameMode:Addscore(TeamID, 1)
-	elseif killedTeam == "poulet" then
-		TeamID = hero:GetTeamNumber()
-		hero.score = hero.score + 1
-		GameMode:Addscore(TeamID, 1)
-	else
-		TeamID = hero:GetTeamNumber()
-		hero.score = hero.score + 10
-		GameMode:Addscore(TeamID, 10)
-			if killedTeam == self.leadingTeam and self.isGameTied == false then
-				hero.score = hero.score + 5
-				GameMode:Addscore(TeamID, 5)
-			end
-	end
-	print("SCORE :" .. hero.score)
-end
-
-
 
  

@@ -24,7 +24,7 @@ require('libraries/keyvalues')
 require('internal/gamemode')
 require('internal/events')
 require('player_resource')
-require('hero_selection')
+--require('hero_selection')
 
 require('settings')
 require('events')
@@ -35,6 +35,7 @@ require('utility_functions/utility_functions')
 require('utility_functions/spawn_crystal')
 require('utility_functions/spawn_chicken')
 require('internal/funcs')
+require('utility_functions/score')
 
 if IsClient() then	-- Load clientside utility lib
 	require('libraries/client_util')
@@ -86,7 +87,7 @@ end
 function GameMode:OnGameInProgress()
 	DebugPrint("[SupremeHeroesWars] The game has officially begun")
 
-	Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
+	Timers:CreateTimer(15, -- Start this timer 30 game-time seconds later
 		function()
 			local NewState = GameRules:State_Get()
 			if NewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
@@ -116,6 +117,7 @@ function GameMode:InitGameMode()
 	self.isGameTied = true -- Si 2 team sont égalité
 	self.leadingTeam = -1 -- Team leader
 	self.NewState_spawn = 0 -- check le states et le spawn
+	self.Roundwolf = 0 -- round Loup
 	self.m_GatheredShuffledTeams = {} -- Team
 	self:GatherAndRegisterValidTeams()
 	GameRules:SetStrategyTime(0.0) -- retire le showcase time
@@ -140,7 +142,120 @@ function GameMode:InitGameMode()
 	ListenToGameEvent( "entity_killed", Dynamic_Wrap( GameMode, 'OnEntityKilled' ), self )
 	ListenToGameEvent("dota_team_kill_credit", Dynamic_Wrap(GameMode, 'OnTeamKillCredit'), self)
 
+	-- mode lance
+	Convars:RegisterCommand( "command_loup", Dynamic_Wrap(GameMode, 'loupwolf'), "Loup Demarage", FCVAR_CHEAT )
+	Convars:RegisterCommand( "command_chicken", Dynamic_Wrap(GameMode, 'chickenf'), "Chicken Demarage", FCVAR_CHEAT )
+	Convars:RegisterCommand( "command_test", Dynamic_Wrap(GameMode, 'test'), "Test Demarage", FCVAR_CHEAT )
+	Convars:RegisterCommand( "command_roshan", Dynamic_Wrap(GameMode, 'roshanspawnnow'), "Test Roshan", FCVAR_CHEAT )
+
 	DebugPrint('[SupremeHeroesWars] Done loading SupremeHeroesWars gamemode!\n\n')
+end
+
+function GameMode:loupwolf()
+  print( '******* loup wolf Demarage ******************' )
+  print( '*********************************************' )
+  Score:TrieScore()
+  print( '******* loup wolf Fin ***********************' )
+  print( '*********************************************' )
+end
+
+function GameMode:chickenf()
+  print( '******* Chicken Demarage ********************' )
+  print( '*********************************************' )
+  GameMode:Thinkcustomchicken()
+  print( '******* Chicken Fin *************************' )
+  print( '*********************************************' )
+end
+
+function GameMode:roshanspawnnow()
+  print( '******* Roshan Demarage *********************' )
+  print( '*********************************************' )
+  Score:Roshan()
+  print( '******* Roshan Fin **************************' )
+  print( '*********************************************' )
+end
+
+function GameMode:test()
+  	print( '******* Test ********************************' )
+  	print( '*********************************************' )
+
+	local foundTeams = {}
+    for _, playerStart in pairs( HeroList:GetAllHeroes() ) do
+        print(playerStart:GetTeam())
+        foundTeams[  playerStart:GetTeam() ] = true
+    end
+
+	local numTeams = TableCount(foundTeams)
+
+	local foundplayer = {}
+
+	for _, playerStart in pairs( HeroList:GetAllHeroes() ) do
+        playerStart = playerStart:GetPlayerOwner():GetAssignedHero()
+        local player_ent = EntIndexToHScript(playerStart:entindex())
+        table.insert( foundplayer, { player = player_ent, teamScore = ScoreTeam[playerStart:GetTeam()] } )
+    end
+
+    table.sort( foundplayer, function(a,b) return ( a.teamScore > b.teamScore ) end )
+
+	if numTeams == 0 then
+		return nil
+	end
+
+	if numTeams >= 1 then -- Si 1 joueur ou plus
+		local initialAnglerotation = foundplayer[1].player:GetAnglesAsVector()  
+		local rotation_y = (initialAnglerotation).y+90
+		FindClearSpaceForUnit(foundplayer[1].player, Vector(0,-600,0), false)
+		foundplayer[1].player:SetAngles(0,rotation_y,0)
+	end
+
+	if numTeams >= 2 then -- Si 2 joueur ou plus, si 1 il n'y as pas
+		FindClearSpaceForUnit(foundplayer[2].player, Vector(-150,-400,0), false)
+		foundplayer[2].player:SetAngles(0,0,0)
+	end
+
+	if numTeams >= 3 then
+		FindClearSpaceForUnit(foundplayer[3].player, Vector(150,-400,0), false)
+		foundplayer[3].player:SetAngles(0,0,0)
+	end
+
+	if numTeams >= 4 then
+		FindClearSpaceForUnit(foundplayer[4].player, Vector(-420,-200,0), false)
+		foundplayer[4].player:SetAngles(0,0,0)
+	end
+
+	if numTeams >= 5 then
+		FindClearSpaceForUnit(foundplayer[5].player, Vector(0,-180,0), false)
+		foundplayer[5].player:SetAngles(0,0,0)
+	end
+
+	if numTeams >= 6 then
+		FindClearSpaceForUnit(foundplayer[6].player, Vector(420,-200,0), false)
+		foundplayer[6].player:SetAngles(0,0,0)
+	end
+
+
+	if numTeams >= 7 then
+		FindClearSpaceForUnit(foundplayer[7].player, Vector(-440,100,0), false)
+		foundplayer[7].player:SetAngles(0,0,0)
+	end
+
+	if numTeams >= 8 then
+		FindClearSpaceForUnit(foundplayer[8].player, Vector(-180,100,0), false)
+		foundplayer[8].player:SetAngles(0,0,0)
+	end
+
+	if numTeams >= 9 then
+		FindClearSpaceForUnit(foundplayer[9].player, Vector(180,100,0), false)
+		foundplayer[9].player:SetAngles(0,0,0)
+	end
+
+	if numTeams >= 10 then
+		FindClearSpaceForUnit(foundplayer[10].player, Vector(440,100,0), false)
+		foundplayer[10].player:SetAngles(0,0,0)
+	end
+
+  	print( '******* Test Fin ****************************' )
+  	print( '*********************************************' )
 end
 
 ---------------------------------------------------------------------------
@@ -154,6 +269,8 @@ function GameMode:UpdateScoreboard()
 		end
 		table.insert( sortedTeams, { teamID = team, teamScore = ScoreTeam[team] } )
 	end
+
+
 
 	-- reverse-sort by score
 	table.sort( sortedTeams, function(a,b) return ( a.teamScore > b.teamScore ) end )
@@ -172,13 +289,16 @@ function GameMode:UpdateScoreboard()
 	-- Leader effects (moved from OnTeamKillCredit)
 	local leader = sortedTeams[1].teamID
 	self.leadingTeam = leader
+	--print("Team leader : " .. self.leadingTeam )
 	self.runnerupTeam = sortedTeams[2].teamID
 	self.leadingTeamScore = sortedTeams[1].teamScore
 	self.runnerupTeamScore = sortedTeams[2].teamScore
 	if sortedTeams[1].teamScore == sortedTeams[2].teamScore then
 		self.isGameTied = true
+		--print(" 2 TEAM AVEC egalité ")
 	else
 		self.isGameTied = false
+		--print(" Leader sans egalité ")
 	end
 	local allHeroes = HeroList:GetAllHeroes()
 	for _,entity in pairs( allHeroes) do
@@ -187,7 +307,7 @@ function GameMode:UpdateScoreboard()
 				-- Attaching a particle to the leading team heroes
 				local existingParticle = entity:Attribute_GetIntValue( "particleID", -1 )
 						if existingParticle == -1 then
-							local particleLeader = ParticleManager:CreateParticle( "particles/leader/leader_overhead.vpcf", PATTACH_OVERHEAD_FOLLOW, entity )
+							local particleLeader = ParticleManager:CreateParticle( "particles/leader/leader_overhead_new.vpcf", PATTACH_OVERHEAD_FOLLOW, entity )
 					ParticleManager:SetParticleControlEnt( particleLeader, PATTACH_OVERHEAD_FOLLOW, entity, PATTACH_OVERHEAD_FOLLOW, "follow_overhead", entity:GetAbsOrigin(), true )
 					entity:Attribute_SetIntValue( "particleID", particleLeader )
 				end
@@ -268,28 +388,6 @@ function GameMode:OnThink()
 	-- Stop thinking if game is paused
 	if GameRules:IsGamePaused() == true then
 		return 1
-	end
-
-	if self.countdownEnabled == true then
-		CountdownTimer()
-		if nCOUNTDOWNTIMER == 30 then -- si le temps arrive a moins de 30 = 30 secondes 
-			-- CustomGameEventManager:Send_ServerToAllClients( "timer_alert", {} )
-		end
-		if nCOUNTDOWNTIMER <= 0 then -- si le temps arrive a 0
-			-- Check si egalité ou non
-			--if self.isGameTied == false then
-				--GameRules:SetCustomVictoryMessage( self.m_VictoryMessages[self.leadingTeam] )
-				--COverthrowGameMode:EndGame( self.leadingTeam )
-				--self.countdownEnabled = false
-			--else
-				--self.TEAM_KILLS_TO_WIN = self.leadingTeamScore + 1
-				--local broadcast_killcount = 
-				--{
-				--  killcount = self.TEAM_KILLS_TO_WIN
-				--}
-				-- CustomGameEventManager:Send_ServerToAllClients( "overtime_alert", broadcast_killcount )
-			--end
-		end
 	end
 
 	return 1

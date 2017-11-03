@@ -1,7 +1,14 @@
 <root>
 	<Panel style="visibility:collapse;">
 		<Panel id="container" style="visibility:collapse;">
-			<Image src="file://panorama/images/random_button.png" hittest="false" />
+			<Image src="file://panorama/images/custom_game/random_button.png" hittest="false" />
+			<Image src="file://panorama/images/custom_game/button/button_chicken.png" hittest="false" />
+			<Image src="file://panorama/images/custom_game/button/button_battle.png" hittest="false" />
+			<Image src="file://panorama/images/custom_game/button/button_gem_game.png" hittest="false" />
+			<Image src="file://panorama/images/custom_game/button/button_golden_shower.png" hittest="false" />
+			<Image src="file://panorama/images/custom_game/button/button_werewolf.png" hittest="false" />
+			<Image src="file://panorama/images/custom_game/button/button_winner.png" hittest="false" />
+			<Image src="file://panorama/images/custom_game/button/etoile.png" hittest="false" />
 		</Panel>
 	</Panel>
 </root>

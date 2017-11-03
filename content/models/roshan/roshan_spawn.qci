@@ -1,0 +1,7 @@
+$sequence layer_roshan_spawn "roshan_spawn.dmx" fps 24.000000 hidden
+$sequence roshan_spawn "roshan_spawn.dmx" fps 24.000000 noanimation {
+	numframes 73
+	blendlayer layer_roshan_spawn 0 4 68 72
+	event AE_WPN_HIDE 0
+	event AE_WPN_UNHIDE 72
+}

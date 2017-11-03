@@ -5,9 +5,9 @@ ENABLE_HERO_RESPAWN = true              -- Should the heroes automatically respa
 UNIVERSAL_SHOP_MODE = true             -- Should the main shop contain Secret Shop items as well as regular items
 ALLOW_SAME_HERO_SELECTION = true        -- Should we let people select the same hero as each other
 
-HERO_SELECTION_TIME = 0.0              -- How long should we let people select their hero?
-HERO_SELECT_TIME = 20.0
-PRE_GAME_TIME = 5.0 + HERO_SELECT_TIME -- How long after people select their heroes should the horn blow and the game start?
+HERO_SELECTION_TIME = 35.0              -- How long should we let people select their hero?
+HERO_SELECT_TIME = 35.0
+PRE_GAME_TIME = 10.0 -- How long after people select their heroes should the horn blow and the game start?
 POST_GAME_TIME = 60.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
 TREE_REGROW_TIME = 60.0                 -- How long should it take individual trees to respawn after being cut down/destroyed?
 
@@ -76,12 +76,12 @@ XP_PER_LEVEL_TABLE[24] = 12000
 XP_PER_LEVEL_TABLE[25] = 15000
 
 ENABLE_FIRST_BLOOD = true               -- Should we enable first blood for the first kill in this game?
-HIDE_KILL_BANNERS = false               -- Should we hide the kill banners that show when a player is killed?
+HIDE_KILL_BANNERS = true               -- Should we hide the kill banners that show when a player is killed?
 LOSE_GOLD_ON_DEATH = false               -- Should we have players lose the normal amount of dota gold on death?
 SHOW_ONLY_PLAYER_INVENTORY = false      -- Should we only allow players to see their own inventory even when selecting other units?
 DISABLE_STASH_PURCHASING = false        -- Should we prevent players from being able to buy items into their stash when not at a shop?
 DISABLE_ANNOUNCER = false               -- Should we disable the announcer from working in the game?
-FORCE_PICKED_HERO = "npc_dota_hero_wisp"	-- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_axe").  Use nil to allow players to pick their own hero.
+FORCE_PICKED_HERO = nil	-- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_axe").  Use nil to allow players to pick their own hero.
 
 FIXED_RESPAWN_TIME = 5                 -- What time should we use for a fixed respawn timer?  Use -1 to keep the default dota behavior.
 FOUNTAIN_CONSTANT_MANA_REGEN = -1       -- What should we use for the constant fountain mana regen?  Use -1 to keep the default dota behavior.
@@ -98,8 +98,8 @@ DISABLE_KILLING_SPREE_ANNOUNCER = false -- Shuold we disable the killing spree a
 DISABLE_STICKY_ITEM = false             -- Should we disable the sticky item button in the quick buy area?
 SKIP_TEAM_SETUP = false                 -- Should we skip the team setup entirely?
 ENABLE_AUTO_LAUNCH = true               -- Should we automatically have the game complete team setup after AUTO_LAUNCH_DELAY seconds?
-AUTO_LAUNCH_DELAY = 30                  -- How long should the default team selection launch timer be?  The default for custom games is 30.  Setting to 0 will skip team selection.
-LOCK_TEAM_SETUP = false                 -- Should we lock the teams initially?  Note that the host can still unlock the teams 
+AUTO_LAUNCH_DELAY = 10                  -- How long should the default team selection launch timer be?  The default for custom games is 30.  Setting to 0 will skip team selection.
+LOCK_TEAM_SETUP = true                 -- Should we lock the teams initially?  Note that the host can still unlock the teams 
 
 
 -- NOTE: You always need at least 2 non-bounty type runes to be able to spawn or your game will crash!

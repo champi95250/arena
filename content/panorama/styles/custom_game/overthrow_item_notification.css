@@ -458,6 +458,11 @@
 
 #Battle_Begin
 {
+    margin-top: -40px;
+    background-image: url("file://panorama/images/custom_game/button/button_battle.png");
+    background-size: 720px 270px;
+    height: 270px;
+    width: 720px;
     color: white;
     horizontal-align: center;
     text-shadow: 4px 4px 4px #121212;
@@ -467,10 +472,11 @@
 
 #Battle_Begin_a
 {
+    margin-top: 24%;
     color: white;
     horizontal-align: center;
     text-shadow: 4px 4px 4px #121212;
-    font-size: 24px;
+    font-size: 44px;
     font-weight: bold;
 }
 
@@ -479,7 +485,7 @@
     color: red;
     horizontal-align: center;
     text-shadow: 4px 4px 4px #121212;
-    font-size: 24px;
+    font-size: 54px;
     font-weight: bold;
 }
 

@@ -74,7 +74,7 @@
 	}
 	"item_ward_observer"
 	{
-		"ItemInitialCharges"			"2"
+		"ItemInitialCharges"			"1"
 		"ItemStockMax"					"2"
 		"ItemStockInitial"				"2"
 		"ItemStockTime"					"45"

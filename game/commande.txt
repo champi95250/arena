@@ -1,0 +1,17 @@
+
+== Redemarre les script
+== Attention, reinit les scores.
+
+cl_script_reload
+script_reload
+
+-----------------------
+
+== lance le jeu
+
+dota_launch_custom_game all_deathmatch map
+
+-----------------------
+
+command_loup 
+command_chicken

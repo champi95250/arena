@@ -1,6 +1,6 @@
 "addon"
 {
-	"addonname"				"Barebones"
+	"addonname"				"Frostivus 2017"
 
 	"Unassigned"			"Unassigned Team"
 	"Spectator"				"Spectator Team"
@@ -34,20 +34,14 @@
 	"npc_dota_hero_broodmother_notification"		"Broodmother"
 	"npc_dota_hero_pudge_notification"				"Pudge"
 
-	//Picking Screen
-	"loading_pre_game"				"Loading heroes, please wait..."
-	"hero_list_title_strength"		"Strength Heroes"
-	"hero_list_title_agility"		"Agility Heroes"
-	"hero_list_title_intellect"		"Intelligence Heroes"
-	"hero_name_filler"				"Please choose a hero"
-	"team_title_radiant"			"The Radiant"
-	"team_title_dire"				"The Dire"
-	"average_mmr"					"Average Level: "
-	"stats_swap"					"Toggle Stats Panel"
-	"confirm_pick_button"			"Lock In "
-	"random_pick_button"			"Random Hero"
-	"loading_heroes_button"			"Loading hero..."
-	"repick_button"					"Repick Hero"
-	"enter_game_button"				"Enter Game"
-	"welcome_label"					"Welcome to Battlefield: Reborn!"
+	"overthrow_game_info_header_objective"			"Objective:"
+	"overthrow_brief_description"					"The first to reach the score limit wins both the game and the crown."
+	"overthrow_game_info_header_how_to_play"		"How To Play:"
+	"overthrow_game_info_throne"					"<span class='gold'>Kill your foes</span> and break <span class='gold'>golden crystal</span> in order to <span class='midas_throne'>obtain point</span> throught the game."
+	"overthrow_game_info_coins"						"During the battle, <span class='overboss'>rounds</span> will start thus allowing you to earn even <span class='gold'>more points</span> !"
+	"overthrow_game_info_items"						"No regeneration items are avaible during the battle. Blue crystals, once broken, offer health and mana potions that are instantly used."
+	"overthrow_game_info_tips_header"				"Tips:"
+	"overthrow_game_info_tip01"						"The leader is wearing a crown, killing him awards additional points."
+	"overthrow_game_info_tip02"						"Items can be bought globally."
+	"overthrow_game_info_tip03"						"Being in the middle of the map allows for increased mana, health regen, XP and gold."
 }

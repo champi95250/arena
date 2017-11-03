@@ -1,0 +1,8 @@
+sources_film_maker
+{
+	material materials/overviews/sources_film_maker.vmat
+	pos_x -2048
+	pos_y 2048
+	scale 4.000
+}
+

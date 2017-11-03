@@ -1,0 +1,99 @@
+.StarsNotification
+{
+	opacity: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.StarsNotificationsss
+{
+	opacity: 1;
+    width: 100%;
+    height: 100%;
+    flow-children: down;
+}
+
+.etoileenable #StarsMessage
+{
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+    visibility: visible;
+}
+
+#StarsMessage
+{
+    flow-children: down;
+    horizontal-align: center;
+    margin-left: 31%;
+    transform: scaleX(1) scaleY(1);
+    margin-top: 83%;
+    visibility: collapse;
+    border: 0px solid blue;
+    opacity: 1;
+}
+
+#PickupMessage_Etoile
+{
+	height: 32px;
+	width: 64px;
+	margin: 4px;
+	opacity: 1;
+}
+
+#AlertMessage_etoile
+{
+	opacity: 1;
+    margin-top: -40px;
+    margin-left: 60px;
+    horizontal-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 36px;
+    color: white;
+	text-shadow: 2px 2px 2px #000000;
+	color: gradient( linear, 0% 0%, 0% 100%, from( #c88423 ), color-stop( 0.25, #c88423 ), color-stop( 0.5, #fffb84 ), color-stop( 0.75, #c88423 ), to( #9a6717 ) );
+    text-overflow: clip;
+}
+
+.Main
+{
+    width: 100%;
+    height: 100%;
+    overflow: clip;
+}
+
+.top_label
+ {
+	horizontal-align: middle;
+    vertical-align: top;
+	width: 1000px;
+	text-align: center;
+	text-overflow: clip;
+	font-weight: thin;
+	font-size: 40px;
+	color: #FFFFFF;
+}
+
+.bot_label
+ {
+	horizontal-align: middle;
+    vertical-align: bottom;
+	width: 1000px;
+	text-align: center;
+	text-overflow: clip;
+	font-weight: thin;
+	font-size: 40px;
+	color: #FFFFFF;
+}
+
+.custom_label
+ {
+	horizontal-align: right;
+    vertical-align: top;
+	width: 1000px;
+	text-align: center;
+	text-overflow: clip;
+	font-weight: thin;
+	font-size: 40px;
+	color: #FFFFFF;
+}

@@ -95,13 +95,45 @@ function CountdownTimer()
             timer_second_10 = s10,
             timer_second_01 = s01,
         }
-    CustomGameEventManager:Send_ServerToAllClients( "countdown", broadcast_gametimer )
+    --CustomGameEventManager:Send_ServerToAllClients( "countdown", broadcast_gametimer )
     if t <= 120 then -- si le temps arrive a moins de 120 = 2 minutes 
-        CustomGameEventManager:Send_ServerToAllClients( "time_remaining", broadcast_gametimer )
+        --CustomGameEventManager:Send_ServerToAllClients( "time_remaining", broadcast_gametimer )
     end
 end
 
 function SetTimer( cmdName, time )
     print( "Set the timer to: " .. time )
     nCOUNTDOWNTIMER = time
+end
+
+
+function PingMiniMapAtLocation( position )
+
+  local change =
+  {
+    pos = position
+  }
+  CustomGameEventManager:Send_ServerToAllClients( "ping_minimap", change )
+
+end
+
+function PopupNumbers(target, pfx, color, lifetime, number, presymbol, postsymbol)
+    local pidx = ParticleManager:CreateParticle(pfx, PATTACH_ABSORIGIN_FOLLOW, target)
+
+    local digits = 0
+    if number ~= nil then
+        digits = #tostring(number)
+    end
+    if presymbol ~= nil then
+        digits = digits + 1
+    end
+    if postsymbol ~= nil then
+        digits = digits + 1
+    end
+
+    ParticleManager:SetParticleControl(pidx, 1, Vector(tonumber(presymbol), tonumber(number), tonumber(postsymbol)))
+    ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
+    ParticleManager:SetParticleControl(pidx, 3, color)
+    
+    ParticleManager:ReleaseParticleIndex(pidx)
 end

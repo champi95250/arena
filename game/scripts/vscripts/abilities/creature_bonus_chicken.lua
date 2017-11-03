@@ -81,15 +81,27 @@ function modifier_creature_bonus_chicken:OnTakeDamage( params )
 			return 0
 		end
 		if hUnit == self:GetParent() then
-			if hAttacker:IsRealHero() then
+			if hAttacker:IsHero() then
 				--print("UNIT : " .. hUnit .. " and Attacker " .. hAttacker)
 				attacker = EntIndexToHScript(hAttacker:entindex())
 				if self.total_gold > 0 then
-				GameMode:ScorekillUnit( "poulet", attacker )
+				Score:ScoreChicken( attacker )
 				self.total_gold = self.total_gold - 1
 				end
 				if self.total_gold <= 0 then
 					self:GetParent():ForceKill( false ) -- Teleport Kill
+				end
+			else
+				if not hAttacker:IsHero() and  not hAttacker:GetUnitName() == "npc_dota_creature_bonus_chicken" then
+					local attacker = hAttacker:GetMainControllingPlayer()
+					-- attacker = EntIndexToHScript(hAttacker:entindex())
+					if self.total_gold > 0 then
+					Score:ScoreChicken( attacker )
+					self.total_gold = self.total_gold - 1
+					end
+					if self.total_gold <= 0 then
+						self:GetParent():ForceKill( false ) -- Teleport Kill
+					end
 				end
 			end
 		end

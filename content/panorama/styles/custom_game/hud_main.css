@@ -1,0 +1,74 @@
+.CustomHudRoot
+{
+    width: 100%;
+    height: 100%;
+}
+
+.CustomHudContents
+{
+    width: 100%;
+    height: 100%;
+}
+
+#RoundStartPanel
+{
+	flow-children: down;
+
+    horizontal-align: center;
+    margin-top: 70px;
+    opacity: 0;
+    transform: scaleX(1) scaleY(1);
+    visibility: collapse;
+    transition-property: transform, opacity;
+    transition-duration: 0.3s;
+    border: 0px solid green;
+}
+
+
+#RoundStartPanel.Visible
+{
+	visibility: visible;
+	opacity: 1;
+}
+
+#PickupImages
+{
+    flow-children: right;
+    horizontal-align: center;
+    border: 0px solid #5e686900;
+    background-color: #292e2e00;
+    margin: 0px;
+}
+
+
+#RoundArt
+{
+	background-size: 960px 360px;
+    height: 360px;
+    width: 960px;
+	margin: 4px;
+}
+
+#RoundStartPanel.Visible #RoundArt
+{
+	opacity: 1;
+	pre-transform-scale2d: 1;
+}
+
+
+.Round1 #RoundArt { background-image: url("file://panorama/images/custom_game/button/button_chicken.png"); background-size: 432px 162px;height: 162px;
+    width: 432px;}
+.Round2 #RoundArt { background-image: url("file://panorama/images/custom_game/button/button_gem_game.png"); background-size: 432px 162px;height: 162px;
+    width: 432px;}
+.Round3 #RoundArt { background-image: url("file://panorama/images/custom_game/button/button_battle.png"); background-size: 432px 162px;height: 162px;
+    width: 432px;}
+.Round4 #RoundArt { background-image: url("file://panorama/images/custom_game/button/button_golden_shower.png"); background-size: 432px 162px;height: 162px;
+    width: 432px;}
+.Round5 #RoundArt { background-image: url("file://panorama/images/custom_game/button/button_werewolf.png"); background-size: 432px 162px;height: 162px;
+    width: 432px;}
+.Round6 #RoundArt { background-image: url("file://panorama/images/custom_game/button/button_roshan.png"); background-size: 432px 162px;height: 162px;
+    width: 432px;}
+.Round7 #RoundArt { background-image: url("file://panorama/images/custom_game/button/button_winner.png"); background-size: 432px 162px;height: 162px;
+    width: 432px;}
+
+    

@@ -1,0 +1,7 @@
+$sequence layer_roshan_cry "roshan_cry.dmx" fps 24.000000 hidden
+$sequence roshan_cry "roshan_cry.dmx" fps 24.000000 noanimation {
+	numframes 58
+	blendlayer layer_roshan_cry 0 4 53 57
+	event AE_WPN_HIDE 0
+	event AE_WPN_UNHIDE 57
+}
