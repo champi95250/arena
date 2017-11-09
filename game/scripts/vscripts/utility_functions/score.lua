@@ -388,3 +388,131 @@ function Score:Roshan()
     
 
 end
+
+---------------------------------------------------------------------------
+-- Pluie D'étoile 
+---------------------------------------------------------------------------
+
+function Score:pluieetoile()
+
+	if pluieetoile_start == nil then
+		pluieetoile_start = 1 -- Pour annulé le 1er lancé
+		print("start 1er lancé annulé")
+		Timers:CreateTimer(300, function()
+					Score:pluieetoile()
+					return nil
+				end)
+	end
+
+	local random_lieu = RandomInt(1, 4)
+	-- 1 forest
+	-- 2 Battlefield
+	-- 3 Water
+	-- 4 Cimetiere
+	local random_etoile = RandomInt(1, 12)
+	random_etoile = random_etoile + 7 -- maximun 30 étoile ... minimun 8 maxim 19
+	print("lancé d'étoile")
+
+	if random_lieu == 1 then -- point de lancement -2497 -2521 388
+		PingMiniMapAtLocation(Vector(-2497, -2521, 385))
+		Timers:CreateTimer(function()
+			if random_etoile ~= 0 then
+				local newItem = CreateItem( "item_stars_ground", nil, nil )
+				newItem:SetPurchaseTime( 0 )
+				if newItem:IsPermanent() and newItem:GetShareability() == ITEM_FULLY_SHAREABLE then
+					item:SetStacksWithOtherOwners( false )
+				end
+				-- point dou sa sort 
+				local point = Vector(-2497, -2521, 338)
+				local drop = CreateItemOnPositionSync( point, newItem )
+				drop.Holdout_IsLootDrop = true
+				local dropTarget = point + RandomVector( RandomFloat( 150, 750 ) )
+				newItem:LaunchLoot( true, 450, 1.8, dropTarget )
+				random_etoile = random_etoile - 1 
+				return 0.1
+			elseif random_etoile == 0 then
+				Timers:CreateTimer(240, function()
+					Score:pluieetoile()
+					return nil
+				end)
+				return nil
+			end
+		end)
+	elseif random_lieu == 2 then -- point de lancement 2673 2674 385
+		PingMiniMapAtLocation( Vector(2673, 2674, 385) )
+		Timers:CreateTimer(function()
+			if random_etoile ~= 0 then
+				local newItem = CreateItem( "item_stars_ground", nil, nil )
+				newItem:SetPurchaseTime( 0 )
+				if newItem:IsPermanent() and newItem:GetShareability() == ITEM_FULLY_SHAREABLE then
+					item:SetStacksWithOtherOwners( false )
+				end
+				-- point dou sa sort 
+				local point = Vector(2673, 2674, 385)
+				local drop = CreateItemOnPositionSync( point, newItem )
+				drop.Holdout_IsLootDrop = true
+				local dropTarget = point + RandomVector( RandomFloat( 150, 850 ) )
+				newItem:LaunchLoot( true, 450, 1.8, dropTarget )
+				random_etoile = random_etoile - 1 
+				return 0.1
+			elseif random_etoile == 0 then
+				Timers:CreateTimer(240, function()
+					Score:pluieetoile()
+					return nil
+				end)
+				return nil
+			end
+		end)
+	elseif random_lieu == 3 then -- point de lancement 2643 -2558 24
+		PingMiniMapAtLocation( Vector(2673, -2558, 24) )
+		Timers:CreateTimer(function()
+			if random_etoile ~= 0 then
+				local newItem = CreateItem( "item_stars_ground", nil, nil )
+				newItem:SetPurchaseTime( 0 )
+				if newItem:IsPermanent() and newItem:GetShareability() == ITEM_FULLY_SHAREABLE then
+					item:SetStacksWithOtherOwners( false )
+				end
+				-- point dou sa sort 
+				local point = Vector(2643, -2558, 24)
+				local drop = CreateItemOnPositionSync( point, newItem )
+				drop.Holdout_IsLootDrop = true
+				local dropTarget = point + RandomVector( RandomFloat( 150, 750 ) )
+				newItem:LaunchLoot( true, 450, 1.8, dropTarget )
+				random_etoile = random_etoile - 1 
+				return 0.1
+			elseif random_etoile == 0 then
+				Timers:CreateTimer(240, function()
+					Score:pluieetoile()
+					return nil
+				end)
+				return nil
+			end
+		end)
+	elseif random_lieu == 4 then -- point de lancement -2497 2504 128
+		PingMiniMapAtLocation( Vector(-2497, 2504, 128) )
+		Timers:CreateTimer(function()
+			if random_etoile ~= 0 then
+				local newItem = CreateItem( "item_stars_ground", nil, nil )
+				newItem:SetPurchaseTime( 0 )
+				if newItem:IsPermanent() and newItem:GetShareability() == ITEM_FULLY_SHAREABLE then
+					item:SetStacksWithOtherOwners( false )
+				end
+				-- point dou sa sort 
+				local point = Vector(-2497, 2504, 128)
+				local drop = CreateItemOnPositionSync( point, newItem )
+				drop.Holdout_IsLootDrop = true
+				local dropTarget = point + RandomVector( RandomFloat( 150, 750 ) )
+				newItem:LaunchLoot( true, 450, 1.8, dropTarget )
+				random_etoile = random_etoile - 1 
+				return 0.1
+			elseif random_etoile == 0 then
+				Timers:CreateTimer(240, function()
+					Score:pluieetoile()
+					return nil
+				end)
+				return nil
+			end
+		end)
+	end
+
+end

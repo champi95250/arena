@@ -7,12 +7,16 @@ SPAWN_CRYSTAL_POINT[5] = 1
 SPAWN_CRYSTAL_POINT[6] = 1
 SPAWN_CRYSTAL_POINT[7] = 1
 SPAWN_CRYSTAL_POINT[8] = 1
+SPAWN_CRYSTAL_POINT[9] = 1
 
 SPAWN_CRYSTAL_GOLDEN_POINT = {} -- Spawn Point activé? 1 = oui
 SPAWN_CRYSTAL_GOLDEN_POINT[1] = 1
 SPAWN_CRYSTAL_GOLDEN_POINT[2] = 1
 SPAWN_CRYSTAL_GOLDEN_POINT[3] = 1
 SPAWN_CRYSTAL_GOLDEN_POINT[4] = 1
+SPAWN_CRYSTAL_GOLDEN_POINT[5] = 1
+SPAWN_CRYSTAL_GOLDEN_POINT[6] = 1
+SPAWN_CRYSTAL_GOLDEN_POINT[7] = 1
 
 
 function GameMode:Thinkcustomcrystal()
@@ -46,7 +50,7 @@ function GameMode:Thinkcustomcrystalgolden()
 end
 
 function GameMode:Spawncrystal()
-	local random = RandomInt(1, 8)
+	local random = RandomInt(1, 9)
 	local point = Entities:FindByName(nil, "point_unit_"..random)
 	local summon_origin = point:GetAbsOrigin()
 	if SPAWN_CRYSTAL_POINT[random] == 1 then
@@ -66,7 +70,7 @@ function GameMode:Spawncrystal()
 end
 
 function GameMode:Spawncrystalgolden()
-	local random = RandomInt(1, 4)
+	local random = RandomInt(1, 7)
 	local point = Entities:FindByName(nil, "point_unit_golden_"..random)
 	local summon_origin = point:GetAbsOrigin()
 	if SPAWN_CRYSTAL_GOLDEN_POINT[random] == 1 then

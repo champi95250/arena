@@ -102,6 +102,7 @@ function GameMode:OnGameInProgress()
 		end)
 	GameMode:Thinkcustomcrystal()
 	GameMode:Thinkcustomcrystalgolden()
+	Score:pluieetoile()
 end
 
 

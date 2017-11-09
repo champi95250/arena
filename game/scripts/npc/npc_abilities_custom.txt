@@ -89,7 +89,7 @@
 							"Types"			"DOTA_UNIT_TARGET_HERO"
 							"Flags"			"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
 						}
-						"XPAmount"		"7"
+						"XPAmount"		"8"
 						"SplitEvenly"	"0"
 						"GoldAmount"	"8"
 						"ReliableGold"	"0"
@@ -155,7 +155,7 @@
 							"Types"			"DOTA_UNIT_TARGET_HERO"
 							"Flags"			"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
 						}
-						"XPAmount"		"5"
+						"XPAmount"		"6"
 						"SplitEvenly"	"0"
 						"GoldAmount"	"3"
 						"ReliableGold"	"0"
@@ -392,6 +392,7 @@
 
 				"States"
 				{
+					"MODIFIER_STATE_UNSELECTABLE"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"

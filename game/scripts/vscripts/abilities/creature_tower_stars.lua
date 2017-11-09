@@ -111,7 +111,7 @@ function modifier_creature_tower_stars_positive:RemoveOnDeath() return true end
 
 function modifier_creature_tower_stars_positive:OnCreated( kv )
 	if IsServer() then
-		self:StartIntervalThink( 0.33 )
+		self:StartIntervalThink( 0.75 )
 	end
 end
 
@@ -119,11 +119,20 @@ function modifier_creature_tower_stars_positive:OnIntervalThink()
 	if IsServer() then
 		if self:GetParent():IsAlive() then
 			if self:GetParent():IsRealHero() then
+				local target = self:GetCaster()
+
+				
+
 				hero = EntIndexToHScript(self:GetParent():entindex())
 				playerID = hero:GetPlayerID()
 				local nombredeposer = Score.data[playerID].starobtenue
 				print("Nombre D'étoile dispo : " .. nombredeposer)
 				if nombredeposer > 0 then
+					local particle_midas = "particles/stars/towergive.vpcf"
+				local particle_midas_fx = ParticleManager:CreateParticle(particle_midas, PATTACH_ABSORIGIN_FOLLOW, self:GetParent()) 
+				ParticleManager:SetParticleControlEnt(particle_midas_fx, 1, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), false)
+
+				ParticleManager:ReleaseParticleIndex(particle_midas_fx)
 					Score:Startdeposer(hero)
 				end
 			end

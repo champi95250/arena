@@ -719,8 +719,8 @@ function GameMode:OnEntityKilled( event )
 			end
 			local drop = CreateItemOnPositionSync( killedUnit:GetAbsOrigin(), newItem )
 			drop.Holdout_IsLootDrop = true
-			local dropTarget = killedUnit:GetAbsOrigin() + RandomVector( RandomFloat( 50, 350 ) )
-			newItem:LaunchLoot( true, 150, 1.0, dropTarget )
+			local dropTarget = killedUnit:GetAbsOrigin() + RandomVector( RandomFloat( 50, 100 ) )
+			newItem:LaunchLoot( true, 160, 0.7, dropTarget )
 
 			-- MANA
 			local newItem_mana = CreateItem( "item_mana_potion", nil, nil )
@@ -732,7 +732,7 @@ function GameMode:OnEntityKilled( event )
 			drop.Holdout_IsLootDrop = true
 			
 			local dropTarget = killedUnit:GetAbsOrigin() + RandomVector( RandomFloat( 50, 100 ) )
-			newItem_mana:LaunchLoot( true, 200, 1.0, dropTarget )
+			newItem_mana:LaunchLoot( true, 160, 0.7, dropTarget )
 	end
 
 	if killedUnit:GetUnitName() == "npc_dota_crystal_stone_golden" then
@@ -758,9 +758,26 @@ function GameMode:OnEntityKilled( event )
 				local memberID = hero:GetPlayerID()
 				PlayerResource:ModifyGold( memberID, 300, true, 0 )
 			end
+			local etoiletomber = 3 
 
-			Score:ScoreGolden( hero )
-			-- local memberID = hero:GetPlayerID()
+			Timers:CreateTimer(function()
+				if etoiletomber ~= 0 then
+					local newItem = CreateItem( "item_stars_ground", nil, nil )
+					newItem:SetPurchaseTime( 0 )
+					if newItem:IsPermanent() and newItem:GetShareability() == ITEM_FULLY_SHAREABLE then
+						item:SetStacksWithOtherOwners( false )
+					end
+					local drop = CreateItemOnPositionSync( killedUnit:GetAbsOrigin(), newItem )
+					drop.Holdout_IsLootDrop = true
+					local dropTarget = killedUnit:GetAbsOrigin() + RandomVector( RandomFloat( 50, 100 ) )
+					newItem:LaunchLoot( true, 125, 0.8, dropTarget )
+					etoiletomber = etoiletomber - 1
+					return 0.1
+				else
+					return nil
+				end
+			end)
+				-- local memberID = hero:GetPlayerID()
 	end
 
 
@@ -877,7 +894,7 @@ function GameMode:Etoiletomber(killedUnit)
 						local drop = CreateItemOnPositionSync( killedUnit:GetAbsOrigin(), newItem )
 						drop.Holdout_IsLootDrop = true
 						local dropTarget = killedUnit:GetAbsOrigin() + RandomVector( RandomFloat( 50, 350 ) )
-						newItem:LaunchLoot( true, 150, 1.0, dropTarget )
+						newItem:LaunchLoot( true, 150, 0.7, dropTarget )
 						etoiletomber = etoiletomber - 1 
 						return 0.07
 					elseif etoiletomber == 0 then
@@ -984,5 +1001,3 @@ function GameMode:SetRespawnTime( killedTeam, killedUnit, extraTime )
 		killedUnit:SetTimeUntilRespawn( 5 + extraTime )
 	end
 end
-
- 
