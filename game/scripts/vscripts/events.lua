@@ -163,6 +163,7 @@ function RespawnAtSpawnPoint(hero)
 		hero.reincarnationspawn = 0
 		return nil
 	end
+
 	if SPAWN_POINT[random] == 1 then
 		SPAWN_POINT[random] = 0 
 		hero:AddNewModifier(hero, hero, "modifier_respawn_immu", {duration = 5})
@@ -188,7 +189,7 @@ function GameMode:OnEntityHurt(event)
 	end
 end
 
--- Objets Ramasé au sol
+-- Objets Ramassé au sol
 function GameMode:OnItemPickedUp(keys)
 	--DebugPrint( '[BAREBONES] OnItemPickedUp' )
 	--DebugPrintTable(keys)
@@ -691,7 +692,7 @@ function GameMode:OnEntityKilled( event )
 			local hero = hero:GetMainControllingPlayer()
 		end
 
-		Score:ScoreKillRoshan( hero )
+		Score:ScoreKillRoshan( hero, 25 )
 	end
 
 	if killedUnit:GetUnitName() == "npc_dota_crystal_stone" then
@@ -827,7 +828,7 @@ function GameMode:OnEntityKilled( event )
 				 	-- score Unité Tué
 				 	----------------------
 				 	GameMode:Etoiletomber(killedUnit)
-					Score:ScoreKill( killedTeam, killedUnit, hero )
+					Score:ScoreKill( killedTeam, killedUnit, hero, 5 )
 					GameMode:SetRespawnTime( killedTeam, killedUnit, extraTime )
 				end
 			else
@@ -840,7 +841,7 @@ function GameMode:OnEntityKilled( event )
 				 	-- score Unité Tué
 				 	----------------------
 				 	GameMode:Etoiletomber(killedUnit)
-					Score:ScoreKill( killedTeam, killedUnit, hero )
+					Score:ScoreKill( killedTeam, killedUnit, hero, 5 )
 					GameMode:SetRespawnTime( killedTeam, killedUnit, extraTime )
 				end
 			end
@@ -861,7 +862,7 @@ function GameMode:OnEntityKilled( event )
 				-- score Unité Tué
 				----------------------
 				GameMode:Etoiletomber(killedUnit)
-				Score:ScoreKill( killedTeam, killedUnit, hero )
+				Score:ScoreKill( killedTeam, killedUnit, hero, 5 )
 			end
 		end
 	end

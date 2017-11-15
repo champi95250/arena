@@ -94,7 +94,7 @@
 	}
 
 	//=================================================================================================================
-	// Gem of Power
+	// Crow
 	//=================================================================================================================
 	"item_crow_trow"
 	{
@@ -125,6 +125,23 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 		"ItemPermanent"					"0"
 		"ItemKillable"					"0"
+		"AllowedInBackpack"				"0"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tick_time"				"3.0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tick_stars"			"1"
+			}
+		}
 	}
 
 	//=================================================================================================================
@@ -172,18 +189,18 @@
 		"BaseClass"						"item_lua"
 		"AbilityTextureName"			"item_stars_ground"
 		"ScriptFile"					"items/item_stars_ground"
-		
+
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"Model"							"models/prop/star.vmdl"
 		"ItemKillable"					"0"
-		
+
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"100"
 		"AbilityCastPoint"				"0.0"
-		
+
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"99999"
@@ -204,7 +221,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"stars"		"1"
+				"stars"					"1"
 			}
 		}
 	}

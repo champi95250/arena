@@ -42,13 +42,13 @@ function modifier_wolf:OnAttack(keys)
 			if target:HasModifier("modifier_mouton") then
 				target:ForceKill(true)
 				local wolf_attacker = EntIndexToHScript(self:GetParent():entindex())
-				Score:ScoreLoup( wolf_attacker )
+				Score:ScoreLoup( wolf_attacker, 2 )
 				print(wolf_attacker:GetUnitName())
 			end
 			if target:HasModifier("modifier_mouton_golden") then
 				target:ForceKill(true)
 				local wolf_attacker = EntIndexToHScript(self:GetParent():entindex())
-				Score:ScoreLoupGolden( wolf_attacker )
+				Score:ScoreLoupGolden( wolf_attacker, 3 )
 				print(wolf_attacker:GetUnitName())
 			end
 		end

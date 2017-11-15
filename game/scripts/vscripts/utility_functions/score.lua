@@ -30,7 +30,7 @@ function Score:InitPlayer(playerID)
     --print("PLAYER ID FINAL INIT : " .. playerID)
 end
 
-function Score:ScoreKill( killedTeam, killedUnit, hero )
+function Score:ScoreKill( killedTeam, killedUnit, hero, score )
     -- Lorsque qu'un kill est effectué
     if IsValidEntity(hero:GetPlayerOwner()) then hero = hero:GetPlayerOwner():GetAssignedHero() end
     if hero:IsIllusion() then hero = PlayerResource:GetPlayer(hero:GetPlayerID()):GetAssignedHero() end
@@ -39,105 +39,105 @@ function Score:ScoreKill( killedTeam, killedUnit, hero )
 
     --print("Player id = " .. playerid)
     if killedUnit:GetTeam() == GameMode.leadingTeam and GameMode.isGameTied == false then
-        Score.data[playerid].kill_leader = Score.data[playerid].kill_leader + 7
-        Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + 7
-        Score:AddscoreTeam(hero, 7)
+        Score.data[playerid].kill_leader = Score.data[playerid].kill_leader + score + 2
+        Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + score + 2
+        Score:AddscoreTeam(hero, score + 2)
         --Score.data[playerID].total = Score.data[playerID].total + 15
     else
-        Score.data[playerid].kill = Score.data[playerid].kill + 5
-        Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + 5
-        Score:AddscoreTeam(hero, 5)
+        Score.data[playerid].kill = Score.data[playerid].kill + score
+        Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + score
+        Score:AddscoreTeam(hero, score)
         --Score.data[playerID].total = Score.data[playerID].total + 10
     end
 end
 
-function Score:ScoreGolden( hero )
+function Score:ScoreGolden( hero, score )
     -- Lorsque qu'un golden est tuée
     if IsValidEntity(hero:GetPlayerOwner()) then hero = hero:GetPlayerOwner():GetAssignedHero() end
     if hero:IsIllusion() then hero = PlayerResource:GetPlayer(hero:GetPlayerID()):GetAssignedHero() end
     hero = EntIndexToHScript(hero:entindex())
     playerid = hero:GetPlayerID()
     --print("Player id = " .. playerid)
-    Score.data[playerid].kill_golden_crystal = Score.data[playerid].kill_golden_crystal + 3
-    Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + 3
-    Score:AddscoreTeam(hero, 3)
+    Score.data[playerid].kill_golden_crystal = Score.data[playerid].kill_golden_crystal + score
+    Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + score
+    Score:AddscoreTeam(hero, score)
     --Score.data[playerID].total = Score.data[playerID].total + 5
 end
 
-function Score:ScoreChicken( hero )
+function Score:ScoreChicken( hero, score )
     -- Lorsque qu'un Chicken est touché
     if IsValidEntity(hero:GetPlayerOwner()) then hero = hero:GetPlayerOwner():GetAssignedHero() end
     if hero:IsIllusion() then hero = PlayerResource:GetPlayer(hero:GetPlayerID()):GetAssignedHero() end
     hero = EntIndexToHScript(hero:entindex())
     playerid = hero:GetPlayerID()
     --print("Player id = " .. playerid)
-    Score.data[playerid].chicken = Score.data[playerid].chicken + 1
-    Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + 1
-    Score:AddscoreTeam(hero, 1)
+    Score.data[playerid].chicken = Score.data[playerid].chicken + score
+    Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + score
+    Score:AddscoreTeam(hero, score)
     --Score.data[playerID].total = Score.data[playerID].total + 1
 end
 
-function Score:ScoreGem( hero )
+function Score:ScoreGem( hero, score )
     -- Lorsque que la gem est porté
     if IsValidEntity(hero:GetPlayerOwner()) then hero = hero:GetPlayerOwner():GetAssignedHero() end
     if hero:IsIllusion() then hero = PlayerResource:GetPlayer(hero:GetPlayerID()):GetAssignedHero() end
     hero = EntIndexToHScript(hero:entindex())
     playerid = hero:GetPlayerID()
     --print("Player id = " .. playerid)
-    Score.data[playerid].gem = Score.data[playerid].gem + 4
-    Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + 4
-    Score:AddscoreTeam(hero, 4)
+    Score.data[playerid].gem = Score.data[playerid].gem + score
+    Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + score
+    Score:AddscoreTeam(hero, score)
     --Score.data[playerID].total = Score.data[playerID].total + 5
 end
 
-function Score:ScoreLoup( hero )
+function Score:ScoreLoup( hero, score )
     -- Lorsque qu'un Chicken est touché
     if IsValidEntity(hero:GetPlayerOwner()) then hero = hero:GetPlayerOwner():GetAssignedHero() end
     if hero:IsIllusion() then hero = PlayerResource:GetPlayer(hero:GetPlayerID()):GetAssignedHero() end
     hero = EntIndexToHScript(hero:entindex())
     playerid = hero:GetPlayerID()
     --print("Player id = " .. playerid)
-    Score.data[playerid].loup = Score.data[playerid].loup + 2
-    Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + 2
-    Score:AddscoreTeam(hero, 2)
+    Score.data[playerid].loup = Score.data[playerid].loup + score
+    Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + score
+    Score:AddscoreTeam(hero, score)
     --Score.data[playerID].total = Score.data[playerID].total + 1
 end
 
-function Score:ScoreLoupGolden( hero )
+function Score:ScoreLoupGolden( hero, score )
     -- Lorsque qu'un Chicken est touché
     if IsValidEntity(hero:GetPlayerOwner()) then hero = hero:GetPlayerOwner():GetAssignedHero() end
     if hero:IsIllusion() then hero = PlayerResource:GetPlayer(hero:GetPlayerID()):GetAssignedHero() end
     hero = EntIndexToHScript(hero:entindex())
     playerid = hero:GetPlayerID()
     --print("Player id = " .. playerid)
-    Score.data[playerid].loup_golden = Score.data[playerid].loup_golden + 3
-    Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + 3
-    Score:AddscoreTeam(hero, 3)
+    Score.data[playerid].loup_golden = Score.data[playerid].loup_golden + score
+    Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + score
+    Score:AddscoreTeam(hero, score)
     --Score.data[playerID].total = Score.data[playerID].total + 1
 end
 
-function Score:ScoreKillRoshan( hero )
+function Score:ScoreKillRoshan( hero, score )
     -- Lorsque qu'un Chicken est touché
     if IsValidEntity(hero:GetPlayerOwner()) then hero = hero:GetPlayerOwner():GetAssignedHero() end
     if hero:IsIllusion() then hero = PlayerResource:GetPlayer(hero:GetPlayerID()):GetAssignedHero() end
     hero = EntIndexToHScript(hero:entindex())
     playerid = hero:GetPlayerID()
     --print("Player id = " .. playerid)
-    Score.data[playerid].roshan = Score.data[playerid].roshan + 25
-    Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + 25
-    Score:AddscoreTeam(hero, 25)
+    Score.data[playerid].roshan = Score.data[playerid].roshan + score
+    Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + score
+    Score:AddscoreTeam(hero, score)
     --Score.data[playerID].total = Score.data[playerID].total + 1
 end
 
-function Score:ScoreItemRamser( hero )
+function Score:ScoreItemRamser( hero, score )
     -- Lorsque qu'un Chicken est touché
     if IsValidEntity(hero:GetPlayerOwner()) then hero = hero:GetPlayerOwner():GetAssignedHero() end
     if hero:IsIllusion() then hero = PlayerResource:GetPlayer(hero:GetPlayerID()):GetAssignedHero() end
     hero = EntIndexToHScript(hero:entindex())
     playerid = hero:GetPlayerID()
     --print("Player id = " .. playerid)
-    Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + 1
-    Score:AddscoreTeam(hero, 1)
+    Score.data[playerid].starobtenue = Score.data[playerid].starobtenue + score
+    Score:AddscoreTeam(hero, score)
     --Score.data[playerID].total = Score.data[playerID].total + 1
 end
 ---------------------------------------------------------------------------
@@ -169,20 +169,20 @@ function Score:AddscoreTeam(hero, value)
         -- CustomGameEventManager:Send_ServerToAllClients("SetTopBarScoreValue", { teamId = Teamid, teamScore = ScoreTeam[Teamid] } )
 end
 
-function Score:Startdeposer(hero)
+function Score:Startdeposer(hero, score)
 		-- vérifier le hero
 		hero = EntIndexToHScript(hero:entindex())
 		playerID = hero:GetPlayerID()
 		local nombredeposer = Score.data[playerID].starobtenue
 		if nombredeposer > 0 then
-			PopupNumbers(hero, "particles/particle_point_add.vpcf", Vector(100, 255, 100), 3.0, 1, POPUP_SYMBOL_PRE_PLUS, nil)
+			PopupNumbers(hero, "particles/particle_point_add.vpcf", Vector(100, 255, 100), 3.0, score, POPUP_SYMBOL_PRE_PLUS, nil)
 	        local Teamid = hero:GetTeamNumber()
 	        -- ajout du score
-	        ScoreTeam[Teamid] = ScoreTeam[Teamid] + 1
+	        ScoreTeam[Teamid] = ScoreTeam[Teamid] + score
 	        print("SCORE TEAM " .. Teamid .. " : " ..ScoreTeam[Teamid])
 	        GameMode:pointwin_sanskill(hero, Teamid)
 	        -- plus d'étoile sur le héro 
-	        Score.data[playerID].starobtenue = Score.data[playerID].starobtenue - 1
+	        Score.data[playerID].starobtenue = Score.data[playerID].starobtenue - score
 	        CustomGameEventManager:Send_ServerToAllClients("SetTopBarScoreValue", { teamId = Teamid, teamScore = ScoreTeam[Teamid] } )
 	        local nombredetoile = Score.data[playerID].starobtenue 
 	        CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "stars_notification", { nombredetoile = nombredetoile } )

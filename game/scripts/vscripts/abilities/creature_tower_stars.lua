@@ -22,10 +22,9 @@ end
 
 --------------------------------------------------------------------------------
 
-function modifier_creature_tower_stars:OnCreated( kv )
+function modifier_creature_tower_stars:OnCreated(kv)
 	if IsServer() then
-		--print("created")
-		self:StartIntervalThink( 1.0 )
+		self:StartIntervalThink(self:GetAbility():GetSpecialValueFor("tick_time"))
 		self:GetParent():StartGesture(ACT_DOTA_IDLE)
 	end
 end
@@ -49,7 +48,7 @@ function modifier_creature_tower_stars:GetAuraRadius()
 end
 
 function modifier_creature_tower_stars:GetAuraSearchFlags()
-	return DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD
+	return DOTA_UNIT_TARGET_FLAG_INVULNERABLE
 end
 
 function modifier_creature_tower_stars:GetAuraSearchTeam()
@@ -72,7 +71,7 @@ end
 
 --------------------------------------------------------------------------------
 
-function modifier_creature_tower_stars:GetMinHealth( params )
+function modifier_creature_tower_stars:GetMinHealth(params)
 	return 1
 end
 
@@ -91,15 +90,13 @@ function modifier_creature_tower_stars:CheckState()
 	return state
 end
 
-
 --------------------------------------------------------------------------------
 
 function modifier_creature_tower_stars:GetPriority()
 	return MODIFIER_PRIORITY_SUPER_ULTRA
 end
 
-
-
+--------------------------------------------------------------------------------
 
 modifier_creature_tower_stars_positive = class({})
 function modifier_creature_tower_stars_positive:IsDebuff() return false end
@@ -109,9 +106,9 @@ function modifier_creature_tower_stars_positive:IsPurgeException() return false 
 function modifier_creature_tower_stars_positive:IsStunDebuff() return false end
 function modifier_creature_tower_stars_positive:RemoveOnDeath() return true end
 
-function modifier_creature_tower_stars_positive:OnCreated( kv )
+function modifier_creature_tower_stars_positive:OnCreated(kv)
 	if IsServer() then
-		self:StartIntervalThink( 0.75 )
+		self:StartIntervalThink(self:GetAbility():GetSpecialValueFor("tick_time"))
 	end
 end
 
@@ -120,20 +117,16 @@ function modifier_creature_tower_stars_positive:OnIntervalThink()
 		if self:GetParent():IsAlive() then
 			if self:GetParent():IsRealHero() then
 				local target = self:GetCaster()
-
-				
-
 				hero = EntIndexToHScript(self:GetParent():entindex())
 				playerID = hero:GetPlayerID()
 				local nombredeposer = Score.data[playerID].starobtenue
-				print("Nombre D'étoile dispo : " .. nombredeposer)
 				if nombredeposer > 0 then
 					local particle_midas = "particles/stars/towergive.vpcf"
-				local particle_midas_fx = ParticleManager:CreateParticle(particle_midas, PATTACH_ABSORIGIN_FOLLOW, self:GetParent()) 
-				ParticleManager:SetParticleControlEnt(particle_midas_fx, 1, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), false)
+					local particle_midas_fx = ParticleManager:CreateParticle(particle_midas, PATTACH_ABSORIGIN_FOLLOW, self:GetParent()) 
+					ParticleManager:SetParticleControlEnt(particle_midas_fx, 1, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), false)
 
-				ParticleManager:ReleaseParticleIndex(particle_midas_fx)
-					Score:Startdeposer(hero)
+					ParticleManager:ReleaseParticleIndex(particle_midas_fx)
+					Score:Startdeposer(hero, 1)
 				end
 			end
 		end

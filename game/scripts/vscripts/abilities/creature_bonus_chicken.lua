@@ -85,7 +85,7 @@ function modifier_creature_bonus_chicken:OnTakeDamage( params )
 				--print("UNIT : " .. hUnit .. " and Attacker " .. hAttacker)
 				attacker = EntIndexToHScript(hAttacker:entindex())
 				if self.total_gold > 0 then
-				Score:ScoreChicken( attacker )
+				Score:ScoreChicken( attacker, 1 )
 				self.total_gold = self.total_gold - 1
 				end
 				if self.total_gold <= 0 then
@@ -96,7 +96,7 @@ function modifier_creature_bonus_chicken:OnTakeDamage( params )
 					local attacker = hAttacker:GetMainControllingPlayer()
 					-- attacker = EntIndexToHScript(hAttacker:entindex())
 					if self.total_gold > 0 then
-					Score:ScoreChicken( attacker )
+					Score:ScoreChicken( attacker, 1 )
 					self.total_gold = self.total_gold - 1
 					end
 					if self.total_gold <= 0 then

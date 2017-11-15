@@ -15,7 +15,7 @@ function item_stars_ground:OnSpellStart()
 
 		local heroa = self:GetCaster()
 		hero = EntIndexToHScript(heroa:entindex())
-		Score:ScoreItemRamser( hero )
+		Score:ScoreItemRamser( hero, 1 )
 
 		local nFXIndex = ParticleManager:CreateParticle( "particles/items3_fx/mango_active.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetCaster() )
 		ParticleManager:ReleaseParticleIndex( nFXIndex )

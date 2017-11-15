@@ -18,13 +18,12 @@ function item_crow_trow:OnOwnerDied(params)
 		return nil
 	end
 	local vLocation = hOwner:GetAbsOrigin()
-	for i = 0, 8 do
+	for i = 0, 5 do
 		local item1 = hOwner:GetItemInSlot(i)
 		if item1 and item1:GetName() == "item_crow_trow" then
 			hOwner:DropItemAtPositionImmediate(item1, vLocation)
 		end
 	end
-	
 end
 
 --------------------------------------------------------------------------------
@@ -40,7 +39,7 @@ function modifier_item_item_crow_trow:OnCreated(keys)
 		local parent = self:GetParent()
 		if parent:HasModifier("modifier_item_item_crow_trow") then
 			parent:AddNewModifier(parent, ability, "modifier_item_vision_crow_trow", {})
-			self:StartIntervalThink(4)
+			self:StartIntervalThink(self:GetAbility():GetSpecialValueFor("tick_time"))
 		end
 	end
 end
@@ -57,11 +56,12 @@ end
 function modifier_item_item_crow_trow:OnIntervalThink()
 	if IsServer() then
 		local parent = self:GetParent()
+		if parent:HasModifier("modifier_creature_tower_stars_positive") then return end
 		local teamid = parent:GetTeamNumber()
 		print(KILLSREMAINING_ITEM)
 		if KILLSREMAINING_ITEM == 1 then
 			print(KILLSREMAINING_ITEM)
-      		Score:ScoreGem( parent )
+      		Score:ScoreGem(parent, self:GetAbility():GetSpecialValueFor("tick_stars"))
      	end
 	end
 end

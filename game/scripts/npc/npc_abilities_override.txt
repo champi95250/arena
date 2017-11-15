@@ -3,75 +3,26 @@
 {
 	"Version"		"1"
 	//=================================================================================================================
-	// Remove Dagon
+	// Removed Items
 	//=================================================================================================================
-	"item_dagon"
-	{
-		"ItemPurchasable"				"0"
-	}
-	"item_dagon_1"
-	{
-		"ItemPurchasable"				"0"
-	}
-	"item_dagon_2"
-	{
-		"ItemPurchasable"				"0"
-	}
-	"item_dagon_3"
-	{
-		"ItemPurchasable"				"0"
-	}
-	"item_dagon_4"
-	{
-		"ItemPurchasable"				"0"
-	}
-	"item_dagon_5"
-	{
-		"ItemPurchasable"				"0"
-	}
-	"item_recipe_dagon"
-	{
-		"ItemPurchasable"				"0"
-	}
-	//=================================================================================================================
-	// Remove Heal / Mana 
-	//=================================================================================================================
-	"item_clarity"
-	{
-		"ItemPurchasable"				"0"
-	}
-	"item_faerie_fire"
-	{
-		"ItemPurchasable"				"0"
-	}
-	"item_bottle"
-	{
-		"ItemPurchasable"				"0"
-	}
-	"item_tango"
-	{
-		"ItemPurchasable"				"0"
-	}
-	"item_tpscroll"
-	{
-		"ItemPurchasable"				"0"
-	}
-	"item_flask"
-	{
-		"ItemPurchasable"				"0"
-	}
-	"item_enchanted_mango"
-	{
-		"ItemPurchasable"				"0"
-	}
-	"item_courier"
-	{
-		"ItemPurchasable"				"0"
-	}
-	"item_flying_courier"
-	{
-		"ItemPurchasable"				"0"
-	}
+	"item_dagon"			{ "ItemPurchasable" "0" }
+	"item_dagon_1"			{ "ItemPurchasable" "0" }
+	"item_dagon_2"			{ "ItemPurchasable" "0" }
+	"item_dagon_3"			{ "ItemPurchasable" "0" }
+	"item_dagon_4"			{ "ItemPurchasable" "0" }
+	"item_dagon_5"			{ "ItemPurchasable" "0" }
+	"item_recipe_dagon"		{ "ItemPurchasable" "0" }
+	"item_clarity"			{ "ItemPurchasable" "0" }
+	"item_faerie_fire"		{ "ItemPurchasable" "0" }
+	"item_bottle"			{ "ItemPurchasable" "0" }
+	"item_tango"			{ "ItemPurchasable" "0" }
+	"item_flask"			{ "ItemPurchasable" "0" }
+	"item_enchanted_mango"	{ "ItemPurchasable" "0" }
+	"item_courier"			{ "ItemPurchasable" "0" }
+	"item_flying_courier"	{ "ItemPurchasable" "0" }
+	"item_diffusal_blade"	{ "ItemPurchasable" "0" }
+	"item_tpscroll" 		{ "ItemPurchasable" "0" }
+
 	"item_ward_observer"
 	{
 		"ItemInitialCharges"			"1"
@@ -79,29 +30,13 @@
 		"ItemStockInitial"				"2"
 		"ItemStockTime"					"45"
 	}
+
 	//=================================================================================================================
 	// Change Soul Ring Item
 	//=================================================================================================================
 	"item_recipe_soul_ring"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"177"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
-		"Model"							"models/props_gameplay/recipe.vmdl"
-		
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"100"	
-		"ItemShopTags"					""
-		
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_soul_ring"
-		"ItemRequirements"
-		{
-			"01"						"item_ring_of_regen;item_sobi_mask"
-		}
 	} 
 
 	//=================================================================================================================
@@ -129,6 +64,7 @@
 			}
 		}
 	}
+
 	//=================================================================================================================
 	// Silencer: Glaives of Wisdom
 	//=================================================================================================================
@@ -139,16 +75,17 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"intellect_damage_pct"	"15 30 45 60"
+				"intellect_damage_pct"	"15 25 35 45"
 				"LinkedSpecialBonus"	"special_bonus_unique_silencer_3"
 			}
 			"02"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"steal_range"		"450"
+				"var_type"				"FIELD_INTEGER"
+				"steal_range"			"450"
 			}
 		}
 	}
+
 	//=================================================================================================================
 	// Ability: Necrolyte's Reaper's Scythe
 	//=================================================================================================================
